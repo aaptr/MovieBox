@@ -8,7 +8,7 @@ import { sessions } from '@/utils/sessions'
 import { IAuthState } from '@/types/requestTypes'
 
 const initialState: IAuthState = {
-  guestSessionId: sessions.getFromLocalStorageGuestSessionId() || null,
+  guestSession: sessions.getFromLocalStorageGuestSession() || null,
   requestToken: null,
   isLoading: false,
   error: null
@@ -18,6 +18,9 @@ export const fetchGuestSession = createAsyncThunk(
   'auth/fetchGuestSession',
   async () => {
     const data = await createGuestSession()
+
+    sessions.setToLocalStorageGuestSession(data)
+
     return data
   }
 )
@@ -44,7 +47,7 @@ export const authSlice = createSlice({
       .addCase(fetchGuestSession.fulfilled,
         (state, action) => {
           state.isLoading = false
-          state.guestSessionId = action.payload
+          state.guestSession = action.payload
         })
       .addCase(fetchGuestSession.rejected, (state, action) => {
         console.error('Fetch Guest Session ID Error:', action.payload)

@@ -5,14 +5,14 @@ import {
 } from '@/types/requestTypes'
 
 export const sessions = {
-  _guestSessionId: 'guest_session_id',
+  _guestSessionId: 'guest_session',
   _requestToken: 'request_token',
-  _sessionId: 'session_id',
+  _sessionId: 'user_session',
 
-  setToLocalStorageGuestSessionId(guestSessionId: IRequestGusetSessionResponse) {
+  setToLocalStorageGuestSession(guestSessionId: IRequestGusetSessionResponse) {
     localStorage.setItem(this._guestSessionId, JSON.stringify(guestSessionId))
   },
-  getFromLocalStorageGuestSessionId() {
+  getFromLocalStorageGuestSession() {
     const guestSession = localStorage.getItem(this._guestSessionId)
     if (!guestSession) {
       return null
