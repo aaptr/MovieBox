@@ -1,17 +1,19 @@
-import { posterPath } from '@/config/api'
+import { cardImagePath } from '@/config/api'
 import { IMovieListItem } from '@/types/MoviesTypes'
 
-export function Card(props: IMovieListItem) {
+interface CardProps extends IMovieListItem { }
+
+export function Card({ poster_path, title, release_date }: CardProps) {
   return (
-    <div className="card">
-      <div className="image w-full max-h-80 overflow-hidden">
+    <div className="w-60 p-4">
+      <div className="w-full overflow-hidden">
         <div>
-          <img src={`${posterPath}${props.poster_path}`} alt="" />
+          <img className="rounded-xl" src={`${cardImagePath}${poster_path}`} alt="" />
         </div>
       </div>
-      <div className="content w-full pt-5 px-1 flex flex-wrap">
-        <p>{props.title}</p>
-        <p>{props.release_date}</p>
+      <div className="content w-full pt-3 px-1">
+        <p className="text-lg font-bold">{title}</p>
+        <p className="text-sm">{release_date}</p>
       </div>
     </div>
   )

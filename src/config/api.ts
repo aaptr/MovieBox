@@ -12,3 +12,4 @@ export const popularEndpoint: string = 'https://api.themoviedb.org/3/movie/popul
 export const topRatedEndpoint: string = 'https://api.themoviedb.org/movie/3/top_rated'
 export const upcomingEndpoint: string = 'https://api.themoviedb.org/movie/3/upcoming'
 export const posterPath: string = 'https://image.tmdb.org/t/p/original/'
+export const cardImagePath: string = 'https://media.themoviedb.org/t/p/w220_and_h330_face'

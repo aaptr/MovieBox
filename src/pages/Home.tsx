@@ -5,16 +5,18 @@ import { ThunkDispatch } from 'redux-thunk'
 import { RootState } from '@/redux/store'
 import { fetchPopularList } from '@/redux/movies-slice'
 import { MoviesList } from '@/components/MoviesList'
+import { localisation } from '@/config/localisation'
 
 export function Home() {
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
-  const { popularlist, isloading, error } = useSelector(state => state.movies)
+  const { popularList, isLoading, error } = useSelector((state: RootState) => state.movies)
+  const lang = useSelector((state: RootState) => state.lang.value)
 
   useEffect(() => {
     dispatch(fetchPopularList())
   }, [dispatch])
 
-  if (isloading) {
+  if (isLoading) {
     return <h1>Loading...</h1>
   }
 
@@ -22,17 +24,17 @@ export function Home() {
     return <div>{error}</div>
   }
 
-  // if (popularlist.length === 0) {
-  //   return <h1>No movies found</h1>
-  // }
+  if (popularList.length === 0) {
+    return <h1>No movies found</h1>
+  }
 
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Home page</h1>
+      <h1 className="text-3xl font-bold underline">{localisation[lang].homePage.title}</h1>
       <p className="text-green">Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Quisquam, Modi, nihil. Reiciendis et ducimus omnis eligendi dolorem voluptate.
         Ipsam, aspernatur nisi tempora repellendus odio sapiente libero culpa? Totam modi obcaecati assumenda.</p>
-      <MoviesList {...popularlist} />
+      <MoviesList movies={popularList} />
 
     </div>
   )

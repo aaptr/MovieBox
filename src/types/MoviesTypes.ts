@@ -31,3 +31,7 @@ export interface IMoviesState {
   popularPageCount: number | null
   ordering: string
 }
+
+export interface IMoviesListProps {
+  movies: IMovieListItem[]
+}

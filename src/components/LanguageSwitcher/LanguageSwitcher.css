@@ -1,0 +1,20 @@
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.flag-icon {
+  margin: auto;
+  cursor: pointer;
+  width: 35px;
+  box-shadow: 0 0 10px #ffffff;
+  transition: border-color 0.3s;
+}
+
+.lang-disabled {
+  filter: grayscale(0.8);
+  box-shadow: none;
+}

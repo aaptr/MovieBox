@@ -22,8 +22,6 @@ export const fetchPopularList = createAsyncThunk(
   'movies/fetchPopularList',
   async () => {
     const data = await requestMoviesList(popularEndpoint)
-    console.log('data', data)
-
     return data
   }
 )
