@@ -9,7 +9,7 @@ import {
   ICreateRequestTokenResponse,
   IRequestGusetSessionResponse,
   IRequestSessionResponse
-} from '@/types/requestTypes'
+} from '@/types/authTypes'
 
 import { get, post } from '@/utils/client'
 

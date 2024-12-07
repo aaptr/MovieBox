@@ -2,7 +2,7 @@ import {
   IRequestGusetSessionResponse,
   ICreateRequestTokenResponse,
   IRequestSessionResponse
-} from '@/types/requestTypes'
+} from '@/types/authTypes'
 
 export const sessions = {
   _guestSessionId: 'guest_session',

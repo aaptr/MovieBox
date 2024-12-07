@@ -5,7 +5,7 @@ import {
 } from '@/services/auth'
 import { sessions } from '@/utils/sessions'
 
-import { IAuthState } from '@/types/requestTypes'
+import { IAuthState } from '@/types/authTypes'
 
 const initialState: IAuthState = {
   guestSession: sessions.getFromLocalStorageGuestSession() || null,
