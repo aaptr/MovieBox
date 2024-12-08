@@ -3,8 +3,6 @@ import { requestMoviesList } from '@/services/movies'
 
 import {
   IMoviesState,
-  IMovieList,
-  IMovieListItem,
   FetchMoviesListArgs,
   FetchMoviesListResponse
 } from '@/types/MoviesTypes'

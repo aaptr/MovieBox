@@ -15,9 +15,9 @@ export function MoviesList({ movies = [] }: IMoviesListProps) {
   return (
     <div className="mt-5 mb-2">
       <Carousel plugins={[
-        Autoplay({
-          delay: 3000
-        })
+        // Autoplay({
+        //   delay: 3000
+        // })
       ]}
         opts={{ loop: true }}>
         <CarouselContent className="-ml-2 md:-ml-4">

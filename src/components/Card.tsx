@@ -1,14 +1,18 @@
+import { RatingLabel } from '@/components/RatingLabel'
 import { cardImagePath } from '@/config/api'
 import { IMovieListItem } from '@/types/MoviesTypes'
 
 interface CardProps extends IMovieListItem { }
 
-export function Card({ poster_path, title, release_date }: CardProps) {
+export function Card({ poster_path, title, release_date, vote_average }: CardProps) {
   return (
     <div className="w-60 p-4">
       <div className="w-full overflow-hidden">
-        <div>
+        <div className="relative">
           <img className="rounded-xl" src={`${cardImagePath}${poster_path}`} alt="" />
+        </div>
+        <div className="absolute top-8 right-3 z-0">
+          <RatingLabel rating={vote_average} />
         </div>
       </div>
       <div className="content w-full pt-3 px-1">

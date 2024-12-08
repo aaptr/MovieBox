@@ -43,13 +43,18 @@ export function Home() {
       <p className="text-green">Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Quisquam, Modi, nihil. Reiciendis et ducimus omnis eligendi dolorem voluptate.
         Ipsam, aspernatur nisi tempora repellendus odio sapiente libero culpa? Totam modi obcaecati assumenda.</p>
-      <h2>Popular Movies</h2>
-      <MoviesList movies={popularList} />
-      <h2>Top Rated Movies</h2>
-      <MoviesList movies={topRatedList} />
-      <h2>Upcoming Movies</h2>
-      <MoviesList movies={upcomingList} />
-
+      <div className="mt-5">
+        <h2>Popular Movies</h2>
+        <MoviesList movies={popularList} />
+      </div>
+      <div className="mt-5">
+        <h2>Top Rated Movies</h2>
+        <MoviesList movies={topRatedList} />
+      </div>
+      <div className="mt-5">
+        <h2>Upcoming Movies</h2>
+        <MoviesList movies={upcomingList} />
+      </div>
     </div>
   )
 }
