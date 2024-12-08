@@ -10,6 +10,5 @@ export const accountEndpoint: string = 'https://api.themoviedb.org/3/account'
 // movie lists
 export const moviesListsEndpoint: string = 'https://api.themoviedb.org/3/movie/'
 
-
 export const imagePath: string = 'https://image.tmdb.org/t/p/original/'
 export const cardImagePath: string = 'https://media.themoviedb.org/t/p/w220_and_h330_face'

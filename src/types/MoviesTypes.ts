@@ -95,3 +95,8 @@ export interface IMovieDetails {
   vote_count: number
 }
 
+export interface IMovieDetailsState {
+  movieDetails: IMovieDetails | null
+  isLoading: boolean
+  error: string | null
+}
