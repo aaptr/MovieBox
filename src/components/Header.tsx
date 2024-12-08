@@ -1,4 +1,4 @@
-import { ThemeToggler } from '@/components/themeToggler'
+import { ThemeToggler } from '@/components/ThemeToggler'
 import { UserAvatar } from '@/components/UserAvatar'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher/LanguageSwitcher'
 
