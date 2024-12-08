@@ -1,7 +1,7 @@
 import { get } from '@/utils/client'
 
 
-export const requestMoviesList = async (url: string, params = {}) => {
+export const requestMovieDetails = async (url: string, params = {}) => {
   try {
     const response = await get(url, { params })
     return response.data
