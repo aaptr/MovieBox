@@ -1,12 +1,13 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { requestMoviesList } from '@/services/movies'
-import {
-  popularEndpoint,
-  topRatedEndpoint,
-  upcomingEndpoint
-} from '@/config/api'
 
-import { IMoviesState } from '@/types/MoviesTypes'
+import {
+  IMoviesState,
+  IMovieList,
+  IMovieListItem,
+  FetchMoviesListArgs,
+  FetchMoviesListResponse
+} from '@/types/MoviesTypes'
 
 const initialState: IMoviesState = {
   popularList: [],
@@ -18,15 +19,19 @@ const initialState: IMoviesState = {
   ordering: 'date'
 }
 
-export const fetchPopularList = createAsyncThunk(
-  'movies/fetchPopularList',
-  async () => {
-    const data = await requestMoviesList(popularEndpoint)
-    return data
+export const fetchMoviesList = createAsyncThunk<
+  FetchMoviesListResponse, FetchMoviesListArgs, { rejectValue: string }
+>(
+  'movies/fetchMoviesList',
+  async ({ endpoint, listType }, { rejectWithValue }) => {
+    try {
+      const data = await requestMoviesList(endpoint)
+      return { listType, data }
+    } catch (error) {
+      return rejectWithValue(error instanceof Error ? error.message : 'Unknown error')
+    }
   }
 )
-
-
 
 const moviesSlice = createSlice({
   name: 'movies',
@@ -34,21 +39,32 @@ const moviesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      //FETCH POPULAR LIST
-      .addCase(fetchPopularList.pending, (state) => {
+      .addCase(fetchMoviesList.pending, (state) => {
         state.isLoading = true
         state.error = null
       })
-      .addCase(fetchPopularList.fulfilled,
-        (state, action) => {
-          state.isLoading = false
-          state.popularList = action.payload.results
-          state.popularPageCount = action.payload.total_pages
-        })
-      .addCase(fetchPopularList.rejected, (state, action) => {
-        console.error('Fetch Popular List Error:', action.payload)
+      .addCase(fetchMoviesList.fulfilled, (state, action: PayloadAction<FetchMoviesListResponse>) => {
+        const { listType, data } = action.payload
         state.isLoading = false
-        state.error = 'Error fetching popular list'
+
+        switch (listType) {
+          case 'popular':
+            state.popularList = data.results
+            state.popularPageCount = data.total_pages
+            break
+          case 'topRated':
+            state.topRatedList = data.results
+            break
+          case 'upcoming':
+            state.upcomingList = data.results
+            break
+          default:
+            break
+        }
+      })
+      .addCase(fetchMoviesList.rejected, (state, action: PayloadAction<string | undefined>) => {
+        state.isLoading = false
+        state.error = action.payload || 'Error fetching movies list'
       })
   }
 })

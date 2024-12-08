@@ -8,8 +8,7 @@ export const createSessionEndpoint: string = 'https://api.themoviedb.org/3/authe
 export const accountEndpoint: string = 'https://api.themoviedb.org/3/account'
 
 // movie lists
-export const popularEndpoint: string = 'https://api.themoviedb.org/3/movie/popular?language=ru-Ru&page=1'
-export const topRatedEndpoint: string = 'https://api.themoviedb.org/movie/3/top_rated'
-export const upcomingEndpoint: string = 'https://api.themoviedb.org/movie/3/upcoming'
+export const moviesListsEndpoint: string = 'https://api.themoviedb.org/3/movie/'
+
 export const posterPath: string = 'https://image.tmdb.org/t/p/original/'
 export const cardImagePath: string = 'https://media.themoviedb.org/t/p/w220_and_h330_face'

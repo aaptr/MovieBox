@@ -35,3 +35,13 @@ export interface IMoviesState {
 export interface IMoviesListProps {
   movies: IMovieListItem[]
 }
+
+export type FetchMoviesListArgs = {
+  endpoint: string
+  listType: 'popular' | 'topRated' | 'upcoming'
+}
+
+export type FetchMoviesListResponse = {
+  listType: 'popular' | 'topRated' | 'upcoming'
+  data: IMovieList
+}

@@ -15,6 +15,6 @@
 }
 
 .lang-disabled {
-  filter: grayscale(0.8);
+  filter: grayscale(0.85);
   box-shadow: none;
 }
