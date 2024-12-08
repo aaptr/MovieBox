@@ -39,10 +39,8 @@ export function Home() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">{localisation[lang].homePage.title}</h1>
-      <p className="text-green">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Quisquam, Modi, nihil. Reiciendis et ducimus omnis eligendi dolorem voluptate.
-        Ipsam, aspernatur nisi tempora repellendus odio sapiente libero culpa? Totam modi obcaecati assumenda.</p>
+      <h1 className="text-5xl font-bold py-3">{localisation[lang].homePage.title}</h1>
+      <p className="pt-3 text-2xl">{localisation[lang].homePage.subtitle}</p>
       <div className="mt-5">
         <h2>Popular Movies</h2>
         <MoviesList movies={popularList} />
