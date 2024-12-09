@@ -13,7 +13,7 @@ import { IMoviesListProps } from '@/types/MoviesTypes'
 export function MoviesList({ movies = [] }: IMoviesListProps) {
 
   return (
-    <div className="mt-5 mb-2">
+    <div className="mt-5 px-40 mb-2">
       <Carousel plugins={[
         Autoplay({
           delay: 3000

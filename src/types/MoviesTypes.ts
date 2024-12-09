@@ -97,6 +97,52 @@ export interface IMovieDetails {
 
 export interface IMovieDetailsState {
   movieDetails: IMovieDetails | null
+  movieCredits: IMovieCredits | null
   isLoading: boolean
   error: string | null
+}
+
+export interface IMovieCredits {
+  id: number
+  cast: {
+    adult: boolean
+    gender: number
+    id: number
+    known_for_department: string
+    name: string
+    original_name: string
+    popularity: number
+    profile_path: string
+    cast_id: number
+    character: string
+    credit_id: string
+    order: number
+  }[]
+  crew: {
+    adult: boolean
+    gender: number
+    id: number
+    known_for_department: string
+    name: string
+    original_name: string
+    popularity: number
+    profile_path: string
+    credit_id: string
+    department: string
+    job: string
+  }[]
+}
+
+export interface ICrewMember {
+  id: number
+  name: string
+  profile_path: string
+  job: string
+}
+
+export interface ICastMember {
+  id: number
+  name: string
+  profile_path: string
+  character: string
 }
