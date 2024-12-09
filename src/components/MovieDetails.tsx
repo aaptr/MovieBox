@@ -3,9 +3,9 @@ import { RatingLabel } from './RatingLabel'
 import { imagePath } from '@/config/api'
 import { IMovieDetails } from '@/types/MoviesTypes'
 
-interface MovieDetailsProps extends IMovieDetails { }
+// interface MovieDetailsProps extends IMovieDetails { }
 
-export function MovieDetails(props: MovieDetailsProps) {
+export function MovieDetails(props: IMovieDetails) {
   const backdropURL = `${imagePath}${props.backdrop_path}`
   const posterURL = `${imagePath}${props.poster_path}`
   const releaseYear = new Date(props.release_date).getFullYear()
@@ -13,11 +13,22 @@ export function MovieDetails(props: MovieDetailsProps) {
   const runtime = `${Math.floor(props.runtime / 60)}h ${props.runtime % 60} min`
 
   return (
-    <div>
-      <div className={`w-full bg-[url(${backdropURL})]`}>
-        <div className="flex flex-row">
-          <div className="basis-1/4">
-            <img src={posterURL} alt={`poster for ${props.title}`} />
+    <div className="text-white">
+      <div style={{
+        backgroundImage: `url(${backdropURL})`,
+        backgroundSize: 'cover',
+      }}
+        className="w-full">
+        <div style={{
+          backgroundImage: 'linear-gradient(to right, rgba(31.5, 10.5, 10.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 10.5, 10.5, 0.84) 50%, rgba(31.5, 10.5, 10.5, 0.84) 100%)'
+        }}
+          className="p-5 flex flex-row gap-10">
+          <div className="basis-1/4 relative">
+            <img src={posterURL} alt={`poster for ${props.title}`}
+              className="rounded-2xl" />
+            <div className="absolute top-3 right-3">
+              <RatingLabel rating={props.vote_average} />
+            </div>
           </div>
           <div className="basis-3/4">
             <h1>{`${props.title} (${releaseYear})`}</h1>
@@ -29,7 +40,7 @@ export function MovieDetails(props: MovieDetailsProps) {
               <p>{runtime}</p>
             </div>
             <div className="flex justify-start gap-2">
-              <RatingLabel rating={props.vote_average} />
+
               <div>Your Rating</div>
             </div>
             <div className="flex justify-start gap-3">
@@ -57,6 +68,6 @@ export function MovieDetails(props: MovieDetailsProps) {
       <div>
         {/* TODO: similar films */}
       </div>
-    </div>
+    </div >
   )
 }

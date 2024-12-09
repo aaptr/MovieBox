@@ -6,9 +6,7 @@ import { RootState } from '@/redux/store'
 import { fetchMoviesList } from '@/redux/movies-slice'
 import { MoviesList } from '@/components/MoviesList'
 import { localisation } from '@/config/localisation'
-import {
-  moviesListsEndpoint
-} from '@/config/api'
+import { moviesListsEndpoint } from '@/config/api'
 
 export function Home() {
   const lang = useSelector((state: RootState) => state.lang.value)
