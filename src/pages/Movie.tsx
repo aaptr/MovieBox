@@ -18,13 +18,13 @@ export function Movie() {
   const { movieDetails, movieCredits, isLoading, error } = useSelector((state: RootState) => state.movieDetails)
 
   useEffect(() => {
-    if (movieId && !movieDetails) {
+    if (movieId) {
       const movieURL = `${moviesListsEndpoint}${movieId}?language=${localisation[lang].requestLang}`
       const creditsURL = `${moviesListsEndpoint}${movieId}/credits?language=${localisation[lang].requestLang}`
       dispatch(fetchMovieDetails(movieURL))
       dispatch(fetchMovieCredits(creditsURL))
     }
-  }, [dispatch, lang, movieId, movieDetails])
+  }, [dispatch, lang, movieId])
 
   if (!movieId) {
     return <div>Invalid Movie ID</div>

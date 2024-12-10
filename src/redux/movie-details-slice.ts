@@ -22,7 +22,7 @@ export const fetchMovieDetails = createAsyncThunk<
     async (url: string, { rejectWithValue }) => {
       try {
         const data: IMovieDetails = await requestMovieDetails(url)
-        return data;
+        return data
       } catch (error) {
         return rejectWithValue(error instanceof Error ? error.message : 'Unknown error')
       }

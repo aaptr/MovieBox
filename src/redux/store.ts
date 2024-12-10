@@ -6,7 +6,7 @@ import { moviesReducer } from '@/redux/movies-slice'
 import { movieDetailsReducer } from '@/redux/movie-details-slice'
 import { langReducer } from '@/redux/lang-slice'
 
-import { IMovieDetailsState } from '@/types/MoviesTypes'
+import { IMovieDetailsState, IMoviesState } from '@/types/MoviesTypes'
 
 
 export const store = configureStore({
@@ -20,7 +20,12 @@ export const store = configureStore({
 })
 
 export interface RootState {
+  theme: { value: string }
+
+  // todo check auth
+  auth: { value: string }
   movieDetails: IMovieDetailsState
+  movies: IMoviesState
   lang: { value: string }
 }
 export type AppDispatch = typeof store.dispatch

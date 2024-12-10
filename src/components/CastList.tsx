@@ -11,7 +11,7 @@ export function CastList({ persons = [] }: ICastListProps) {
       <h2 className="text-3xl font-bold p-5">Top Cast</h2>
       <div className="flex flex-row gap-4">
         {persons.map((person) => (
-          <PersonCardBig person={person} />
+          <PersonCardBig key={person.id} person={person} />
         ))}
       </div>
     </div>

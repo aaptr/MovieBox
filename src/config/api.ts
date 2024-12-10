@@ -11,6 +11,7 @@ export const accountEndpoint: string = 'https://api.themoviedb.org/3/account'
 export const moviesListsEndpoint: string = 'https://api.themoviedb.org/3/movie/'
 
 export const imagePath: string = 'https://image.tmdb.org/t/p/original/'
+
 export const cardImagePathBig: string = 'https://media.themoviedb.org/t/p/w220_and_h330_face'
 export const cardImagePathMedium: string = 'https://media.themoviedb.org/t/p/w138_and_h175_face/'
 export const cardImagePathSmall: string = 'https://media.themoviedb.org/t/p/w66_and_h66_face/'

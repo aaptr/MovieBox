@@ -28,8 +28,10 @@ export interface IMoviesState {
   upcomingList: IMovieListItem[]
   isLoading: boolean
   error: string | null
-  popularPageCount: number | null
-  ordering: string
+  searchResults: IMovieListItem[]
+  searchCurrentPage: number
+  searchTotalPages: number
+  searchTotalResults: number
 }
 
 export interface IMoviesListProps {

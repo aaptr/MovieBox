@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import { requestMoviesList } from '@/services/movies'
+import { requestMoviesList, requestSearchMovies } from '@/services/movies'
 
 import {
   IMoviesState,
   FetchMoviesListArgs,
-  FetchMoviesListResponse
+  FetchMoviesListResponse,
+  IMovieList
 } from '@/types/MoviesTypes'
 
 const initialState: IMoviesState = {
@@ -13,8 +14,10 @@ const initialState: IMoviesState = {
   upcomingList: [],
   isLoading: false,
   error: null,
-  popularPageCount: null,
-  ordering: 'date'
+  searchResults: [],
+  searchCurrentPage: 1,
+  searchTotalPages: 1,
+  searchTotalResults: 0
 }
 
 export const fetchMoviesList = createAsyncThunk<
@@ -30,6 +33,21 @@ export const fetchMoviesList = createAsyncThunk<
     }
   }
 )
+
+export const fetchSearchMovies = createAsyncThunk<
+  IMovieList,
+  string,
+  { rejectValue: string }>(
+    'searchResults/fetchSearchMovies',
+    async (url: string, { rejectWithValue }) => {
+      try {
+        const data: IMovieList = await requestSearchMovies(url)
+        return data
+      } catch (error) {
+        return rejectWithValue(error instanceof Error ? error.message : 'Unknown error')
+      }
+    }
+  )
 
 const moviesSlice = createSlice({
   name: 'movies',
@@ -48,7 +66,6 @@ const moviesSlice = createSlice({
         switch (listType) {
           case 'popular':
             state.popularList = data.results
-            state.popularPageCount = data.total_pages
             break
           case 'topRated':
             state.topRatedList = data.results
@@ -63,6 +80,22 @@ const moviesSlice = createSlice({
       .addCase(fetchMoviesList.rejected, (state, action: PayloadAction<string | undefined>) => {
         state.isLoading = false
         state.error = action.payload || 'Error fetching movies list'
+      })
+
+      .addCase(fetchSearchMovies.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(fetchSearchMovies.fulfilled, (state, action: PayloadAction<IMovieList>) => {
+        state.isLoading = false
+        state.searchResults = action.payload.results
+        state.searchCurrentPage = action.payload.page
+        state.searchTotalPages = action.payload.total_pages
+        state.searchTotalResults = action.payload.total_results
+      })
+      .addCase(fetchSearchMovies.rejected, (state, action: PayloadAction<string | undefined>) => {
+        state.isLoading = false
+        state.error = action.payload || 'Error fetching search results'
       })
   }
 })

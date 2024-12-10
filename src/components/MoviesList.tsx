@@ -14,12 +14,7 @@ export function MoviesList({ movies = [] }: IMoviesListProps) {
 
   return (
     <div className="mt-5 px-40 mb-2">
-      <Carousel plugins={[
-        Autoplay({
-          delay: 3000
-        })
-      ]}
-        opts={{ loop: true }}>
+      <Carousel opts={{ loop: true }}>
         <CarouselContent className="-ml-2 md:-ml-4">
           {movies.map((movie) => (
             <CarouselItem className="basis-1/5 p-2 pl-2 md:pl-4" key={movie.id}>
