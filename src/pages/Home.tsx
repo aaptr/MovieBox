@@ -47,11 +47,6 @@ export function Home() {
     return <div>{error}</div>
   }
 
-  if (popularList.length === 0) {
-    return <h1>No movies found</h1>
-  }
-
-
   return (
     <div>
       <h1 className="text-5xl font-bold py-3" >{localisation[lang].homePage.title}</h1>
