@@ -4,10 +4,9 @@ import { ThunkDispatch } from 'redux-thunk'
 import { useParams } from 'react-router-dom'
 
 import { RootState } from '@/redux/store'
-import { fetchMovieDetails, fetchMovieCredits } from '@/redux/movie-details-slice'
+import { fetchData } from '@/redux/movie-details-slice'
 import { MovieDetails } from '@/components/MovieDetails'
 import { CastList } from '@/components/CastList'
-import { localisation } from '@/config/localisation'
 import { moviesListsEndpoint } from '@/config/api'
 import { getTopCast } from '@/utils/topcast'
 
@@ -15,14 +14,18 @@ export function Movie() {
   const lang = useSelector((state: RootState) => state.lang.value)
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const { movieId } = useParams<{ movieId: string }>()
-  const { movieDetails, movieCredits, isLoading, error } = useSelector((state: RootState) => state.movieDetails)
+  const { movieDetails, movieCredits, isLoading, error } = useSelector(
+    (state: RootState) => state.movieDetails
+  )
 
   useEffect(() => {
     if (movieId) {
-      const movieURL = `${moviesListsEndpoint}${movieId}?language=${localisation[lang].requestLang}`
-      const creditsURL = `${moviesListsEndpoint}${movieId}/credits?language=${localisation[lang].requestLang}`
-      dispatch(fetchMovieDetails(movieURL))
-      dispatch(fetchMovieCredits(creditsURL))
+      const movieURL = `${moviesListsEndpoint}${movieId}`
+      const creditsURL = `${moviesListsEndpoint}${movieId}/credits`
+      const params = { language: lang }
+
+      dispatch(fetchData({ url: movieURL, params }))
+      dispatch(fetchData({ url: creditsURL, params }))
     }
   }, [dispatch, lang, movieId])
 

@@ -148,3 +148,9 @@ export interface ICastMember {
   profile_path: string
   character: string
 }
+
+export interface IRequestError {
+  hasError: true
+  message?: string
+  code?: number
+}

@@ -1,11 +1,10 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import { requestMoviesList, requestSearchMovies } from '@/services/movies'
+import { requestMovies } from '@/services/movies'
 
 import {
   IMoviesState,
-  FetchMoviesListArgs,
-  FetchMoviesListResponse,
-  IMovieList
+  IMovieList,
+  IRequestError
 } from '@/types/MoviesTypes'
 
 const initialState: IMoviesState = {
@@ -17,37 +16,25 @@ const initialState: IMoviesState = {
   searchResults: [],
   searchCurrentPage: 1,
   searchTotalPages: 1,
-  searchTotalResults: 0
+  searchTotalResults: 0,
 }
 
-export const fetchMoviesList = createAsyncThunk<
-  FetchMoviesListResponse, FetchMoviesListArgs, { rejectValue: string }
+export const fetchMovies = createAsyncThunk<
+  { listType: string; data: IMovieList },
+  { url: string; params?: Record<string, any>; listType: string },
+  { rejectValue: string }
 >(
-  'movies/fetchMoviesList',
-  async ({ endpoint, listType }, { rejectWithValue }) => {
-    try {
-      const data = await requestMoviesList(endpoint)
-      return { listType, data }
-    } catch (error) {
-      return rejectWithValue(error instanceof Error ? error.message : 'Unknown error')
+  'movies/fetchMovies',
+  async ({ url, params = {}, listType }, { rejectWithValue }) => {
+    const response = await requestMovies(url, params)
+
+    if ('hasError' in response && response.hasError) {
+      return rejectWithValue(response.message)
     }
+
+    return { listType, data: response }
   }
 )
-
-export const fetchSearchMovies = createAsyncThunk<
-  IMovieList,
-  string,
-  { rejectValue: string }>(
-    'searchResults/fetchSearchMovies',
-    async (url: string, { rejectWithValue }) => {
-      try {
-        const data: IMovieList = await requestSearchMovies(url)
-        return data
-      } catch (error) {
-        return rejectWithValue(error instanceof Error ? error.message : 'Unknown error')
-      }
-    }
-  )
 
 const moviesSlice = createSlice({
   name: 'movies',
@@ -55,11 +42,11 @@ const moviesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchMoviesList.pending, (state) => {
+      .addCase(fetchMovies.pending, (state) => {
         state.isLoading = true
         state.error = null
       })
-      .addCase(fetchMoviesList.fulfilled, (state, action: PayloadAction<FetchMoviesListResponse>) => {
+      .addCase(fetchMovies.fulfilled, (state, action: PayloadAction<{ listType: string; data: IMovieList }>) => {
         const { listType, data } = action.payload
         state.isLoading = false
 
@@ -73,29 +60,19 @@ const moviesSlice = createSlice({
           case 'upcoming':
             state.upcomingList = data.results
             break
+          case 'search':
+            state.searchResults = data.results
+            state.searchCurrentPage = data.page
+            state.searchTotalPages = data.total_pages
+            state.searchTotalResults = data.total_results
+            break
           default:
             break
         }
       })
-      .addCase(fetchMoviesList.rejected, (state, action: PayloadAction<string | undefined>) => {
+      .addCase(fetchMovies.rejected, (state, action: PayloadAction<string | undefined>) => {
         state.isLoading = false
-        state.error = action.payload || 'Error fetching movies list'
-      })
-
-      .addCase(fetchSearchMovies.pending, (state) => {
-        state.isLoading = true
-        state.error = null
-      })
-      .addCase(fetchSearchMovies.fulfilled, (state, action: PayloadAction<IMovieList>) => {
-        state.isLoading = false
-        state.searchResults = action.payload.results
-        state.searchCurrentPage = action.payload.page
-        state.searchTotalPages = action.payload.total_pages
-        state.searchTotalResults = action.payload.total_results
-      })
-      .addCase(fetchSearchMovies.rejected, (state, action: PayloadAction<string | undefined>) => {
-        state.isLoading = false
-        state.error = action.payload || 'Error fetching search results'
+        state.error = action.payload || 'Error fetching movies'
       })
   }
 })

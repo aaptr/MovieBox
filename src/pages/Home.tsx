@@ -3,24 +3,40 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ThunkDispatch } from 'redux-thunk'
 
 import { RootState } from '@/redux/store'
-import { fetchMoviesList } from '@/redux/movies-slice'
+import { fetchMovies } from '@/redux/movies-slice'
 import { MoviesList } from '@/components/MoviesList'
 import { localisation } from '@/config/localisation'
 import { moviesListsEndpoint } from '@/config/api'
 
 export function Home() {
   const lang = useSelector((state: RootState) => state.lang.value)
-  const popularURL = `${moviesListsEndpoint}popular?language=${localisation[lang].requestLang}&page=1`
-  const topRatedURL = `${moviesListsEndpoint}top_rated?language=${localisation[lang].requestLang}&page=1`
-  const upcomingURL = `${moviesListsEndpoint}upcoming?language=${localisation[lang].requestLang}&page=1`
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const { popularList, topRatedList, upcomingList, isLoading, error } = useSelector((state: RootState) => state.movies)
 
-
   useEffect(() => {
-    dispatch(fetchMoviesList({ endpoint: popularURL, listType: 'popular' }))
-    dispatch(fetchMoviesList({ endpoint: topRatedURL, listType: 'topRated' }))
-    dispatch(fetchMoviesList({ endpoint: upcomingURL, listType: 'upcoming' }))
+    const langParam = localisation[lang].requestLang
+
+    dispatch(
+      fetchMovies({
+        url: `${moviesListsEndpoint}popular`,
+        params: { language: langParam, page: 1 },
+        listType: 'popular'
+      })
+    )
+    dispatch(
+      fetchMovies({
+        url: `${moviesListsEndpoint}top_rated`,
+        params: { language: langParam, page: 1 },
+        listType: 'topRated'
+      })
+    )
+    dispatch(
+      fetchMovies({
+        url: `${moviesListsEndpoint}upcoming`,
+        params: { language: langParam, page: 1 },
+        listType: 'upcoming'
+      })
+    )
   }, [dispatch, lang])
 
   if (isLoading) {
@@ -34,6 +50,7 @@ export function Home() {
   if (popularList.length === 0) {
     return <h1>No movies found</h1>
   }
+
 
   return (
     <div>
