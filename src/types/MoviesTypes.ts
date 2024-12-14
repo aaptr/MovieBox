@@ -31,7 +31,7 @@ export interface IMovieCategoryState {
 
 export interface IMoviesState {
   popular: IMovieCategoryState
-  topRated: IMovieCategoryState
+  top_rated: IMovieCategoryState
   upcoming: IMovieCategoryState
   search: IMovieCategoryState
   isLoading: boolean
@@ -44,11 +44,11 @@ export interface IMoviesListProps {
 
 export type FetchMoviesListArgs = {
   endpoint: string
-  listType: 'popular' | 'topRated' | 'upcoming'
+  listType: 'popular' | 'top_rated' | 'upcoming'
 }
 
 export type FetchMoviesListResponse = {
-  listType: 'popular' | 'topRated' | 'upcoming'
+  listType: 'popular' | 'top_rated' | 'upcoming'
   data: IMovieList
 }
 

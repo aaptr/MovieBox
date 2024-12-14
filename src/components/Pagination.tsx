@@ -4,17 +4,17 @@ import { buildSchemePagination } from '@/utils/buildSchemePagination'
 interface PaginationProps {
   currentPage: string
   link: string
-  searchTotalPages: number
-  searchTotalResults: number
+  totalPages: number
+  totalResults: number
 }
 
-export function Pagination({ currentPage, link, searchTotalPages, searchTotalResults }: PaginationProps) {
+export function Pagination({ currentPage, link, totalPages, totalResults }: PaginationProps) {
   const page = parseInt(currentPage ?? '1', 10) || 1
   const lastRes = page * 20
   const firstRes = lastRes - 19
 
   const renderPaginationItems = () => {
-    const scheme = buildSchemePagination(page, searchTotalPages)
+    const scheme = buildSchemePagination(page, totalPages)
 
     return scheme.map((item, index) => (
       <div key={index}>
@@ -48,7 +48,7 @@ export function Pagination({ currentPage, link, searchTotalPages, searchTotalRes
             {' '}to{' '}
             <span className="font-bold">{lastRes}</span>
             {' '}of{' '}
-            <span className="font-bold">{searchTotalResults}</span>
+            <span className="font-bold">{totalResults}</span>
             {' '}results
           </p>
         </div>

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ThunkDispatch } from 'redux-thunk'
+import { NavLink } from 'react-router-dom'
 
 import { RootState } from '@/redux/store'
 import { fetchMovies } from '@/redux/movies-slice'
@@ -13,7 +14,7 @@ export function Home() {
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const {
     popular: { list: popularList },
-    topRated: { list: topRatedList },
+    top_rated: { list: topRatedList },
     upcoming: { list: upcomingList },
     isLoading,
     error,
@@ -33,7 +34,7 @@ export function Home() {
       fetchMovies({
         url: `${moviesListsEndpoint}top_rated`,
         params: { language: langParam, page: 1 },
-        listType: 'topRated',
+        listType: 'top_rated',
       })
     )
     dispatch(
@@ -57,16 +58,22 @@ export function Home() {
     <div>
       <h1 className="text-5xl font-bold py-3" >{localisation[lang].homePage.title}</h1>
       <p className="pt-3 text-2xl">{localisation[lang].homePage.subtitle}</p>
-      <div className="mt-5">
-        <h2>Popular Movies</h2>
+      <div className="mt-3">
+        <NavLink to="/movies/popular/1">
+          <h2>Popular Movies</h2>
+        </NavLink>
         <MoviesListRow movies={popularList} />
       </div>
-      <div className="mt-5">
-        <h2>Top Rated Movies</h2>
+      <div className="mt-3">
+        <NavLink to="/movies/top_rated/1">
+          <h2>Top Rated Movies</h2>
+        </NavLink>
         <MoviesListRow movies={topRatedList} />
       </div>
-      <div className="mt-5">
-        <h2>Upcoming Movies</h2>
+      <div className="mt-3">
+        <NavLink to="/movies/upcoming/1">
+          <h2>Upcoming Movies</h2>
+        </NavLink>
         <MoviesListRow movies={upcomingList} />
       </div>
     </div>

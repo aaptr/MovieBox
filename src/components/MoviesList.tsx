@@ -12,26 +12,25 @@ import { localisation } from '@/config/localisation'
 import { moviesListsEndpoint } from '@/config/api'
 
 interface IMoviesListProps {
-  listType: 'popular' | 'topRated' | 'upcoming';
+  listType: 'popular' | 'top_rated' | 'upcoming'
 }
 
 export function MoviesList({ listType }: IMoviesListProps) {
   const lang = useSelector((state: RootState) => state.lang.value)
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
-  const { currentPage } = useParams()
-  const moviesList = useSelector((state: RootState) => {
-    switch (listType) {
-      case 'popular':
-        return state.movies.popularList
-      case 'topRated':
-        return state.movies.topRatedList
-      case 'upcoming':
-        return state.movies.upcomingList
-      default:
-        return []
-    }
-  })
-  const page = parseInt(currentPage ?? '1', 10) || 1
+  const { currentPage } = useParams<{ currentPage?: string }>()
+
+  console.log(listType)
+
+
+  const {
+    list: moviesList,
+    currentPage: stateCurrentPage,
+    totalPages,
+    totalResults,
+  } = useSelector((state: RootState) => state.movies[listType])
+
+  const page = parseInt(currentPage ?? `${stateCurrentPage}`, 10) || 1
 
   useEffect(() => {
     const langParam = localisation[lang].requestLang
@@ -40,27 +39,29 @@ export function MoviesList({ listType }: IMoviesListProps) {
     dispatch(
       fetchMovies({
         url,
-        params: { language: langParam, page: currentPage || 1 },
+        params: { language: langParam, page },
         listType,
       })
     )
-  }, [dispatch, lang, listType, currentPage])
+  }, [dispatch, lang, listType, page])
 
   const renderCard = (movie: IMovieListItem) => {
     return <Card key={movie.id} {...movie} />
   }
 
   return (
-    <div>
-      <h2>Title</h2>
-      <div className="flex flex-wrap">
-        {moviesList.map(renderCard)}
+    <div className="py-5">
+      <div className="flex items-center justify-center">
+        <div className="flex justify-between flex-wrap gap-y-3 w-9/12">
+          {moviesList.map(renderCard)}
+        </div>
       </div>
       <Pagination
         currentPage={String(page)}
-        query={safeQuery}
-        searchTotalPages={searchTotalPages}
-        searchTotalResults={searchTotalResults} />
+        link={`/movies/${listType}/`}
+        totalPages={totalPages}
+        totalResults={totalResults}
+      />
     </div>
   )
 }

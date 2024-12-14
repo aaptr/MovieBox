@@ -4,6 +4,9 @@ import { createBrowserRouter } from 'react-router-dom'
 import { Home } from '@/pages/Home'
 import { Movies } from '@/pages/Movies'
 import { Movie } from '@/pages/Movie'
+import { PopularMovies } from '@/pages/PopularMovies'
+import { TopRatedMovies } from '@/pages/TopRatedMovies'
+import { UpcomingMovies } from '@/pages/UpcomingMovies'
 import { SearchMovies } from '@/pages/SearchMovies'
 
 import { Layout } from '@/components/Layout'
@@ -22,15 +25,15 @@ export const router = createBrowserRouter([
         children: [
           {
             path: 'popular/:currentPage',
-            element: <Movies />,
+            element: <PopularMovies />,
           },
           {
             path: 'top_rated/:currentPage',
-            element: <Movies />,
+            element: <TopRatedMovies />,
           },
           {
             path: 'upcoming/:currentPage',
-            element: <Movies />,
+            element: <UpcomingMovies />,
           },
         ]
       },

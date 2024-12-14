@@ -7,7 +7,7 @@ import {
   IMovieList
 } from '@/types/MoviesTypes'
 
-type MovieCategoryKeys = 'popular' | 'topRated' | 'upcoming' | 'search'
+type MovieCategoryKeys = 'popular' | 'top_rated' | 'upcoming' | 'search'
 
 const initialState: IMoviesState = {
   popular: {
@@ -16,7 +16,7 @@ const initialState: IMoviesState = {
     totalPages: 1,
     totalResults: 0,
   },
-  topRated: {
+  top_rated: {
     list: [],
     currentPage: 1,
     totalPages: 1,

@@ -72,8 +72,8 @@ export function SearchResults() {
       <Pagination
         currentPage={String(page)}
         link={paginationURL}
-        searchTotalPages={searchTotalPages}
-        searchTotalResults={searchTotalResults} />
+        totalPages={searchTotalPages}
+        totalResults={searchTotalResults} />
     </div>
   )
 }
