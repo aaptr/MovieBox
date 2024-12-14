@@ -1,6 +1,4 @@
-import { Outlet, NavLink, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchMovies } from '@/redux/movies-slice'
+import { Outlet, NavLink } from 'react-router-dom'
 
 export function Movies() {
   return (

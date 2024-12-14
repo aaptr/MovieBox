@@ -7,7 +7,7 @@ import { movieDetailsReducer } from '@/redux/movie-details-slice'
 import { langReducer } from '@/redux/lang-slice'
 
 import { IMovieDetailsState, IMoviesState } from '@/types/MoviesTypes'
-
+import { IAuthState } from '@/types/authTypes'
 
 export const store = configureStore({
   reducer: {
@@ -23,7 +23,7 @@ export interface RootState {
   theme: { value: string }
 
   // todo check auth
-  auth: { value: string }
+  auth: IAuthState
   movieDetails: IMovieDetailsState
   movies: IMoviesState
   lang: { value: string }

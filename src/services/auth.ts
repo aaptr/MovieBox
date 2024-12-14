@@ -13,9 +13,9 @@ import {
 
 import { get, post } from '@/utils/client'
 
-export const createRequestToken = async (): Promise<ICreateRequestTokenResponse> => {
+export const createRequestToken = async (): Promise<string> => {
   const response = await get(createRequestTokenEndpoint)
-  return response.data
+  return response.data.request_token
 }
 
 export const createGuestSession = async (): Promise<IRequestGusetSessionResponse> => {
@@ -25,4 +25,5 @@ export const createGuestSession = async (): Promise<IRequestGusetSessionResponse
 
 export const createSession = async (requestToken: string): Promise<IRequestSessionResponse> => {
   const response = await post(createSessionEndpoint, { request_token: requestToken })
+  return response.data
 }

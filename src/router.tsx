@@ -8,6 +8,7 @@ import { PopularMovies } from '@/pages/PopularMovies'
 import { TopRatedMovies } from '@/pages/TopRatedMovies'
 import { UpcomingMovies } from '@/pages/UpcomingMovies'
 import { SearchMovies } from '@/pages/SearchMovies'
+import { AuthApproved } from '@/pages/AuthApproved'
 
 import { Layout } from '@/components/Layout'
 
@@ -44,7 +45,11 @@ export const router = createBrowserRouter([
       {
         path: '/search/:query/:currentPage',
         element: <SearchMovies />,
-      }
+      },
+      {
+        path: '/approved',
+        element: <AuthApproved />,
+      },
     ]
   },
 ])

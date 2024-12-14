@@ -17,7 +17,7 @@ export interface IRequestSessionResponse {
 
 export interface IAuthState {
   guestSession: IRequestGusetSessionResponse | null
-  requestToken: ICreateRequestTokenResponse | null
+  requestToken: string | null
   isLoading: boolean
   error: string | null
 }
