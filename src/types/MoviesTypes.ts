@@ -22,16 +22,20 @@ export interface IMovieList {
   total_results: number
 }
 
+export interface IMovieCategoryState {
+  list: IMovieListItem[]
+  currentPage: number
+  totalPages: number
+  totalResults: number
+}
+
 export interface IMoviesState {
-  popularList: IMovieListItem[]
-  topRatedList: IMovieListItem[]
-  upcomingList: IMovieListItem[]
+  popular: IMovieCategoryState
+  topRated: IMovieCategoryState
+  upcoming: IMovieCategoryState
+  search: IMovieCategoryState
   isLoading: boolean
   error: string | null
-  searchResults: IMovieListItem[]
-  searchCurrentPage: number
-  searchTotalPages: number
-  searchTotalResults: number
 }
 
 export interface IMoviesListProps {

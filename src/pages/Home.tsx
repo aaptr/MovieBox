@@ -4,37 +4,43 @@ import { ThunkDispatch } from 'redux-thunk'
 
 import { RootState } from '@/redux/store'
 import { fetchMovies } from '@/redux/movies-slice'
-import { MoviesList } from '@/components/MoviesList'
+import { MoviesListRow } from '@/components/MoviesListRow'
 import { localisation } from '@/config/localisation'
 import { moviesListsEndpoint } from '@/config/api'
 
 export function Home() {
   const lang = useSelector((state: RootState) => state.lang.value)
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
-  const { popularList, topRatedList, upcomingList, isLoading, error } = useSelector((state: RootState) => state.movies)
+  const {
+    popular: { list: popularList },
+    topRated: { list: topRatedList },
+    upcoming: { list: upcomingList },
+    isLoading,
+    error,
+  } = useSelector((state: RootState) => state.movies)
 
   useEffect(() => {
-    const langParam = localisation[lang].requestLang
+    const langParam = localisation[lang].requestLang;
 
     dispatch(
       fetchMovies({
         url: `${moviesListsEndpoint}popular`,
         params: { language: langParam, page: 1 },
-        listType: 'popular'
+        listType: 'popular',
       })
     )
     dispatch(
       fetchMovies({
         url: `${moviesListsEndpoint}top_rated`,
         params: { language: langParam, page: 1 },
-        listType: 'topRated'
+        listType: 'topRated',
       })
     )
     dispatch(
       fetchMovies({
         url: `${moviesListsEndpoint}upcoming`,
         params: { language: langParam, page: 1 },
-        listType: 'upcoming'
+        listType: 'upcoming',
       })
     )
   }, [dispatch, lang])
@@ -53,15 +59,15 @@ export function Home() {
       <p className="pt-3 text-2xl">{localisation[lang].homePage.subtitle}</p>
       <div className="mt-5">
         <h2>Popular Movies</h2>
-        <MoviesList movies={popularList} />
+        <MoviesListRow movies={popularList} />
       </div>
       <div className="mt-5">
         <h2>Top Rated Movies</h2>
-        <MoviesList movies={topRatedList} />
+        <MoviesListRow movies={topRatedList} />
       </div>
       <div className="mt-5">
         <h2>Upcoming Movies</h2>
-        <MoviesList movies={upcomingList} />
+        <MoviesListRow movies={upcomingList} />
       </div>
     </div>
   )

@@ -3,12 +3,12 @@ import { buildSchemePagination } from '@/utils/buildSchemePagination'
 
 interface PaginationProps {
   currentPage: string
-  query: string
+  link: string
   searchTotalPages: number
   searchTotalResults: number
 }
 
-export function Pagination({ currentPage, query, searchTotalPages, searchTotalResults }: PaginationProps) {
+export function Pagination({ currentPage, link, searchTotalPages, searchTotalResults }: PaginationProps) {
   const page = parseInt(currentPage ?? '1', 10) || 1
   const lastRes = page * 20
   const firstRes = lastRes - 19
@@ -24,7 +24,7 @@ export function Pagination({ currentPage, query, searchTotalPages, searchTotalRe
           </span>
         ) : (
           <NavLink
-            to={`/search/${query}/${item}`}
+            to={`${link}${item}`}
             className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${item == currentPage
               ? 'z-10 bg-gray-900 text-gray-300 dark:bg-gray-300 dark:text-gray-900 cursor-default '
               : 'ring-1 ring-inset ring-gray-400 hover:bg-gray-400'

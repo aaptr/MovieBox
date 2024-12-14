@@ -16,15 +16,19 @@ export function SearchResults() {
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
 
   const {
-    searchResults,
+    search: {
+      list: searchResults,
+      currentPage: searchCurrentPage,
+      totalPages: searchTotalPages,
+      totalResults: searchTotalResults
+    },
     isLoading,
     error,
-    searchTotalPages,
-    searchTotalResults,
-  } = useSelector((state: RootState) => state.movies)
+  } = useSelector((state: RootState) => state.movies);
 
   const page = parseInt(currentPage ?? '1', 10) || 1
   const safeQuery = query ?? ''
+  const paginationURL = `/search/${safeQuery}/`
 
   useEffect(() => {
     const langParam = localisation[lang].requestLang
@@ -67,7 +71,7 @@ export function SearchResults() {
       </div>
       <Pagination
         currentPage={String(page)}
-        query={safeQuery}
+        link={paginationURL}
         searchTotalPages={searchTotalPages}
         searchTotalResults={searchTotalResults} />
     </div>

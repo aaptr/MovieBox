@@ -1,30 +1,66 @@
-import Autoplay from "embla-carousel-autoplay"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams, NavLink } from 'react-router-dom'
+import { ThunkDispatch } from 'redux-thunk'
 
+import { fetchMovies } from '@/redux/movies-slice'
 import { Card } from '@/components/Card'
-import { IMoviesListProps } from '@/types/MoviesTypes'
+import { Pagination } from '@/components/Pagination'
+import { IMovieListItem } from '@/types/MoviesTypes'
+import { RootState } from '@/redux/store'
+import { localisation } from '@/config/localisation'
+import { moviesListsEndpoint } from '@/config/api'
 
-export function MoviesList({ movies = [] }: IMoviesListProps) {
+interface IMoviesListProps {
+  listType: 'popular' | 'topRated' | 'upcoming';
+}
+
+export function MoviesList({ listType }: IMoviesListProps) {
+  const lang = useSelector((state: RootState) => state.lang.value)
+  const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
+  const { currentPage } = useParams()
+  const moviesList = useSelector((state: RootState) => {
+    switch (listType) {
+      case 'popular':
+        return state.movies.popularList
+      case 'topRated':
+        return state.movies.topRatedList
+      case 'upcoming':
+        return state.movies.upcomingList
+      default:
+        return []
+    }
+  })
+  const page = parseInt(currentPage ?? '1', 10) || 1
+
+  useEffect(() => {
+    const langParam = localisation[lang].requestLang
+    const url = `${moviesListsEndpoint}${listType}`
+
+    dispatch(
+      fetchMovies({
+        url,
+        params: { language: langParam, page: currentPage || 1 },
+        listType,
+      })
+    )
+  }, [dispatch, lang, listType, currentPage])
+
+  const renderCard = (movie: IMovieListItem) => {
+    return <Card key={movie.id} {...movie} />
+  }
 
   return (
-    <div className="mt-5 px-40 mb-2">
-      <Carousel opts={{ loop: true }}>
-        <CarouselContent className="-ml-2 md:-ml-4">
-          {movies.map((movie) => (
-            <CarouselItem className="basis-1/5 p-2 pl-2 md:pl-4" key={movie.id}>
-              <Card {...movie} />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </div >
+    <div>
+      <h2>Title</h2>
+      <div className="flex flex-wrap">
+        {moviesList.map(renderCard)}
+      </div>
+      <Pagination
+        currentPage={String(page)}
+        query={safeQuery}
+        searchTotalPages={searchTotalPages}
+        searchTotalResults={searchTotalResults} />
+    </div>
   )
 }

@@ -1,27 +1,46 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
+import { WritableDraft } from 'immer'
 import { requestMovies } from '@/services/movies'
 
 import {
   IMoviesState,
-  IMovieList,
-  IRequestError
+  IMovieList
 } from '@/types/MoviesTypes'
 
+type MovieCategoryKeys = 'popular' | 'topRated' | 'upcoming' | 'search'
+
 const initialState: IMoviesState = {
-  popularList: [],
-  topRatedList: [],
-  upcomingList: [],
+  popular: {
+    list: [],
+    currentPage: 1,
+    totalPages: 1,
+    totalResults: 0,
+  },
+  topRated: {
+    list: [],
+    currentPage: 1,
+    totalPages: 1,
+    totalResults: 0,
+  },
+  upcoming: {
+    list: [],
+    currentPage: 1,
+    totalPages: 1,
+    totalResults: 0,
+  },
+  search: {
+    list: [],
+    currentPage: 1,
+    totalPages: 1,
+    totalResults: 0,
+  },
   isLoading: false,
   error: null,
-  searchResults: [],
-  searchCurrentPage: 1,
-  searchTotalPages: 1,
-  searchTotalResults: 0,
 }
 
 export const fetchMovies = createAsyncThunk<
-  { listType: string; data: IMovieList },
-  { url: string; params?: Record<string, any>; listType: string },
+  { listType: MovieCategoryKeys, data: IMovieList },
+  { url: string, params?: Record<string, any>, listType: MovieCategoryKeys },
   { rejectValue: string }
 >(
   'movies/fetchMovies',
@@ -46,35 +65,26 @@ const moviesSlice = createSlice({
         state.isLoading = true
         state.error = null
       })
-      .addCase(fetchMovies.fulfilled, (state, action: PayloadAction<{ listType: string; data: IMovieList }>) => {
+      .addCase(fetchMovies.fulfilled, (state, action: PayloadAction<{ listType: keyof IMoviesState, data: IMovieList }>) => {
         const { listType, data } = action.payload
         state.isLoading = false
 
-        switch (listType) {
-          case 'popular':
-            state.popularList = data.results
-            break
-          case 'topRated':
-            state.topRatedList = data.results
-            break
-          case 'upcoming':
-            state.upcomingList = data.results
-            break
-          case 'search':
-            state.searchResults = data.results
-            state.searchCurrentPage = data.page
-            state.searchTotalPages = data.total_pages
-            state.searchTotalResults = data.total_results
-            break
-          default:
-            break
+        if (listType in state) {
+          const target = state[listType as keyof typeof initialState] as WritableDraft<IMovieCategoryState>;
+
+          if (target) {
+            target.list = data.results
+            target.currentPage = data.page
+            target.totalPages = data.total_pages
+            target.totalResults = data.total_results
+          }
         }
       })
       .addCase(fetchMovies.rejected, (state, action: PayloadAction<string | undefined>) => {
         state.isLoading = false
         state.error = action.payload || 'Error fetching movies'
       })
-  }
+  },
 })
 
 export const moviesReducer = moviesSlice.reducer
