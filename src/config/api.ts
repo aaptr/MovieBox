@@ -7,6 +7,8 @@ export const createSessionEndpoint: string = 'https://api.themoviedb.org/3/authe
 // account
 export const accountEndpoint: string = 'https://api.themoviedb.org/3/account'
 
+export const imagesEndpoint: string = 'https://image.tmdb.org/t/p/'
+
 // movie lists
 export const moviesListsEndpoint: string = 'https://api.themoviedb.org/3/movie/'
 export const searchEndpoint: string = 'https://api.themoviedb.org/3/search/movie'

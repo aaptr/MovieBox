@@ -1,15 +1,17 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import {
   createGuestSession,
-  createRequestToken
+  createRequestToken,
+  createSession
 } from '@/services/auth'
 import { sessions } from '@/utils/sessions'
 
-import { IAuthState } from '@/types/authTypes'
+import { IAuthState, ICreateSessionBody } from '@/types/authTypes'
 
 const initialState: IAuthState = {
   guestSession: sessions.getFromLocalStorageGuestSession() || null,
   requestToken: null,
+  sessionId: sessions.getFromLocalStorageSessionId() || null,
   isLoading: false,
   error: null
 }
@@ -29,6 +31,18 @@ export const fetchRequestToken = createAsyncThunk(
   'auth/fetchRequestToken',
   async () => {
     const data = await createRequestToken()
+
+    sessions.setToLocalStorageRequestToken(data)
+    return data
+  }
+)
+
+export const fetchSession = createAsyncThunk(
+  'auth/fetchSession',
+  async (body: ICreateSessionBody) => {
+    const data = await createSession(body)
+
+    sessions.setToLocalStorageSessionId(data)
     return data
   }
 )
@@ -69,6 +83,25 @@ export const authSlice = createSlice({
         console.error('Fetch Request Token Error:', action.payload)
         state.isLoading = false
         state.error = 'Error fetching request token'
+      })
+
+      // FETCH SESSION
+      .addCase(fetchSession.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(fetchSession.fulfilled,
+        (state, action) => {
+          state.isLoading = false
+          state.requestToken = null
+          sessions.removeRequestTokenFromLocalStorage()
+          sessions.removeGuestSessionFromLocalStorage()
+          state.sessionId = action.payload
+        })
+      .addCase(fetchSession.rejected, (state, action) => {
+        console.error('Fetch Session Error:', action.payload)
+        state.isLoading = false
+        state.error = 'Error fetching session'
       })
   }
 })
