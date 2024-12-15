@@ -1,14 +1,45 @@
-import { RatingLabel } from './RatingLabel'
-import { imagePath } from '@/config/api'
-import { IMovieDetails } from '@/types/MoviesTypes'
+import { useEffect, useState } from 'react'
 
+import { useDispatch, useSelector } from 'react-redux'
+
+import { RootState, AppDispatch } from '@/redux/store'
+
+import { RatingLabel } from '@/components/RatingLabel'
+import { FavoriteButton } from '@/components/FavoriteButton'
+import { moviesListsEndpoint, accountEndpoint, imagePath } from '@/config/api'
+import { IMovieDetails } from '@/types/MoviesTypes'
+import { fetchAccountStates, fetchSetFavorites } from '@/redux/user-slice'
+
+import favoriteIcon from '@/assets/favorite.svg'
+import notfavoriteIcon from '@/assets/notfavorite.svg'
 
 export function MovieDetails(props: IMovieDetails) {
+  const dispatch = useDispatch<AppDispatch>()
+  const userID = useSelector((state: RootState) => state.user.accountDetails?.id)
+  const lang = useSelector((state: RootState) => state.lang.value)
+  const { movieAccountState } = useSelector((state: RootState) => state.user)
+  const { sessionId } = useSelector((state: RootState) => state.auth)
   const backdropURL = `${imagePath}${props.backdrop_path}`
   const posterURL = `${imagePath}${props.poster_path}`
   const releaseYear = new Date(props.release_date).getFullYear()
   const genreNames = props.genres.map((genre) => genre.name).join(', ')
   const runtime = `${Math.floor(props.runtime / 60)}h ${props.runtime % 60} min`
+  const accountStateURL = `${moviesListsEndpoint}${props.id}/account_states?session_id=${sessionId?.session_id}`
+
+  useEffect(() => {
+    dispatch(fetchAccountStates(accountStateURL))
+  }, [dispatch, accountStateURL])
+
+  const handleToggleFavorites = () => {
+    const url = `${accountEndpoint}/${userID}/favorite?session_id=${sessionId?.session_id}`
+    const body = {
+      media_type: 'movie',
+      media_id: props.id,
+      favorite: !movieAccountState?.favorite
+    }
+
+    dispatch(fetchSetFavorites({ url, body }))
+  }
 
   return (
     <div className="text-white pt-2">
@@ -43,7 +74,8 @@ export function MovieDetails(props: IMovieDetails) {
               <div>Your Rating</div>
             </div>
             <div className="flex justify-start gap-3">
-              {/* TODO: Add to favorites/ watchlist */}
+              <FavoriteButton movieId={props.id} />
+              {/* TODO: Add to watchlist */}
               {/* TODO: Add trailer */}
             </div>
             <p>{props.tagline}</p>

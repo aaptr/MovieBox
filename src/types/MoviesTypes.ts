@@ -34,6 +34,9 @@ export interface IMoviesState {
   top_rated: IMovieCategoryState
   upcoming: IMovieCategoryState
   search: IMovieCategoryState
+  favorite: IMovieCategoryState
+  rated: IMovieCategoryState
+  watchlist: IMovieCategoryState
   isLoading: boolean
   error: string | null
 }

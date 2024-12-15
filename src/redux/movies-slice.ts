@@ -4,10 +4,11 @@ import { requestMovies } from '@/services/movies'
 
 import {
   IMoviesState,
-  IMovieList
+  IMovieList,
+  IMovieCategoryState
 } from '@/types/MoviesTypes'
 
-type MovieCategoryKeys = 'popular' | 'top_rated' | 'upcoming' | 'search'
+type MovieCategoryKeys = 'popular' | 'top_rated' | 'upcoming' | 'search' | 'favorite' | 'rated' | 'watchlist';
 
 const initialState: IMoviesState = {
   popular: {
@@ -29,6 +30,24 @@ const initialState: IMoviesState = {
     totalResults: 0,
   },
   search: {
+    list: [],
+    currentPage: 1,
+    totalPages: 1,
+    totalResults: 0,
+  },
+  favorite: {
+    list: [],
+    currentPage: 1,
+    totalPages: 1,
+    totalResults: 0,
+  },
+  rated: {
+    list: [],
+    currentPage: 1,
+    totalPages: 1,
+    totalResults: 0,
+  },
+  watchlist: {
     list: [],
     currentPage: 1,
     totalPages: 1,
@@ -70,7 +89,7 @@ const moviesSlice = createSlice({
         state.isLoading = false
 
         if (listType in state) {
-          const target = state[listType as keyof typeof initialState] as WritableDraft<IMovieCategoryState>;
+          const target = state[listType as keyof typeof initialState] as WritableDraft<IMovieCategoryState>
 
           if (target) {
             target.list = data.results

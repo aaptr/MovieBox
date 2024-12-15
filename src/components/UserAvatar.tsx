@@ -4,7 +4,7 @@ import { ThunkDispatch } from 'redux-thunk'
 import { RootState } from '@/redux/store'
 import { useEffect } from 'react'
 
-import { fetchUserAccountDetails, clearUrerDetails } from '@/redux/user-slice'
+import { fetchUserAccountDetails, clearUserDetails } from '@/redux/user-slice'
 import { fetchRequestToken, logout } from '@/redux/auth-slice'
 
 import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popover'
@@ -28,7 +28,7 @@ export function UserAvatar() {
 
   const handleLogout = () => {
     dispatch(logout())
-    dispatch(clearUrerDetails())
+    dispatch(clearUserDetails())
   }
 
   useEffect(() => {
