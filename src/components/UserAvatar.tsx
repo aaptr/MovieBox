@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from "react-router"
+import { useNavigate } from 'react-router'
 import { ThunkDispatch } from 'redux-thunk'
 import { RootState } from '@/redux/store'
 import { useEffect } from 'react'
 
-import { fetchUserAccountDetails } from '@/redux/user-slice'
+import { fetchUserAccountDetails, clearUrerDetails } from '@/redux/user-slice'
 import { fetchRequestToken, logout } from '@/redux/auth-slice'
 
 import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popover'
@@ -28,6 +28,7 @@ export function UserAvatar() {
 
   const handleLogout = () => {
     dispatch(logout())
+    dispatch(clearUrerDetails())
   }
 
   useEffect(() => {
@@ -55,7 +56,7 @@ export function UserAvatar() {
                 <p className="text-lg">{accountDetails?.username}</p>
               </div>
               <div className="pt-4">
-                <button className="w-full p-2 bg-indigo-400 rounded font-bold"
+                <button className="w-full p-2 bg-indigo-600 rounded font-bold"
                   onClick={handleLogout}>
                   Logout
                 </button>
@@ -64,12 +65,11 @@ export function UserAvatar() {
           </PopoverContent>
         </Popover>
       ) : (
-        <span
-          className="p-2 bg-indigo-400 rounded-md"
-          onClick={handleLogin}
-        >
+        <button
+          className="py-2 px-5 bg-indigo-600 rounded font-bold"
+          onClick={handleLogin}>
           LOGIN
-        </span>
+        </button>
       )}
     </div>
   )
