@@ -10,7 +10,7 @@ export function Card({ id, poster_path, title, release_date, vote_average }: Car
   const imageSrc = poster_path ? `${cardImagePathBig}${poster_path}` : imagePlaceholder
 
   return (
-    <div className="w-60 p-4">
+    <div className="w-60 p-4 transform transition-transform duration-300 hover:scale-110">
       <Link to={`/movie/${id}`}>
         <div className="w-full overflow-hidden">
           <div className="relative">

@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer'
 
 export function Layout() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
       <Container >
         <Main>
@@ -15,6 +15,6 @@ export function Layout() {
         </Main>
       </Container>
       <Footer />
-    </>
+    </div>
   )
 }

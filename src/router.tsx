@@ -9,6 +9,7 @@ import { TopRatedMovies } from '@/pages/TopRatedMovies'
 import { UpcomingMovies } from '@/pages/UpcomingMovies'
 import { SearchMovies } from '@/pages/SearchMovies'
 import { AuthApproved } from '@/pages/AuthApproved'
+import { About } from '@/pages/About'
 
 import { Layout } from '@/components/Layout'
 
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: '/approved',
         element: <AuthApproved />,
+      },
+      {
+        path: '/about',
+        element: <About />,
       },
     ]
   },
