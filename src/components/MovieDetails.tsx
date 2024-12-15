@@ -6,6 +6,7 @@ import { RootState, AppDispatch } from '@/redux/store'
 
 import { RatingLabel } from '@/components/RatingLabel'
 import { FavoriteButton } from '@/components/FavoriteButton'
+import { WatchlistButton } from '@/components/WatchlistButton'
 import { moviesListsEndpoint, accountEndpoint, imagePath } from '@/config/api'
 import { IMovieDetails } from '@/types/MoviesTypes'
 import { fetchAccountStates, fetchSetFavorites } from '@/redux/user-slice'
@@ -19,27 +20,18 @@ export function MovieDetails(props: IMovieDetails) {
   const lang = useSelector((state: RootState) => state.lang.value)
   const { movieAccountState } = useSelector((state: RootState) => state.user)
   const { sessionId } = useSelector((state: RootState) => state.auth)
-  const backdropURL = `${imagePath}${props.backdrop_path}`
-  const posterURL = `${imagePath}${props.poster_path}`
+  const backdropURL = `${imagePath}/original${props.backdrop_path}`
+  const posterURL = `${imagePath}/original${props.poster_path}`
   const releaseYear = new Date(props.release_date).getFullYear()
   const genreNames = props.genres.map((genre) => genre.name).join(', ')
   const runtime = `${Math.floor(props.runtime / 60)}h ${props.runtime % 60} min`
   const accountStateURL = `${moviesListsEndpoint}${props.id}/account_states?session_id=${sessionId?.session_id}`
 
+  console.log(posterURL);
+
   useEffect(() => {
     dispatch(fetchAccountStates(accountStateURL))
   }, [dispatch, accountStateURL])
-
-  const handleToggleFavorites = () => {
-    const url = `${accountEndpoint}/${userID}/favorite?session_id=${sessionId?.session_id}`
-    const body = {
-      media_type: 'movie',
-      media_id: props.id,
-      favorite: !movieAccountState?.favorite
-    }
-
-    dispatch(fetchSetFavorites({ url, body }))
-  }
 
   return (
     <div className="text-white pt-2">
@@ -75,7 +67,7 @@ export function MovieDetails(props: IMovieDetails) {
             </div>
             <div className="flex justify-start gap-3">
               <FavoriteButton movieId={props.id} />
-              {/* TODO: Add to watchlist */}
+              <WatchlistButton movieId={props.id} />
               {/* TODO: Add trailer */}
             </div>
             <p>{props.tagline}</p>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, AppDispatch } from '@/redux/store'
 import { fetchSetFavorites } from '@/redux/user-slice'
@@ -18,6 +18,10 @@ export function FavoriteButton({ movieId }: FavoriteButtonProps) {
   const isFavorite = useSelector((state: RootState) => state.user.movieAccountState?.favorite)
   const [isFavoriteState, setisFavoriteState] = useState(isFavorite)
 
+  useEffect(() => {
+    setisFavoriteState(isFavorite)
+  }), [isFavorite]
+
   const handleToggleFavorites = () => {
     const url = `${accountEndpoint}/${userID}/favorite?session_id=${sessionId?.session_id}`
     const body = {
@@ -27,12 +31,11 @@ export function FavoriteButton({ movieId }: FavoriteButtonProps) {
     }
 
     dispatch(fetchSetFavorites({ url, body }))
-
-    setisFavoriteState(!isFavoriteState)
   }
 
   return (
-    <button onClick={handleToggleFavorites}>
+    <button onClick={handleToggleFavorites}
+      className="bg-indigo-100 rounded-full p-2">
       <img src={isFavoriteState ? favoriteIcon : notfavoriteIcon} alt="Favorite" />
     </button>
   )

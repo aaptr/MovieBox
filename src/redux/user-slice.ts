@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import {
   requestUserAccountDetails,
   setFavorites,
+  setWatchlist,
   requestAccountStates
 } from '@/services/userAccount'
 
@@ -11,6 +12,7 @@ import {
   IUserState,
   IRequestFavoritesResponse,
   IRequestFavoritesBody,
+  IRequestWatchlistBody,
   IRequestAccountStatesResponse
 } from '@/types/userAccountTypes'
 
@@ -43,6 +45,22 @@ export const fetchSetFavorites = createAsyncThunk<
   async ({ url, body }, { rejectWithValue }) => {
     try {
       const data = await setFavorites(url, body)
+      return data
+    } catch (error) {
+      return rejectWithValue((error as Error).message)
+    }
+  }
+)
+
+export const fetchSetWatchlist = createAsyncThunk<
+  IRequestFavoritesResponse,
+  { url: string, body: IRequestWatchlistBody },
+  { rejectValue: string }
+>(
+  'user/fetchWatchlist',
+  async ({ url, body }, { rejectWithValue }) => {
+    try {
+      const data = await setWatchlist(url, body)
       return data
     } catch (error) {
       return rejectWithValue((error as Error).message)
@@ -95,10 +113,29 @@ const userSlice = createSlice({
       })
       .addCase(fetchSetFavorites.fulfilled, (state) => {
         state.isLoading = false
+        if (state.movieAccountState) {
+          state.movieAccountState.favorite = !state.movieAccountState.favorite
+        }
       })
       .addCase(fetchSetFavorites.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.payload || 'Error adding to favorites'
+      })
+
+      // add to watchlist / remove from watchlist
+      .addCase(fetchSetWatchlist.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(fetchSetWatchlist.fulfilled, (state) => {
+        state.isLoading = false
+        if (state.movieAccountState) {
+          state.movieAccountState.watchlist = !state.movieAccountState.watchlist
+        }
+      })
+      .addCase(fetchSetWatchlist.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload || 'Error adding to watchlist'
       })
 
       // fetch movie account state

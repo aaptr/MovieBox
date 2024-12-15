@@ -28,6 +28,12 @@ export interface IRequestFavoritesBody {
   favorite: boolean
 }
 
+export interface IRequestWatchlistBody {
+  media_type: string
+  media_id: number
+  watchlist: boolean
+}
+
 export interface IRequestFavoritesResponse {
   success: boolean
   status_code: number

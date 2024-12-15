@@ -3,6 +3,7 @@ import { accountEndpoint } from '@/config/api'
 import {
   IUserAccountDetails,
   IRequestFavoritesBody,
+  IRequestWatchlistBody,
   IRequestFavoritesResponse,
   IRequestAccountStatesResponse
 } from '@/types/userAccountTypes'
@@ -15,6 +16,11 @@ export const requestUserAccountDetails = async (url: string): Promise<IUserAccou
 }
 
 export const setFavorites = async (url: string, body: IRequestFavoritesBody): Promise<IRequestFavoritesResponse> => {
+  const response = await post(url, body)
+  return response.data
+}
+
+export const setWatchlist = async (url: string, body: IRequestWatchlistBody): Promise<IRequestFavoritesResponse> => {
   const response = await post(url, body)
   return response.data
 }
