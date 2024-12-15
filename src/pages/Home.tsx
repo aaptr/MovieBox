@@ -64,7 +64,7 @@ export function Home() {
   }
 
   return (
-    <div>
+    <div className="p-10">
       <h1 className="text-5xl font-bold py-3" >{localisation[lang].homePage.title}</h1>
       <p className="pt-3 text-2xl">{localisation[lang].homePage.subtitle}</p>
       <div className="mt-3">

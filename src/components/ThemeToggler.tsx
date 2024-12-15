@@ -1,7 +1,9 @@
-import { useDispatch, useSelector } from "react-redux"
-import { RootState } from "@/redux/store"
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
 
-import { toggleTheme } from "@/redux/themeSlice"
+import { toggleTheme } from '@/redux/themeSlice'
+import darkModeIcon from '@/assets/dark-mode.svg'
+import lightModeIcon from '@/assets/light-mode.svg'
 
 export function ThemeToggler() {
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
@@ -13,8 +15,12 @@ export function ThemeToggler() {
 
   return (
     <div>
-      <button className="p-2 bg-gray-200 dark:bg-gray-600 rounded"
-        onClick={handleToggleTheme}>Toggle theme</button>
+      <button className="p-2"
+        onClick={handleToggleTheme}>
+        {isDarkMode ?
+          <img src={lightModeIcon} alt="light mode" title="Switch to light mode" /> :
+          <img src={darkModeIcon} alt="dark mode" title="Switch to dark mode" />}
+      </button>
     </div>
   )
 }

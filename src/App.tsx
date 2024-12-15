@@ -24,7 +24,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <div className="min-h-screen bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all">
+      <div className="min-h-screen bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-all">
         <RouterProvider router={router} />
       </div>
     </Provider>

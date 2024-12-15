@@ -23,7 +23,7 @@ export const store = configureStore({
 })
 
 export interface RootState {
-  theme: { value: string }
+  theme: { isDarkMode: boolean }
   auth: IAuthState
   movieDetails: IMovieDetailsState
   movies: IMoviesState

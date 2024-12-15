@@ -42,27 +42,29 @@ export function UserAvatar() {
     <div>
       {sessionId ? (
         <Popover>
-          <PopoverTrigger>
-            <img src={avatarPath} alt="User Avatar" className="rounded-full" />
-          </PopoverTrigger>
-          <PopoverContent>
-            <div className="w-60 p-3">
-              <div className="flex justify-start gap-5">
-                <p className="text-lg">User ID:</p>
-                <p className="text-lg">{accountDetails?.id}</p>
+          <div className="flex items-center">
+            <PopoverTrigger>
+              <img src={avatarPath} alt="User Avatar" className="rounded-full" />
+            </PopoverTrigger>
+            <PopoverContent className="bg-gray-700 text-indigo-50">
+              <div className="w-52 p-3">
+                <div className="flex justify-start gap-5">
+                  <p className="text-lg">User ID:</p>
+                  <p className="text-lg">{accountDetails?.id}</p>
+                </div>
+                <div className="flex justify-start gap-5">
+                  <p className="text-lg">Name:</p>
+                  <p className="text-lg">{accountDetails?.name}</p>
+                </div>
+                <div className="pt-4">
+                  <button className="w-full p-2 bg-indigo-400 rounded-xl font-bold hover:bg-indigo-600"
+                    onClick={handleLogout}>
+                    Logout
+                  </button>
+                </div>
               </div>
-              <div className="flex justify-start gap-5">
-                <p className="text-lg">Name:</p>
-                <p className="text-lg">{accountDetails?.username}</p>
-              </div>
-              <div className="pt-4">
-                <button className="w-full p-2 bg-indigo-600 rounded font-bold"
-                  onClick={handleLogout}>
-                  Logout
-                </button>
-              </div>
-            </div>
-          </PopoverContent>
+            </PopoverContent>
+          </div>
         </Popover>
       ) : (
         <button
