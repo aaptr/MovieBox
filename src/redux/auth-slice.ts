@@ -50,7 +50,12 @@ export const fetchSession = createAsyncThunk(
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.sessionId = null
+      sessions.removeSessionIdFromLocalStorage()
+    }
+  },
   extraReducers: (builder) => {
     builder
       // FETCH GUEST SESSION
@@ -106,4 +111,5 @@ export const authSlice = createSlice({
   }
 })
 
+export const { logout } = authSlice.actions
 export const authReducer = authSlice.reducer

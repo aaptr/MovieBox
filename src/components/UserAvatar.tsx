@@ -5,7 +5,9 @@ import { RootState } from '@/redux/store'
 import { useEffect } from 'react'
 
 import { fetchUserAccountDetails } from '@/redux/user-slice'
-import { fetchRequestToken } from '@/redux/auth-slice'
+import { fetchRequestToken, logout } from '@/redux/auth-slice'
+
+import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popover'
 
 import { accountEndpoint, imagesEndpoint } from '@/config/api'
 import defaultAvatar from '@/assets/default_avatar.svg'
@@ -24,6 +26,10 @@ export function UserAvatar() {
     dispatch(fetchRequestToken())
   }
 
+  const handleLogout = () => {
+    dispatch(logout())
+  }
+
   useEffect(() => {
     if (sessionId) {
       const accountURL = `${accountEndpoint}?session_id=${sessionId.session_id}`
@@ -34,11 +40,29 @@ export function UserAvatar() {
   return (
     <div>
       {sessionId ? (
-        <span
-          onClick={() => navigate('/logout')}
-        >
-          <img src={avatarPath} alt="User Avatar" className="rounded-full" />
-        </span>
+        <Popover>
+          <PopoverTrigger>
+            <img src={avatarPath} alt="User Avatar" className="rounded-full" />
+          </PopoverTrigger>
+          <PopoverContent>
+            <div className="w-60 p-3">
+              <div className="flex justify-start gap-5">
+                <p className="text-lg">User ID:</p>
+                <p className="text-lg">{accountDetails?.id}</p>
+              </div>
+              <div className="flex justify-start gap-5">
+                <p className="text-lg">Name:</p>
+                <p className="text-lg">{accountDetails?.username}</p>
+              </div>
+              <div className="pt-4">
+                <button className="w-full p-2 bg-indigo-400 rounded font-bold"
+                  onClick={handleLogout}>
+                  Logout
+                </button>
+              </div>
+            </div>
+          </PopoverContent>
+        </Popover>
       ) : (
         <span
           className="p-2 bg-indigo-400 rounded-md"
