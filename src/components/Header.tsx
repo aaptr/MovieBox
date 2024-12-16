@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { ThemeToggler } from '@/components/ThemeToggler'
 import { UserAvatar } from '@/components/UserAvatar'
-import { LanguageSwitcher } from '@/components/LanguageSwitcher/LanguageSwitcher'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { QuickSearch } from '@/components/QuickSearch'
 import { MenuBar } from '@/components/MenuBar'
 

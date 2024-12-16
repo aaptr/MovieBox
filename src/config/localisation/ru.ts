@@ -2,6 +2,41 @@ import { LocalisationObject } from '@/types/localisationTypes'
 
 export const ru: LocalisationObject = {
   requestLang: 'ru-RU',
+  header: {
+    menubar: {
+      movies: {
+        groupname: 'Фильмы',
+        popular: 'Популярные фильмы',
+        top_rated: 'Лучшие фильмы',
+        upcoming: 'Ожидаемые фильмы',
+      },
+      mymovies: {
+        groupname: 'Мои фильмы',
+        favorite: 'Избранные фильмы',
+        rated: 'Оцененные фильмы',
+        watchlist: 'Список отслеживания',
+      },
+      about: 'О MovieBox'
+    },
+    quicksearch: {
+      placeholder: 'Быстрый поиск...',
+    },
+    themetoggler: {
+      todark: 'Переключить на темную тему',
+      tolight: 'Переключить на светлую тему',
+    },
+    languageswitcher: {
+      en: 'English',
+      pl: 'Polski',
+      ru: 'Русский',
+    },
+    useravatar: {
+      login: 'Логин',
+      logout: 'Выйти',
+      userID: 'ID пользователя:',
+      name: 'Имя:',
+    }
+  },
   homePage: {
     title: 'Добро пожаловать в MovieBox',
     subtitle: 'Миллионы фильмов, сериалов и людей. Исследуйте сейчас.'

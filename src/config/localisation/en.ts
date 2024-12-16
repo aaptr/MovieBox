@@ -1,5 +1,40 @@
 export const en = {
   requestLang: 'en-US',
+  header: {
+    menubar: {
+      movies: {
+        groupname: 'Movies',
+        popular: 'Popular movies',
+        top_rated: 'Top rated movies',
+        upcoming: 'Upcoming movies',
+      },
+      mymovies: {
+        groupname: 'My Movies',
+        favorite: 'My favorite movies',
+        rated: 'My rated movies',
+        watchlist: 'My watchlist',
+      },
+      about: 'About MovieBox'
+    },
+    quicksearch: {
+      placeholder: 'Quick search...',
+    },
+    themetoggler: {
+      todark: 'Switch to dark mode',
+      tolight: 'Switch to light mode',
+    },
+    languageswitcher: {
+      en: 'English',
+      pl: 'Polski',
+      ru: 'Русский',
+    },
+    useravatar: {
+      login: 'Login',
+      logout: 'Logout',
+      userID: 'User ID:',
+      name: 'Name:',
+    }
+  },
   homePage: {
     title: 'Welcome to MovieBox',
     subtitle: 'Millions of movies, TV shows and people to discover. Explore now.',

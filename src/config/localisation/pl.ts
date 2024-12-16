@@ -2,6 +2,41 @@ import { LocalisationObject } from '@/types/localisationTypes'
 
 export const pl: LocalisationObject = {
   requestLang: 'pl-PL',
+  header: {
+    menubar: {
+      movies: {
+        groupname: 'Filmy',
+        popular: 'Popularne filmy',
+        top_rated: 'Najwyżej oceniane',
+        upcoming: 'Nadchodzące filmy',
+      },
+      mymovies: {
+        groupname: 'Moje filmy',
+        favorite: 'Moje ulubione filmy',
+        rated: 'Ocenione przez mnie',
+        watchlist: 'Do obejrzenia',
+      },
+      about: 'O MovieBox'
+    },
+    quicksearch: {
+      placeholder: 'Szybkie wyszukiwanie...',
+    },
+    themetoggler: {
+      todark: 'Przełącz na tryb ciemny',
+      tolight: 'Przełącz na tryb jasny',
+    },
+    languageswitcher: {
+      en: 'English',
+      pl: 'Polski',
+      ru: 'Русский',
+    },
+    useravatar: {
+      login: 'Zaloguj się',
+      logout: 'Wyloguj się',
+      userID: 'ID użytkownika:',
+      name: 'Imie:',
+    }
+  },
   homePage: {
     title: 'Witaj w MovieBox',
     subtitle: 'Miliony filmów, programów TV i ludzi do odkrycia. Odkryj teraz.'

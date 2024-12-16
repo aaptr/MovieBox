@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router'
 import { ThunkDispatch } from 'redux-thunk'
 import { RootState } from '@/redux/store'
 import { useEffect } from 'react'
 
+import { localisation } from '@/config/localisation'
 import { fetchUserAccountDetails, clearUserDetails } from '@/redux/user-slice'
 import { fetchRequestToken, logout } from '@/redux/auth-slice'
 
@@ -13,7 +13,8 @@ import { accountEndpoint, imagesEndpoint } from '@/config/api'
 import defaultAvatar from '@/assets/default_avatar.svg'
 
 export function UserAvatar() {
-  const navigate = useNavigate()
+  const lang = useSelector((state: RootState) => state.lang.value)
+  const local = localisation[lang].header.useravatar
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const sessionId = useSelector((state: RootState) => state.auth.sessionId)
   const accountDetails = useSelector((state: RootState) => state.user.accountDetails)
@@ -47,19 +48,19 @@ export function UserAvatar() {
               <img src={avatarPath} alt="User Avatar" className="rounded-full" />
             </PopoverTrigger>
             <PopoverContent className="bg-gray-700 text-indigo-50">
-              <div className="w-52 p-3">
-                <div className="flex justify-start gap-5">
-                  <p className="text-lg">User ID:</p>
-                  <p className="text-lg">{accountDetails?.id}</p>
+              <div className="w-72 p-3">
+                <div className="flex justify-start gap-5 py-2">
+                  <p className="text-lg">{local.userID}</p>
+                  <p className="text-lg font-bold text-indigo-300">{accountDetails?.id}</p>
                 </div>
-                <div className="flex justify-start gap-5">
-                  <p className="text-lg">Name:</p>
-                  <p className="text-lg">{accountDetails?.name}</p>
+                <div className="flex justify-start gap-5 py-2">
+                  <p className="text-lg">{local.name}</p>
+                  <p className="text-lg font-bold text-indigo-300">{accountDetails?.name}</p>
                 </div>
-                <div className="pt-4">
+                <div className="pt-8">
                   <button className="w-full p-2 bg-indigo-400 rounded-xl font-bold hover:bg-indigo-600"
                     onClick={handleLogout}>
-                    Logout
+                    {local.logout}
                   </button>
                 </div>
               </div>
@@ -70,7 +71,7 @@ export function UserAvatar() {
         <button
           className="py-2 px-5 bg-indigo-600 rounded font-bold"
           onClick={handleLogin}>
-          LOGIN
+          {local.login}
         </button>
       )}
     </div>

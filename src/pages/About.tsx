@@ -4,8 +4,6 @@ import { localisation } from '@/config/localisation'
 
 export function About() {
   const lang = useSelector((state: RootState) => state.lang.value)
-  const dispatch = useDispatch()
-
   const local = localisation[lang].about
 
   return (
