@@ -9,19 +9,17 @@ import { Pagination } from '@/components/Pagination'
 import { IMovieListItem } from '@/types/MoviesTypes'
 import { RootState } from '@/redux/store'
 import { localisation } from '@/config/localisation'
-import { moviesListsEndpoint, accountEndpoint } from '@/config/api'
+import { accountEndpoint } from '@/config/api'
 
-interface IMoviesListProps {
-  listType: 'popular' | 'top_rated' | 'upcoming' | 'search' | 'favorite' | 'rated' | 'watchlist'
+interface IMyMoviesListProps {
+  listType: 'favorite' | 'rated' | 'watchlist'
 }
 
-export function MoviesList({ listType }: IMoviesListProps) {
+export function MyMoviesList({ listType }: IMyMoviesListProps) {
   const lang = useSelector((state: RootState) => state.lang.value)
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const { currentPage } = useParams<{ currentPage?: string }>()
   const userID = useSelector((state: RootState) => state.user.accountDetails?.id)
-  const sessionID = useSelector((state: RootState) => state.auth.sessionId?.session_id)
-
   const {
     list: moviesList,
     currentPage: stateCurrentPage,
@@ -33,9 +31,7 @@ export function MoviesList({ listType }: IMoviesListProps) {
 
   useEffect(() => {
     const langParam = localisation[lang].requestLang
-    const url = ['favorite', 'rated', 'watchlist'].includes(listType) ?
-      `${accountEndpoint}/${userID}/${listType}/movies` :
-      `${moviesListsEndpoint}${listType}`
+    const url = `${accountEndpoint}/${userID}/${listType}/movies`
 
     dispatch(
       fetchMovies({

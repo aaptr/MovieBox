@@ -8,7 +8,7 @@ import {
   IMovieCategoryState
 } from '@/types/MoviesTypes'
 
-type MovieCategoryKeys = 'popular' | 'top_rated' | 'upcoming' | 'search' | 'favorite' | 'rated' | 'watchlist';
+type MovieCategoryKeys = 'popular' | 'top_rated' | 'upcoming' | 'search' | 'favorite' | 'rated' | 'watchlist'
 
 const initialState: IMoviesState = {
   popular: {

@@ -10,7 +10,7 @@ import { WatchlistButton } from '@/components/WatchlistButton'
 import { UserRating } from '@/components/UserRating'
 import { moviesListsEndpoint, accountEndpoint, imagePath } from '@/config/api'
 import { IMovieDetails } from '@/types/MoviesTypes'
-import { fetchAccountStates, fetchSetFavorites } from '@/redux/user-slice'
+import { fetchAccountStates } from '@/redux/user-slice'
 
 
 export function MovieDetails(props: IMovieDetails) {
@@ -28,7 +28,7 @@ export function MovieDetails(props: IMovieDetails) {
 
   useEffect(() => {
     dispatch(fetchAccountStates(accountStateURL))
-  }, [dispatch, accountStateURL])
+  }, [dispatch, accountStateURL, props.id])
 
   return (
     <div className="text-white pt-2">

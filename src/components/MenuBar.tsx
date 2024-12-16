@@ -29,21 +29,21 @@ export function MenuBar() {
             <NavigationMenuContent
               className="whitespace-nowrap
               bg-gray-600 text-white">
-              <NavigationMenuLink className="hover:text-indigo-400">
+              <div className="hover:text-indigo-400">
                 <div className="p-2">
                   <NavLink to="/movies/popular/1">Popular movies</NavLink>
                 </div>
-              </NavigationMenuLink>
-              <NavigationMenuLink className="hover:text-indigo-400">
+              </div>
+              <div className="hover:text-indigo-400">
                 <div className="p-2">
                   <NavLink to="/movies/top_rated/1">Top rated movies</NavLink>
                 </div>
-              </NavigationMenuLink>
-              <NavigationMenuLink className="hover:text-indigo-400">
+              </div>
+              <div className="hover:text-indigo-400">
                 <div className="p-2">
                   <NavLink to="/movies/upcoming/1">Upcoming movies</NavLink>
                 </div>
-              </NavigationMenuLink>
+              </div>
             </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>
@@ -59,21 +59,21 @@ export function MenuBar() {
               <NavigationMenuContent
                 className="whitespace-nowrap
               bg-gray-600 text-white">
-                <NavigationMenuLink className="hover:text-indigo-400">
+                <div className="hover:text-indigo-400">
                   <div className="p-2">
                     <NavLink to="/mymovies/favorite/1">My favorite movies</NavLink>
                   </div>
-                </NavigationMenuLink>
-                <NavigationMenuLink className="hover:text-indigo-400">
+                </div>
+                <div className="hover:text-indigo-400">
                   <div className="p-2">
                     <NavLink to="/mymovies/rated/1">My rated movies</NavLink>
                   </div>
-                </NavigationMenuLink>
-                <NavigationMenuLink className="hover:text-indigo-400">
+                </div>
+                <div className="hover:text-indigo-400">
                   <div className="p-2">
                     <NavLink to="/mymovies/watchlist/1">My Watchlist</NavLink>
                   </div>
-                </NavigationMenuLink>
+                </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>
