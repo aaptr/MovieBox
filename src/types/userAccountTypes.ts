@@ -40,11 +40,11 @@ export interface IRequestFavoritesResponse {
   status_message: string
 }
 
-export interface IRequestAddRaitngBody {
+export interface IRequestRaitngBody {
   value: number
 }
 
-export interface IRequestAddRaitngResponse {
+export interface IRequestRaitngResponse {
   success: boolean
   status_code: number
   status_message: string

@@ -6,11 +6,11 @@ import {
   IRequestWatchlistBody,
   IRequestFavoritesResponse,
   IRequestAccountStatesResponse,
-  IRequestAddRaitngBody,
-  IRequestAddRaitngResponse
+  IRequestRaitngBody,
+  IRequestRaitngResponse
 } from '@/types/userAccountTypes'
 
-import { get, post } from '@/utils/client'
+import { get, post, del } from '@/utils/client'
 
 export const requestUserAccountDetails = async (url: string): Promise<IUserAccountDetails> => {
   const response = await get(url)
@@ -27,8 +27,18 @@ export const setWatchlist = async (url: string, body: IRequestWatchlistBody): Pr
   return response.data
 }
 
-export const requestAddRating = async (url: string, body: IRequestAddRaitngBody): Promise<IRequestAddRaitngResponse> => {
+export const requestAddRating = async (url: string, body: IRequestRaitngBody): Promise<IRequestRaitngResponse> => {
   const response = await post(url, body, {
+    headers: {
+      accept: 'application/json',
+      'Content-Type': 'application/json;charset=utf-8'
+    }
+  })
+  return response.data
+}
+
+export const requestDeleteRating = async (url: string): Promise<IRequestRaitngResponse> => {
+  const response = await del(url, {
     headers: {
       accept: 'application/json',
       'Content-Type': 'application/json;charset=utf-8'

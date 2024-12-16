@@ -5,7 +5,8 @@ import {
   setFavorites,
   setWatchlist,
   requestAddRating,
-  requestAccountStates
+  requestAccountStates,
+  requestDeleteRating
 } from '@/services/userAccount'
 
 import {
@@ -15,8 +16,8 @@ import {
   IRequestFavoritesBody,
   IRequestWatchlistBody,
   IRequestAccountStatesResponse,
-  IRequestAddRaitngResponse,
-  IRequestAddRaitngBody
+  IRequestRaitngResponse,
+  IRequestRaitngBody
 } from '@/types/userAccountTypes'
 
 const initialState: IUserState = {
@@ -72,14 +73,30 @@ export const fetchSetWatchlist = createAsyncThunk<
 )
 
 export const fetchAddRating = createAsyncThunk<
-  IRequestAddRaitngResponse,
-  { url: string; body: IRequestAddRaitngBody },
+  IRequestRaitngResponse,
+  { url: string; body: IRequestRaitngBody },
   { rejectValue: string }
 >(
   'user/fetchAddRating',
   async ({ url, body }, { rejectWithValue }) => {
     try {
       const data = await requestAddRating(url, body)
+      return data
+    } catch (error) {
+      return rejectWithValue((error as Error).message)
+    }
+  }
+)
+
+export const fetchDeleteRating = createAsyncThunk<
+  IRequestRaitngResponse,
+  string,
+  { rejectValue: string }
+>(
+  'user/fetchDeleteRating',
+  async (url, { rejectWithValue }) => {
+    try {
+      const data = await requestDeleteRating(url)
       return data
     } catch (error) {
       return rejectWithValue((error as Error).message)
@@ -171,6 +188,22 @@ const userSlice = createSlice({
       .addCase(fetchAddRating.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.payload || 'Error adding rating'
+      })
+
+      // delete rating
+      .addCase(fetchDeleteRating.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(fetchDeleteRating.fulfilled, (state) => {
+        state.isLoading = false
+        if (state.movieAccountState) {
+          state.movieAccountState.rated = null
+        }
+      })
+      .addCase(fetchDeleteRating.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload || 'Error deleting rating'
       })
 
       // fetch movie account state

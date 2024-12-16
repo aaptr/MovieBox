@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState, AppDispatch } from '@/redux/store'
 import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popover'
 
-import { fetchAddRating } from '@/redux/user-slice'
+import { fetchAddRating, fetchDeleteRating } from '@/redux/user-slice'
 import { moviesListsEndpoint } from '@/config/api'
 
 interface UserRatingLabelProps {
@@ -33,6 +33,13 @@ export function UserRating({ movieId }: UserRatingLabelProps) {
     setIsOpen(false)
   }
 
+  const handleDeleteRating = () => {
+    const url = `${moviesListsEndpoint}${movieId}/rating?session_id=${sessionId?.session_id}`
+
+    dispatch(fetchDeleteRating(url))
+    setIsOpen(false)
+  }
+
   return (
     <div className="flex items-center justify-center bg-indigo-100 text-indigo-800 px-5 rounded-full">
       <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -42,21 +49,29 @@ export function UserRating({ movieId }: UserRatingLabelProps) {
           </span>
         </PopoverTrigger>
         <PopoverContent>
-          <form className="flex flex-col gap-2 w-60 items-center"
-            onSubmit={handleSubmitRating}>
-            <span className="font-bold">Your rating:</span>
-            <span className="text-indigo-800 text-2xl font-extrabold ps-2">{ratingValue}</span>
-            <input
-              id="rating"
-              type="range"
-              min="0"
-              max="10"
-              value={ratingValue}
-              onChange={(e) => setRatingValue(Number(e.target.value))}
-              className="w-full py-2"
-            />
-            <button type="submit" className="bg-indigo-400 rounded-full p-2 w-full mt-4">Submit</button>
-          </form>
+          <div>
+            <form className="flex flex-col gap-2 w-60 items-center"
+              onSubmit={handleSubmitRating}>
+              <span className="font-bold">Your rating:</span>
+              <span className="text-indigo-800 text-2xl font-extrabold ps-2">{ratingValue}</span>
+              <input
+                id="rating"
+                type="range"
+                min="0"
+                max="10"
+                value={ratingValue}
+                onChange={(e) => setRatingValue(Number(e.target.value))}
+                className="w-full py-2"
+              />
+              <button type="submit" className="bg-indigo-400 rounded-full p-2 w-full mt-4">Submit</button>
+            </form>
+            {userRating ? (
+              <button type="button" className="bg-indigo-400 rounded-full p-2 w-full mt-4"
+                onClick={handleDeleteRating}>
+                Clear your rating
+              </button>
+            ) : null}
+          </div>
         </PopoverContent>
       </Popover>
 
