@@ -40,6 +40,16 @@ export interface IRequestFavoritesResponse {
   status_message: string
 }
 
+export interface IRequestAddRaitngBody {
+  value: number
+}
+
+export interface IRequestAddRaitngResponse {
+  success: boolean
+  status_code: number
+  status_message: string
+}
+
 export interface IRequestAccountStatesResponse {
   id: number
   favorite: boolean

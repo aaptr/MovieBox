@@ -4,6 +4,7 @@ import {
   requestUserAccountDetails,
   setFavorites,
   setWatchlist,
+  requestAddRating,
   requestAccountStates
 } from '@/services/userAccount'
 
@@ -13,7 +14,9 @@ import {
   IRequestFavoritesResponse,
   IRequestFavoritesBody,
   IRequestWatchlistBody,
-  IRequestAccountStatesResponse
+  IRequestAccountStatesResponse,
+  IRequestAddRaitngResponse,
+  IRequestAddRaitngBody
 } from '@/types/userAccountTypes'
 
 const initialState: IUserState = {
@@ -61,6 +64,22 @@ export const fetchSetWatchlist = createAsyncThunk<
   async ({ url, body }, { rejectWithValue }) => {
     try {
       const data = await setWatchlist(url, body)
+      return data
+    } catch (error) {
+      return rejectWithValue((error as Error).message)
+    }
+  }
+)
+
+export const fetchAddRating = createAsyncThunk<
+  IRequestAddRaitngResponse,
+  { url: string; body: IRequestAddRaitngBody },
+  { rejectValue: string }
+>(
+  'user/fetchAddRating',
+  async ({ url, body }, { rejectWithValue }) => {
+    try {
+      const data = await requestAddRating(url, body)
       return data
     } catch (error) {
       return rejectWithValue((error as Error).message)
@@ -136,6 +155,22 @@ const userSlice = createSlice({
       .addCase(fetchSetWatchlist.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.payload || 'Error adding to watchlist'
+      })
+
+      // add rating
+      .addCase(fetchAddRating.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(fetchAddRating.fulfilled, (state, action) => {
+        state.isLoading = false
+        if (state.movieAccountState) {
+          state.movieAccountState.rated = { value: action.meta.arg.body.value }
+        }
+      })
+      .addCase(fetchAddRating.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload || 'Error adding rating'
       })
 
       // fetch movie account state

@@ -5,7 +5,9 @@ import {
   IRequestFavoritesBody,
   IRequestWatchlistBody,
   IRequestFavoritesResponse,
-  IRequestAccountStatesResponse
+  IRequestAccountStatesResponse,
+  IRequestAddRaitngBody,
+  IRequestAddRaitngResponse
 } from '@/types/userAccountTypes'
 
 import { get, post } from '@/utils/client'
@@ -22,6 +24,16 @@ export const setFavorites = async (url: string, body: IRequestFavoritesBody): Pr
 
 export const setWatchlist = async (url: string, body: IRequestWatchlistBody): Promise<IRequestFavoritesResponse> => {
   const response = await post(url, body)
+  return response.data
+}
+
+export const requestAddRating = async (url: string, body: IRequestAddRaitngBody): Promise<IRequestAddRaitngResponse> => {
+  const response = await post(url, body, {
+    headers: {
+      accept: 'application/json',
+      'Content-Type': 'application/json;charset=utf-8'
+    }
+  })
   return response.data
 }
 

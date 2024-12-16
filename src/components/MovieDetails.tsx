@@ -7,12 +7,11 @@ import { RootState, AppDispatch } from '@/redux/store'
 import { RatingLabel } from '@/components/RatingLabel'
 import { FavoriteButton } from '@/components/FavoriteButton'
 import { WatchlistButton } from '@/components/WatchlistButton'
+import { UserRating } from '@/components/UserRating'
 import { moviesListsEndpoint, accountEndpoint, imagePath } from '@/config/api'
 import { IMovieDetails } from '@/types/MoviesTypes'
 import { fetchAccountStates, fetchSetFavorites } from '@/redux/user-slice'
 
-import favoriteIcon from '@/assets/favorite.svg'
-import notfavoriteIcon from '@/assets/notfavorite.svg'
 
 export function MovieDetails(props: IMovieDetails) {
   const dispatch = useDispatch<AppDispatch>()
@@ -26,8 +25,6 @@ export function MovieDetails(props: IMovieDetails) {
   const genreNames = props.genres.map((genre) => genre.name).join(', ')
   const runtime = `${Math.floor(props.runtime / 60)}h ${props.runtime % 60} min`
   const accountStateURL = `${moviesListsEndpoint}${props.id}/account_states?session_id=${sessionId?.session_id}`
-
-  console.log(posterURL);
 
   useEffect(() => {
     dispatch(fetchAccountStates(accountStateURL))
@@ -68,6 +65,7 @@ export function MovieDetails(props: IMovieDetails) {
             <div className="flex justify-start gap-3">
               <FavoriteButton movieId={props.id} />
               <WatchlistButton movieId={props.id} />
+              <UserRating movieId={props.id} />
               {/* TODO: Add trailer */}
             </div>
             <p>{props.tagline}</p>

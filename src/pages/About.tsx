@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-
 import { RootState } from '@/redux/store'
-import { setLang } from '@/redux/lang-slice'
 import { localisation } from '@/config/localisation'
 
 export function About() {
