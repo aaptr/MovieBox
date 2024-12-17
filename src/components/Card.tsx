@@ -1,12 +1,19 @@
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+
+import { RootState } from '@/redux/store'
 import { RatingLabel } from '@/components/RatingLabel'
+import imagePlaceholder from '@/assets/image-placeholder.webp'
+import { formatDate } from '@/utils/formatDate'
+import { localisation } from '@/config/localisation'
 import { cardImagePathBig } from '@/config/api'
 import { IMovieListItem } from '@/types/MoviesTypes'
-import imagePlaceholder from '@/assets/image-placeholder.webp'
 
 interface CardProps extends IMovieListItem { }
 
 export function Card({ id, poster_path, title, release_date, vote_average }: CardProps) {
+  const lang = useSelector((state: RootState) => state.lang.value)
+  const releaseDate = formatDate(release_date, localisation[lang].requestLang)
   const imageSrc = poster_path ? `${cardImagePathBig}${poster_path}` : imagePlaceholder
 
   return (
@@ -22,7 +29,7 @@ export function Card({ id, poster_path, title, release_date, vote_average }: Car
         </div>
         <div className="content w-full pt-3 px-1">
           <p className="text-lg font-bold">{title}</p>
-          <p className="text-sm">{release_date}</p>
+          <p className="text-sm">{releaseDate}</p>
         </div>
       </Link>
     </div>

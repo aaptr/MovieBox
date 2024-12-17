@@ -11,6 +11,7 @@ import { moviesListsEndpoint } from '@/config/api'
 
 export function Home() {
   const lang = useSelector((state: RootState) => state.lang.value)
+  const local = localisation[lang].homePage
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const {
     popular: { list: popularList },
@@ -56,23 +57,23 @@ export function Home() {
 
   return (
     <div className="p-10">
-      <h1 className="text-5xl font-bold py-3" >{localisation[lang].homePage.title}</h1>
-      <p className="pt-3 text-2xl">{localisation[lang].homePage.subtitle}</p>
+      <h1 className="text-5xl font-bold py-3" >{local.title}</h1>
+      <p className="pt-3 text-2xl">{local.subtitle}</p>
       <div className="mt-3">
         <NavLink to="/movies/popular/1">
-          <h2>Popular Movies</h2>
+          <h2>{local.popular}</h2>
         </NavLink>
         <MoviesListRow movies={popularList} />
       </div>
       <div className="mt-3">
         <NavLink to="/movies/top_rated/1">
-          <h2>Top Rated Movies</h2>
+          <h2>{local.top_rated}</h2>
         </NavLink>
         <MoviesListRow movies={topRatedList} />
       </div>
       <div className="mt-3">
         <NavLink to="/movies/upcoming/1">
-          <h2>Upcoming Movies</h2>
+          <h2>{local.upcoming}</h2>
         </NavLink>
         <MoviesListRow movies={upcomingList} />
       </div>

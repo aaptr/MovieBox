@@ -9,6 +9,8 @@ import { localisation } from '@/config/localisation'
 import { sessions } from '@/utils/sessions'
 
 export function AuthApproved() {
+  const lang = useSelector((state: RootState) => state.lang.value)
+  const local = localisation[lang].authApproved
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const navigate = useNavigate()
   const [timer, setTimer] = useState(5)
@@ -34,12 +36,12 @@ export function AuthApproved() {
 
 
   return (
-    <div>
-      <h1>Approved</h1>
+    <div className="p-10">
+      <h1 className="text-2xl font-bold">{local.title}</h1>
       <button type="button"
         onClick={() => navigate('/')}
-        className="borderfont-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">
-        Go to Home Page ({timer})
+        className="border border-gray-200 rounded-full text-lg px-5 py-2.5 mr-2 mb-2">
+        `${local.button.text} {timer}${local.button.suffix}`
       </button>
     </div>
   )

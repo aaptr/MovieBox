@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-
 import { useDispatch, useSelector } from 'react-redux'
-
 import { RootState, AppDispatch } from '@/redux/store'
 
 import { RatingLabel } from '@/components/RatingLabel'
@@ -11,12 +9,15 @@ import { UserRating } from '@/components/UserRating'
 import { moviesListsEndpoint, accountEndpoint, imagePath } from '@/config/api'
 import { IMovieDetails } from '@/types/MoviesTypes'
 import { fetchAccountStates } from '@/redux/user-slice'
+import { formatDate } from '@/utils/formatDate'
+import { localisation } from '@/config/localisation'
 
 
 export function MovieDetails(props: IMovieDetails) {
   const dispatch = useDispatch<AppDispatch>()
   const userID = useSelector((state: RootState) => state.user.accountDetails?.id)
   const lang = useSelector((state: RootState) => state.lang.value)
+  const releaseDate = formatDate(props.release_date, localisation[lang].requestLang)
   const { movieAccountState } = useSelector((state: RootState) => state.user)
   const { sessionId } = useSelector((state: RootState) => state.auth)
   const backdropURL = `${imagePath}/original${props.backdrop_path}`
@@ -52,7 +53,7 @@ export function MovieDetails(props: IMovieDetails) {
           <div className="basis-4/5">
             <h1>{`${props.title} (${releaseYear})`}</h1>
             <div className="flex gap-2 justify-start">
-              <p>{props.release_date}</p>
+              <p>{releaseDate}</p>
               <p className="font-extrabold">·</p>
               <p>{genreNames}</p>
               <p className="font-extrabold">·</p>

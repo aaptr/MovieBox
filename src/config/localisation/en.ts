@@ -38,9 +38,19 @@ export const en = {
   homePage: {
     title: 'Welcome to MovieBox',
     subtitle: 'Millions of movies, TV shows and people to discover. Explore now.',
+    popular: 'Popular movies',
+    top_rated: 'Top rated movies',
+    upcoming: 'Upcoming movies',
   },
   about: {
     title: 'About MovieBox',
     text: `Welcome to our Movie Catalog! Here, you'll find an extensive collection of films from various genres, ranging from the latest blockbusters to timeless classics. Whether you're in the mood for an action-packed adventure, a heartwarming drama, or a thrilling mystery, we have something for everyone. Our platform provides detailed information about each film, including plot summaries, cast and crew details, and user ratings, making it easier to find exactly what you're looking for. We regularly update our catalog with new releases and hidden gems, ensuring that you always have fresh content to explore. You can filter your search by genre, release year, rating, and more, helping you discover films that perfectly suit your taste. Whether you're a casual viewer or a movie enthusiast, our catalog offers a seamless and enjoyable browsing experience. Enjoy exploring and discovering new cinematic gems!`,
+  },
+  authApproved: {
+    title: 'Authenthification approved',
+    button: {
+      text: 'Go to Home Page...',
+      suffix: 's'
+    }
   }
 }

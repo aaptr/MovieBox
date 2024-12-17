@@ -12,8 +12,8 @@ interface CardProps extends IMovieListItem { }
 
 export function CardMedium({ id, poster_path, title, original_title, release_date, overview }: CardProps) {
   const lang = useSelector((state: RootState) => state.lang.value)
+  const releaseDate = formatDate(release_date, localisation[lang].requestLang)
   const imageSrc = poster_path ? `${imagePath}/w185${poster_path}` : imagePlaceholder
-  // const releaseDate = formatDate(release_date, localisation[lang].requestLang)
 
   return (
     <div className="w-wull p-4">
@@ -29,7 +29,7 @@ export function CardMedium({ id, poster_path, title, original_title, release_dat
                 {title === original_title ? '' : original_title}
               </p>
             </div>
-            <p className="text-gray-600 dark:text-gray-400">{release_date}</p>
+            <p className="text-gray-600 dark:text-gray-400">{releaseDate}</p>
             <p className="pt-3 line-clamp-4">{overview}</p>
           </div>
         </div>
