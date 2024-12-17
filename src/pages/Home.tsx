@@ -57,26 +57,34 @@ export function Home() {
 
   return (
     <div className="p-10">
-      <h1 className="text-5xl font-bold py-3" >{local.title}</h1>
-      <p className="pt-3 text-2xl">{local.subtitle}</p>
+      <div className="pb-12">
+        <h1 className="text-5xl font-bold py-3" >{local.title}</h1>
+        <p className="pt-3 text-2xl">{local.subtitle}</p>
+      </div>
       <div className="mt-3">
         <NavLink to="/movies/popular/1">
-          <h2>{local.popular}</h2>
+          <h2 className="w-80 text-nowrap px-5 py-2 rounded-full text-center
+          text-2xl font-bold bg-indigo-200 dark:bg-indigo-400 text-gray-800
+          transform transition-transform duration-300 hover:scale-105">{local.popular}</h2>
         </NavLink>
         <MoviesListRow movies={popularList} />
       </div>
       <div className="mt-3">
         <NavLink to="/movies/top_rated/1">
-          <h2>{local.top_rated}</h2>
+          <h2 className="w-80 text-nowrap px-5 py-2 rounded-full text-center
+          text-2xl font-bold bg-indigo-200 dark:bg-indigo-400 text-gray-800
+          transform transition-transform duration-300 hover:scale-105">{local.top_rated}</h2>
         </NavLink>
         <MoviesListRow movies={topRatedList} />
       </div>
       <div className="mt-3">
         <NavLink to="/movies/upcoming/1">
-          <h2>{local.upcoming}</h2>
+          <h2 className="w-80 text-nowrap px-5 py-2 rounded-full text-center
+          text-2xl font-bold bg-indigo-200 dark:bg-indigo-400 text-gray-800
+          transform transition-transform duration-300 hover:scale-105">{local.upcoming}</h2>
         </NavLink>
         <MoviesListRow movies={upcomingList} />
       </div>
-    </div>
+    </div >
   )
 }

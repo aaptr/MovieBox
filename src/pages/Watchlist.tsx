@@ -5,7 +5,7 @@ export function Watchlist() {
   return (
     <>
       <div>
-        <MoviesList listType="watchlist" />
+        <MoviesList listType="watchlist" path="/mymovies" />
       </div>
     </>
   )

@@ -5,7 +5,7 @@ export function FavoriteMovies() {
   return (
     <>
       <div>
-        <MoviesList listType="favorite" />
+        <MoviesList listType="favorite" path="/mymovies" />
       </div>
     </>
   )

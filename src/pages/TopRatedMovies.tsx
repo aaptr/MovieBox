@@ -5,7 +5,7 @@ export function TopRatedMovies() {
   return (
     <>
       <div>
-        <MoviesList listType="top_rated" />
+        <MoviesList listType="top_rated" path="/movies" />
       </div>
     </>
   )

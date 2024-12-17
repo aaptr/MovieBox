@@ -2,13 +2,13 @@ import { Outlet, NavLink } from 'react-router-dom'
 
 export function MyMovies() {
   return (
-    <div className='p-5'>
-      <div className="flex justify-start">
-        <div className="flex gap-5 mt-4 text-xl font-bold">
+    <div className="px-5 py-10">
+      <div className="flex justify-center">
+        <div className="flex gap-20 mt-4 text-xl font-bold">
           <NavLink
             to="/mymovies/favorite/1"
             className={({ isActive }) =>
-              `${isActive ? 'pb-2 px-4 border-b-4 border-indigo-500' : 'pb-2 px-4'}`
+              `${isActive ? 'py-2 px-6 bg-indigo-400 rounded-full' : 'py-2 px-6'}`
             }
           >
             Favorite
@@ -16,7 +16,7 @@ export function MyMovies() {
           <NavLink
             to="/mymovies/rated/1"
             className={({ isActive }) =>
-              `${isActive ? 'pb-2 px-4 border-b-4 border-indigo-500' : 'pb-2 px-4'}`
+              `${isActive ? 'py-2 px-6 bg-indigo-400 rounded-full' : 'py-2 px-6'}`
             }
           >
             Rated
@@ -24,7 +24,7 @@ export function MyMovies() {
           <NavLink
             to="/mymovies/watchlist/1"
             className={({ isActive }) =>
-              `${isActive ? 'pb-2 px-4 border-b-4 border-indigo-500' : 'pb-2 px-4'}`
+              `${isActive ? 'py-2 px-6 bg-indigo-400 rounded-full' : 'py-2 px-6'}`
             }
           >
             Watchlist

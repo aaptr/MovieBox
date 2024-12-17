@@ -17,21 +17,27 @@ export function Card({ id, poster_path, title, release_date, vote_average }: Car
   const imageSrc = poster_path ? `${cardImagePathBig}${poster_path}` : imagePlaceholder
 
   return (
-    <div className="w-60 p-4 transform transition-transform duration-300 hover:scale-110">
+    <div className="w-60 p-3 transform transition-transform duration-300 hover:scale-105">
       <Link to={`/movie/${id}`}>
-        <div className="w-full overflow-hidden">
+        <div className="w-full overflow-hidden flex flex-col">
           <div className="relative">
-            <img className="rounded-xl" src={imageSrc} alt="" />
-            <div className="absolute top-2 right-2 z-0">
+            <img
+              className="rounded-xl w-full h-80 object-cover"
+              src={imageSrc}
+              alt=""
+            />
+            <div className="absolute top-3 right-3 z-0">
               <RatingLabel rating={vote_average} />
             </div>
           </div>
-        </div>
-        <div className="content w-full pt-3 px-1">
-          <p className="text-lg font-bold">{title}</p>
-          <p className="text-sm">{releaseDate}</p>
+
+          <div className="content pt-3 px-1 flex-grow">
+            <p className="text-lg font-bold text-wrap">{title}</p>
+            <p className="text-sm">{releaseDate}</p>
+          </div>
         </div>
       </Link>
     </div>
+
   )
 }

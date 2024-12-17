@@ -5,7 +5,7 @@ export function RatedMovies() {
   return (
     <>
       <div>
-        <MoviesList listType="rated" />
+        <MoviesList listType="rated" path="/mymovies" />
       </div>
     </>
   )

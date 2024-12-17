@@ -37,7 +37,7 @@ export const en = {
   },
   homePage: {
     title: 'Welcome to MovieBox',
-    subtitle: 'Millions of movies, TV shows and people to discover. Explore now.',
+    subtitle: 'The world of film is at your fingertips. Explore thousands of movies across all genres and time periods.',
     popular: 'Popular movies',
     top_rated: 'Top rated movies',
     upcoming: 'Upcoming movies',

@@ -30,18 +30,18 @@ export function MenuBar() {
             <NavigationMenuContent
               className="whitespace-nowrap
               bg-gray-600 text-white">
-              <div className="hover:text-indigo-400">
-                <div className="p-2">
+              <div className="hover:bg-indigo-500">
+                <div className="py-2 px-4">
                   <NavLink to="/movies/popular/1">{local.movies.popular}</NavLink>
                 </div>
               </div>
-              <div className="hover:text-indigo-400">
-                <div className="p-2">
+              <div className="hover:bg-indigo-500">
+                <div className="py-2 px-4">
                   <NavLink to="/movies/top_rated/1">{local.movies.top_rated}</NavLink>
                 </div>
               </div>
-              <div className="hover:text-indigo-400">
-                <div className="p-2">
+              <div className="hover:bg-indigo-500">
+                <div className="py-2 px-4">
                   <NavLink to="/movies/upcoming/1">{local.movies.upcoming}</NavLink>
                 </div>
               </div>
@@ -60,18 +60,18 @@ export function MenuBar() {
               <NavigationMenuContent
                 className="whitespace-nowrap
               bg-gray-600 text-white">
-                <div className="hover:text-indigo-400">
-                  <div className="p-2">
+                <div className="hover:bg-indigo-500">
+                  <div className="py-2 px-4">
                     <NavLink to="/mymovies/favorite/1">{local.mymovies.favorite}</NavLink>
                   </div>
                 </div>
-                <div className="hover:text-indigo-400">
-                  <div className="p-2">
+                <div className="hover:bg-indigo-500">
+                  <div className="py-2 px-4">
                     <NavLink to="/mymovies/rated/1">{local.mymovies.rated}</NavLink>
                   </div>
                 </div>
-                <div className="hover:text-indigo-400">
-                  <div className="p-2">
+                <div className="hover:bg-indigo-500">
+                  <div className="py-2 px-4">
                     <NavLink to="/mymovies/watchlist/1">{local.mymovies.watchlist}</NavLink>
                   </div>
                 </div>

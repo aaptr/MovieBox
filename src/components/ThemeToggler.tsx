@@ -17,7 +17,7 @@ export function ThemeToggler() {
   }
 
   return (
-    <div>
+    <div className="transform transition-transform duration-300 hover:scale-110">
       <button className="p-2"
         onClick={handleToggleTheme}>
         {isDarkMode ?

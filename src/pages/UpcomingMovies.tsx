@@ -5,7 +5,7 @@ export function UpcomingMovies() {
   return (
     <>
       <div>
-        <MoviesList listType="upcoming" />
+        <MoviesList listType="upcoming" path="/movies" />
       </div>
     </>
   )

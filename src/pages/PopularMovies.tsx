@@ -5,7 +5,7 @@ export function PopularMovies() {
   return (
     <>
       <div>
-        <MoviesList listType="popular" />
+        <MoviesList listType="popular" path="/movies" />
       </div>
     </>
   )

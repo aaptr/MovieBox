@@ -13,9 +13,10 @@ import { moviesListsEndpoint, accountEndpoint } from '@/config/api'
 
 interface IMoviesListProps {
   listType: 'popular' | 'top_rated' | 'upcoming' | 'search' | 'favorite' | 'rated' | 'watchlist'
+  path: string
 }
 
-export function MoviesList({ listType }: IMoviesListProps) {
+export function MoviesList({ listType, path }: IMoviesListProps) {
   const lang = useSelector((state: RootState) => state.lang.value)
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const { currentPage } = useParams<{ currentPage?: string }>()
@@ -53,13 +54,18 @@ export function MoviesList({ listType }: IMoviesListProps) {
   return (
     <div className="py-5">
       <div className="flex items-center justify-center">
-        <div className="flex justify-between flex-wrap gap-y-3 w-9/12">
-          {moviesList.map(renderCard)}
+        {/* Контейнер сетки */}
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-y-3 gap-x-3 w-10/12">
+          {moviesList.map((movie, index) => (
+            <div key={index}>
+              {renderCard(movie)}
+            </div>
+          ))}
         </div>
       </div>
       <Pagination
         currentPage={String(page)}
-        link={`/movies/${listType}/`}
+        link={`${path}/${listType}/`}
         totalPages={totalPages}
         totalResults={totalResults}
       />
