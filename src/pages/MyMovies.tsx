@@ -1,6 +1,12 @@
 import { Outlet, NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
+import { localisation } from '@/config/localisation'
 
 export function MyMovies() {
+  const lang = useSelector((state: RootState) => state.lang.value)
+  const local = localisation[lang].mymovies
+
   return (
     <div className="px-5 py-10">
       <div className="flex justify-center">
@@ -11,7 +17,7 @@ export function MyMovies() {
               `${isActive ? 'py-2 px-6 bg-indigo-400 rounded-full' : 'py-2 px-6'}`
             }
           >
-            Favorite
+            {local.favoritetab}
           </NavLink>
           <NavLink
             to="/mymovies/rated/1"
@@ -19,7 +25,7 @@ export function MyMovies() {
               `${isActive ? 'py-2 px-6 bg-indigo-400 rounded-full' : 'py-2 px-6'}`
             }
           >
-            Rated
+            {local.ratedtab}
           </NavLink>
           <NavLink
             to="/mymovies/watchlist/1"
@@ -27,7 +33,7 @@ export function MyMovies() {
               `${isActive ? 'py-2 px-6 bg-indigo-400 rounded-full' : 'py-2 px-6'}`
             }
           >
-            Watchlist
+            {local.watchlisttab}
           </NavLink>
         </div>
       </div>

@@ -7,11 +7,13 @@ import { RootState } from '@/redux/store'
 import { fetchData } from '@/redux/movie-details-slice'
 import { MovieDetails } from '@/components/MovieDetails'
 import { CastList } from '@/components/CastList'
+import { localisation } from '@/config/localisation'
 import { moviesListsEndpoint } from '@/config/api'
 import { getTopCast } from '@/utils/topcast'
 
 export function Movie() {
   const lang = useSelector((state: RootState) => state.lang.value)
+  const local = localisation[lang].movie.moviePage
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const { movieId } = useParams<{ movieId: string }>()
   const { movieDetails, movieCredits, isLoading, error } = useSelector(
@@ -30,15 +32,15 @@ export function Movie() {
   }, [dispatch, lang, movieId])
 
   if (!movieId) {
-    return <div>Invalid Movie ID</div>
+    return <div>{local.noID}</div>
   }
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div>{local.isLoading}</div>
   }
 
   if (error) {
-    return <div>Error: {error}</div>
+    return <div>{local.error} {error}</div>
   }
 
   return (

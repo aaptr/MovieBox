@@ -17,6 +17,7 @@ export function MovieDetails(props: IMovieDetails) {
   const dispatch = useDispatch<AppDispatch>()
   const userID = useSelector((state: RootState) => state.user.accountDetails?.id)
   const lang = useSelector((state: RootState) => state.lang.value)
+  const local = localisation[lang].movie.movieDetails
   const releaseDate = formatDate(props.release_date, localisation[lang].requestLang)
   const { movieAccountState } = useSelector((state: RootState) => state.user)
   const { sessionId } = useSelector((state: RootState) => state.auth)
@@ -24,7 +25,7 @@ export function MovieDetails(props: IMovieDetails) {
   const posterURL = `${imagePath}/original${props.poster_path}`
   const releaseYear = new Date(props.release_date).getFullYear()
   const genreNames = props.genres.map((genre) => genre.name).join(', ')
-  const runtime = `${Math.floor(props.runtime / 60)}h ${props.runtime % 60} min`
+  const runtime = `${Math.floor(props.runtime / 60)}${local.hour} ${props.runtime % 60} ${local.minutes}`
   const accountStateURL = `${moviesListsEndpoint}${props.id}/account_states?session_id=${sessionId?.session_id}`
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export function MovieDetails(props: IMovieDetails) {
   }, [dispatch, accountStateURL, props.id])
 
   return (
-    <div className="text-white pt-2">
+    <div className="text-white py-4">
       <div style={{
         backgroundImage: `url(${backdropURL})`,
         backgroundSize: '75%',
@@ -51,19 +52,23 @@ export function MovieDetails(props: IMovieDetails) {
             </div>
           </div>
           <div className="basis-4/5">
-            <h1>{`${props.title} (${releaseYear})`}</h1>
-            <div className="flex gap-2 justify-start">
-              <p>{releaseDate}</p>
-              <p className="font-extrabold">·</p>
-              <p>{genreNames}</p>
-              <p className="font-extrabold">·</p>
-              <p>{runtime}</p>
+            <h1 className="text-3xl font-bold text-indigo-300 pb-4">
+              {`${props.title} (${releaseYear})`}
+            </h1>
+            <div className="flex flex-col gap-1 text-lg">
+              {[
+                { label: local.originalTitle, value: props.original_title },
+                { label: local.releaseDate, value: releaseDate },
+                { label: local.genres, value: genreNames },
+                { label: local.runtime, value: runtime },
+              ].map((item, index) => (
+                <p key={index}>
+                  <span className="font-bold text-indigo-300">{item.label}</span>
+                  <span className="italic">{item.value}</span>
+                </p>
+              ))}
             </div>
-            <div className="flex justify-start gap-2">
-
-              <div>Your Rating</div>
-            </div>
-            <div className="flex justify-start gap-3">
+            <div className="flex justify-start gap-5 py-5">
               <FavoriteButton movieId={props.id} />
               <WatchlistButton movieId={props.id} />
               <UserRating movieId={props.id} />

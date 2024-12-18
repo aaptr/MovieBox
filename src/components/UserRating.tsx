@@ -5,12 +5,15 @@ import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popove
 
 import { fetchAddRating, fetchDeleteRating } from '@/redux/user-slice'
 import { moviesListsEndpoint } from '@/config/api'
+import { localisation } from '@/config/localisation'
 
 interface UserRatingLabelProps {
   movieId: number
 }
 
 export function UserRating({ movieId }: UserRatingLabelProps) {
+  const lang = useSelector((state: RootState) => state.lang.value)
+  const local = localisation[lang].movie.movieDetails.userRating
   const dispatch = useDispatch<AppDispatch>()
   const userID = useSelector((state: RootState) => state.user.accountDetails?.id)
   const { sessionId } = useSelector((state: RootState) => state.auth)
@@ -45,14 +48,14 @@ export function UserRating({ movieId }: UserRatingLabelProps) {
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger>
           <span>
-            {userRating ? `Your rating: ${userRating}` : "What's your rating?"}
+            {userRating ? `${local.rated}${userRating}` : `${local.unrated}`}
           </span>
         </PopoverTrigger>
         <PopoverContent>
           <div>
             <form className="flex flex-col gap-2 w-60 items-center"
               onSubmit={handleSubmitRating}>
-              <span className="font-bold">Your rating:</span>
+              <span className="font-bold">{local.rated}</span>
               <span className="text-indigo-800 text-2xl font-extrabold ps-2">{ratingValue}</span>
               <input
                 id="rating"
@@ -63,12 +66,12 @@ export function UserRating({ movieId }: UserRatingLabelProps) {
                 onChange={(e) => setRatingValue(Number(e.target.value))}
                 className="w-full py-2"
               />
-              <button type="submit" className="bg-indigo-400 rounded-full p-2 w-full mt-4">Submit</button>
+              <button type="submit" className="bg-indigo-400 rounded-full p-2 w-full mt-4">{local.submit}</button>
             </form>
             {userRating ? (
               <button type="button" className="bg-indigo-400 rounded-full p-2 w-full mt-4"
                 onClick={handleDeleteRating}>
-                Clear your rating
+                {local.clearRating}
               </button>
             ) : null}
           </div>
