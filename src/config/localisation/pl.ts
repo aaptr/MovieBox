@@ -20,6 +20,7 @@ export const pl: LocalisationObject = {
     },
     quicksearch: {
       placeholder: 'Szybkie wyszukiwanie...',
+      buttontext: 'Szukaj',
     },
     themetoggler: {
       todark: 'Przełącz na tryb ciemny',
@@ -72,8 +73,15 @@ export const pl: LocalisationObject = {
         rated: 'Twoja ocena: ',
         submit: 'Zatwierdź',
         clearRating: 'Usuń swoją ocenę',
-      }
+      },
+      tagline: 'Slogan: ',
+      overview: 'Opis: ',
     }
+  },
+  search: {
+    title: 'Wyniki wyszukiwania',
+    noResults: 'Brak wyników.',
+    isLoading: 'Szukam filmów...',
   },
   about: {
     title: 'O stronie MovieBox',

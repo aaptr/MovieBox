@@ -5,7 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { RootState } from '@/redux/store'
 
 import { localisation } from '@/config/localisation'
-import icon from '@/assets/search-icon.svg'
 
 export function QuickSearch() {
   const lang = useSelector((state: RootState) => state.lang.value)
@@ -25,7 +24,7 @@ export function QuickSearch() {
   }
 
   return (
-    <div className="h-full rounded-xl px-2
+    <div className="h-full rounded-full ps-3
     bg-indigo-50 text-indigo-950 focus-within:bg-indigo-200 
     transition-colors">
       <form
@@ -35,7 +34,8 @@ export function QuickSearch() {
         <div>
           <input
             type="search"
-            className="form-control h-full rounded w-64 px-1 bg-transparent focus:outline-none"
+            className="form-control h-full w-64
+              rounded bg-transparent focus:outline-none"
             placeholder={local.placeholder}
             onChange={handleChange}
           />
@@ -43,9 +43,9 @@ export function QuickSearch() {
         <div>
           <button
             type="submit"
-            className="rounded h-full flex-none px-3 bg-transparent"
-          >
-            <img src={icon} alt="" />
+            className="flex-none h-full px-4 py-1 rounded-full 
+              bg-indigo-500 text-white hover:bg-indigo-700">
+            {local.buttontext}
           </button>
         </div>
       </form>

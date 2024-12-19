@@ -13,12 +13,13 @@ import { searchEndpoint } from '@/config/api'
 export function SearchResults() {
   const { currentPage, query } = useParams<{ currentPage?: string; query?: string }>()
   const lang = useSelector((state: RootState) => state.lang.value)
+  const local = localisation[lang].search
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
 
   const {
     search: {
       list: searchResults,
-      currentPage: searchCurrentPage,
+      // currentPage: searchCurrentPage,
       totalPages: searchTotalPages,
       totalResults: searchTotalResults
     },
@@ -53,7 +54,7 @@ export function SearchResults() {
 
 
   if (isLoading) {
-    return <h1>Loading...</h1>
+    return <h1>{local.isLoading}</h1>
   }
 
   if (error) {
@@ -61,7 +62,7 @@ export function SearchResults() {
   }
 
   if (searchResults.length === 0) {
-    return <h1>No movies found</h1>
+    return <h1>{local.noResults}</h1>
   }
 
   return (

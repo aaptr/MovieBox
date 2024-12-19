@@ -40,10 +40,8 @@ export function MovieDetails(props: IMovieDetails) {
         backgroundPosition: 'right top',
       }}
         className="w-full">
-        <div style={{
-          backgroundImage: 'linear-gradient(to right, rgba(31.5, 10.5, 10.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 10.5, 10.5, 0.84) 50%, rgba(31.5, 10.5, 10.5, 0.84) 100%)'
-        }}
-          className="p-5 flex flex-row gap-10">
+        <div className="p-5 flex flex-row gap-10
+            bg-gradient-to-r from-gray-800 via-indigo-950 via-25% to-transparent">
           <div className="basis-1/5 relative">
             <img src={posterURL} alt={`poster for ${props.title}`}
               className="rounded-2xl" />
@@ -68,15 +66,20 @@ export function MovieDetails(props: IMovieDetails) {
                 </p>
               ))}
             </div>
-            <div className="flex justify-start gap-5 py-5">
+            <div className="flex justify-start gap-5 py-6">
               <FavoriteButton movieId={props.id} />
               <WatchlistButton movieId={props.id} />
               <UserRating movieId={props.id} />
               {/* TODO: Add trailer */}
             </div>
-            <p>{props.tagline}</p>
-            <p>Overview / Opis / Описание</p>
-            <p>{props.overview}</p>
+            <p className="pb-4">
+              <span className="font-bold text-indigo-300">{local.tagline}</span>
+              <span className="italic">{props.tagline}</span>
+            </p>
+            <p>
+              <span className="font-bold text-indigo-300">{local.overview}</span>
+            </p>
+            <p className="pt-2 pe-60 text-lg line-clamp-7">{props.overview}</p>
             <div>
               {/* TODO: Crew/ obsada */}
             </div>

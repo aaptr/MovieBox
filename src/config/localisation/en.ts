@@ -1,3 +1,5 @@
+import { Search } from "lucide-react";
+
 export const en = {
   requestLang: 'en-US',
   header: {
@@ -18,6 +20,7 @@ export const en = {
     },
     quicksearch: {
       placeholder: 'Quick search...',
+      buttontext: 'Search',
     },
     themetoggler: {
       todark: 'Switch to dark mode',
@@ -70,8 +73,21 @@ export const en = {
         rated: 'Your rating: ',
         submit: 'Submit',
         clearRating: 'Clear your rating',
-      }
+      },
+      tagline: 'Tagline: ',
+      overview: 'Overview: ',
+      // cast: 'Cast: ',
+      // crew: 'Crew: ',
+      // budget: 'Budget: ',
+      // revenue: 'Revenue: ',
+      // keywords: 'Keywords: ',
+      // productionCompanies: 'Production companies: ',
     }
+  },
+  search: {
+    title: 'Search results',
+    noResults: 'No results found.',
+    isLoading: 'Searching movies...',
   },
   about: {
     title: 'About MovieBox',

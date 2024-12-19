@@ -20,6 +20,7 @@ export const ru: LocalisationObject = {
     },
     quicksearch: {
       placeholder: 'Быстрый поиск...',
+      buttontext: 'Найти',
     },
     themetoggler: {
       todark: 'Переключить на темную тему',
@@ -72,8 +73,15 @@ export const ru: LocalisationObject = {
         rated: 'Твой рейтинг: ',
         submit: 'Отправить',
         clearRating: 'Очистить рейтинг',
-      }
+      },
+      tagline: 'Слоган: ',
+      overview: 'Описание: ',
     }
+  },
+  search: {
+    title: 'Результаты поиска',
+    noResults: 'Поиск не дал результатов.',
+    isLoading: 'Поиск фильмов...',
   },
   about: {
     title: 'O MovieBox',

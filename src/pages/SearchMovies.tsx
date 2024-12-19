@@ -1,9 +1,17 @@
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
 import { SearchResults } from '@/components/SearchResults'
+import { localisation } from '@/config/localisation'
 
 export function SearchMovies() {
+  const lang = useSelector((state: RootState) => state.lang.value)
+  const local = localisation[lang].search
+
   return (
-    <div className="pt-10 w-3/4 m-auto">
-      <h1>Search Results</h1>
+    <div className="pt-14 w-3/5 m-auto">
+      <h1 className="text-3xl font-bold pb-5 ps-4">
+        {local.title}
+      </h1>
       <div>
         <SearchResults />
       </div>

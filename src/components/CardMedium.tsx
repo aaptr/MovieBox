@@ -16,21 +16,23 @@ export function CardMedium({ id, poster_path, title, original_title, release_dat
   const imageSrc = poster_path ? `${imagePath}/w185${poster_path}` : imagePlaceholder
 
   return (
-    <div className="w-wull p-4">
+    <div className="w-full p-4 border border-gray-300 dark:border-gray-700 rounded-xl my-3">
       <Link to={`/movie/${id}`}>
-        <div className="w-full flex justify-between gap-3">
+        <div className="w-full flex justify-between gap-4">
           <div className="max-w-32">
-            <img className="rounded-xl" src={imageSrc} alt="" />
+            <img className="rounded-xl transform
+              transition-transform duration-300 hover:scale-105"
+              src={imageSrc} alt="" />
           </div>
-          <div className="w-full">
-            <div className="pt-1 flex gap-2 justify-start">
-              <p className="text-xl font-bold">{title}</p>
-              <p className="text-gray-600 dark:text-gray-400">
-                {title === original_title ? '' : original_title}
+          <div className="w-full px-1">
+            <div className="flex gap-2 justify-start items-center">
+              <p className="text-2xl font-bold">{title}</p>
+              <p className="text-xl text-gray-600 dark:text-gray-400">
+                {title === original_title ? '' : `(${original_title})`}
               </p>
             </div>
-            <p className="text-gray-600 dark:text-gray-400">{releaseDate}</p>
-            <p className="pt-3 line-clamp-4">{overview}</p>
+            <p className="text-lg text-gray-600 dark:text-gray-400">{releaseDate}</p>
+            <p className="pt-3 text-lg line-clamp-4">{overview}</p>
           </div>
         </div>
       </Link>
