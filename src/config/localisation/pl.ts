@@ -47,6 +47,7 @@ export const pl: LocalisationObject = {
     upcoming: 'Nadchodzące filmy',
   },
   movies: {
+    now_playingtab: 'W kinach',
     populartab: 'Popularne filmy',
     top_ratedtab: 'Najwyżej oceniane',
     upcomingtab: 'Nadchodzące filmy',

@@ -47,6 +47,7 @@ export const en = {
     upcoming: 'Upcoming movies',
   },
   movies: {
+    now_playingtab: 'Now playing',
     populartab: 'Popular',
     top_ratedtab: 'Top Rated',
     upcomingtab: 'Upcoming',

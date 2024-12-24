@@ -47,6 +47,7 @@ export const ru: LocalisationObject = {
     upcoming: 'Ожидаемые фильмы',
   },
   movies: {
+    now_playingtab: 'В кинотеатрах',
     populartab: 'Популярные фильмы',
     top_ratedtab: 'Лучшие фильмы',
     upcomingtab: 'Ожидаемые фильмы',

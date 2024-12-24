@@ -9,6 +9,7 @@ import { MoviesListRow } from '@/components/MoviesListRow'
 import { localisation } from '@/config/localisation'
 import { getCurrentDate, adjustDateByMonthsFromStart } from '@/utils/getDates'
 import { discoverEndpoint } from '@/config/api'
+import { get } from '@/utils/client'
 
 export function Home() {
   const lang = useSelector((state: RootState) => state.lang.value)
@@ -23,8 +24,8 @@ export function Home() {
     error,
   } = useSelector((state: RootState) => state.movies)
 
-  const nowPlayingLimit = adjustDateByMonthsFromStart(getCurrentDate(), -2)
-  const upcomingLimit = adjustDateByMonthsFromStart(getCurrentDate(), 0)
+  const nowPlayingLimit = adjustDateByMonthsFromStart(getCurrentDate(), -1)
+  const upcomingLimit = adjustDateByMonthsFromStart(getCurrentDate(), 2)
 
   useEffect(() => {
     const langParam = localisation[lang].requestLang;
@@ -61,7 +62,7 @@ export function Home() {
           language: langParam,
           page: 1,
           'vote_count.gte': 500,
-          'vote_average.gte': 8.4,
+          'vote_average.gte': 8,
           sort_by: 'vote_average.desc'
         },
         listType: 'top_rated',
@@ -73,7 +74,8 @@ export function Home() {
         params: {
           language: langParam,
           page: 1,
-          'primary_release_date.gte': upcomingLimit,
+          'primary_release_date.gte': getCurrentDate(),
+          'primary_release_date.lte': upcomingLimit,
           sort_by: 'popularity.desc'
         },
         listType: 'upcoming',
