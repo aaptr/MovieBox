@@ -8,9 +8,15 @@ import {
   IMovieCategoryState
 } from '@/types/MoviesTypes'
 
-type MovieCategoryKeys = 'popular' | 'top_rated' | 'upcoming' | 'search' | 'favorite' | 'rated' | 'watchlist'
+type MovieCategoryKeys = 'now_playing' | 'popular' | 'top_rated' | 'upcoming' | 'search' | 'favorite' | 'rated' | 'watchlist'
 
 const initialState: IMoviesState = {
+  now_playing: {
+    list: [],
+    currentPage: 1,
+    totalPages: 1,
+    totalResults: 0,
+  },
   popular: {
     list: [],
     currentPage: 1,

@@ -1,4 +1,4 @@
-import { get, post } from '@/utils/client'
+import { get } from '@/utils/client'
 import { IRequestError } from '@/types/MoviesTypes'
 
 export const requestMovies = async (

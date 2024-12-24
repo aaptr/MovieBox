@@ -5,6 +5,7 @@ import { Home } from '@/pages/Home'
 import { Movies } from '@/pages/Movies'
 import { MyMovies } from '@/pages/MyMovies'
 import { Movie } from '@/pages/Movie'
+import { NowPlayingMovies } from '@/pages/NowPlayingMovies'
 import { PopularMovies } from '@/pages/PopularMovies'
 import { TopRatedMovies } from '@/pages/TopRatedMovies'
 import { UpcomingMovies } from '@/pages/UpcomingMovies'
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
         path: '/movies',
         element: <Movies />,
         children: [
+          {
+            path: 'now_playing/:currentPage',
+            element: <NowPlayingMovies />,
+          },
           {
             path: 'popular/:currentPage',
             element: <PopularMovies />,

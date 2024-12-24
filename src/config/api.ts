@@ -11,6 +11,7 @@ export const imagesEndpoint: string = 'https://image.tmdb.org/t/p/'
 
 // movie lists
 export const moviesListsEndpoint: string = 'https://api.themoviedb.org/3/movie/'
+export const discoverEndpoint: string = 'https://api.themoviedb.org/3/discover/movie'
 export const searchEndpoint: string = 'https://api.themoviedb.org/3/search/movie'
 
 export const imagePath: string = 'https://image.tmdb.org/t/p'

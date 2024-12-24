@@ -12,7 +12,7 @@ import { localisation } from '@/config/localisation'
 import { moviesListsEndpoint, accountEndpoint } from '@/config/api'
 
 interface IMoviesListProps {
-  listType: 'popular' | 'top_rated' | 'upcoming' | 'search' | 'favorite' | 'rated' | 'watchlist'
+  listType: 'now_playing' | 'popular' | 'top_rated' | 'upcoming' | 'search' | 'favorite' | 'rated' | 'watchlist'
   path: string
 }
 
@@ -21,7 +21,6 @@ export function MoviesList({ listType, path }: IMoviesListProps) {
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const { currentPage } = useParams<{ currentPage?: string }>()
   const userID = useSelector((state: RootState) => state.user.accountDetails?.id)
-  const sessionID = useSelector((state: RootState) => state.auth.sessionId?.session_id)
 
   const {
     list: moviesList,
@@ -54,7 +53,6 @@ export function MoviesList({ listType, path }: IMoviesListProps) {
   return (
     <div className="py-5">
       <div className="flex items-center justify-center">
-        {/* Контейнер сетки */}
         <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-y-3 gap-x-3 w-10/12">
           {moviesList.map((movie, index) => (
             <div key={index}>

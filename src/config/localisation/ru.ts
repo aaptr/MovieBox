@@ -41,6 +41,7 @@ export const ru: LocalisationObject = {
   homePage: {
     title: 'Добро пожаловать в MovieBox',
     subtitle: 'Мир кино у ваших ног. Откройте для себя тысячи фильмов всех жанров и эпох.',
+    now_playing: 'В кинотеатрах',
     popular: 'Популярные фильмы',
     top_rated: 'Лучшие фильмы',
     upcoming: 'Ожидаемые фильмы',

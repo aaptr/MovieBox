@@ -41,6 +41,7 @@ export const pl: LocalisationObject = {
   homePage: {
     title: 'Witaj w MovieBox',
     subtitle: 'Świat filmu jest na wyciągnięcie ręki. Odkryj tysiące filmów ze wszystkich gatunków i okresów.',
+    now_playing: 'W kinach',
     popular: 'Popularne filmy',
     top_rated: 'Najwyżej oceniane',
     upcoming: 'Nadchodzące filmy',

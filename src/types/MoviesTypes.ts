@@ -30,6 +30,7 @@ export interface IMovieCategoryState {
 }
 
 export interface IMoviesState {
+  now_playing: IMovieCategoryState
   popular: IMovieCategoryState
   top_rated: IMovieCategoryState
   upcoming: IMovieCategoryState
