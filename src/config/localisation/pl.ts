@@ -6,6 +6,7 @@ export const pl: LocalisationObject = {
     menubar: {
       movies: {
         groupname: 'Filmy',
+        now_playing: 'W kinach',
         popular: 'Popularne filmy',
         top_rated: 'Najwyżej oceniane',
         upcoming: 'Nadchodzące filmy',
@@ -51,6 +52,18 @@ export const pl: LocalisationObject = {
     populartab: 'Popularne filmy',
     top_ratedtab: 'Najwyżej oceniane',
     upcomingtab: 'Nadchodzące filmy',
+    sortSelectOptions: {
+      titleAsc: 'Nazwa (A-Z)',
+      titleDesc: 'Nazwa (Z-A)',
+      popularAsc: 'Popularność (rosnąco)',
+      popularDesc: 'Popularność (malejąco)',
+      releaseDateAsc: 'Data premiery (od najstarszych)',
+      releaseDateDesc: 'Data premiery (od najnowszych)',
+      ratingAsc: 'Ocena (od najnizszych)',
+      ratingDesc: 'Ocena (od najwyzszych)',
+      voteCountAsc: 'Liczba głosów (rosnąco)',
+      voteCountDesc: 'Liczba głosów (malejąco)',
+    }
   },
   mymovies: {
     favoritetab: 'Moje ulubione filmy',

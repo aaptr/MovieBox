@@ -32,6 +32,11 @@ export function MenuBar() {
               bg-gray-600 text-white">
               <div className="hover:bg-indigo-500">
                 <div className="py-2 px-4">
+                  <NavLink to="/movies/now_playing/1">{local.movies.now_playing}</NavLink>
+                </div>
+              </div>
+              <div className="hover:bg-indigo-500">
+                <div className="py-2 px-4">
                   <NavLink to="/movies/popular/1">{local.movies.popular}</NavLink>
                 </div>
               </div>

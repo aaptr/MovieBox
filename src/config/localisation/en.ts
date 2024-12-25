@@ -5,6 +5,7 @@ export const en = {
   header: {
     menubar: {
       movies: {
+        now_playing: 'Now playing',
         groupname: 'Movies',
         popular: 'Popular movies',
         top_rated: 'Top rated movies',
@@ -51,6 +52,18 @@ export const en = {
     populartab: 'Popular',
     top_ratedtab: 'Top Rated',
     upcomingtab: 'Upcoming',
+    sortSelectOptions: {
+      titleAsc: 'Title (A-Z)',
+      titleDesc: 'Title (Z-A)',
+      popularAsc: 'Popularity (low to high)',
+      popularDesc: 'Popularity (high to low)',
+      releaseDateAsc: 'Release date (earliest to latest)',
+      releaseDateDesc: 'Release date (latest to earliest)',
+      ratingAsc: 'Rating (low to high)',
+      ratingDesc: 'Rating (high to low)',
+      voteCountAsc: 'Vote count (low to high)',
+      voteCountDesc: 'Vote count (high to low)',
+    }
   },
   mymovies: {
     favoritetab: 'My favorite movies',

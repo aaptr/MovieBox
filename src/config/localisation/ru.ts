@@ -6,6 +6,7 @@ export const ru: LocalisationObject = {
     menubar: {
       movies: {
         groupname: 'Фильмы',
+        now_playing: 'Сейчас в кино',
         popular: 'Популярные фильмы',
         top_rated: 'Лучшие фильмы',
         upcoming: 'Ожидаемые фильмы',
@@ -47,10 +48,22 @@ export const ru: LocalisationObject = {
     upcoming: 'Ожидаемые фильмы',
   },
   movies: {
-    now_playingtab: 'В кинотеатрах',
+    now_playingtab: 'Сейчас в кино',
     populartab: 'Популярные фильмы',
     top_ratedtab: 'Лучшие фильмы',
     upcomingtab: 'Ожидаемые фильмы',
+    sortSelectOptions: {
+      titleAsc: 'Название (А-Я)',
+      titleDesc: 'Название (Я-А)',
+      popularAsc: 'Популярность (по возрастанию)',
+      popularDesc: 'Популярность (по убыванию)',
+      releaseDateAsc: 'Дата выхода (от ранней к поздней)',
+      releaseDateDesc: 'Дата выхода (от поздней к ранней)',
+      ratingAsc: 'Рейтинг (по возрастанию)',
+      ratingDesc: 'Рейтинг (по убыванию)',
+      voteCountAsc: 'Количество голосов (по возрастанию)',
+      voteCountDesc: 'Количество голосов (по убыванию)',
+    }
   },
   mymovies: {
     favoritetab: 'Избранные фильмы',

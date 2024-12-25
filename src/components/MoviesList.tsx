@@ -6,7 +6,7 @@ import { ThunkDispatch } from 'redux-thunk'
 import { fetchMovies } from '@/redux/movies-slice'
 import { Card } from '@/components/Card'
 import { Pagination } from '@/components/Pagination'
-import { SortBySelect } from '@/components/SortBySelect'
+import { SelectComponent } from '@/components/SelectComponent'
 import { IMovieListItem } from '@/types/MoviesTypes'
 import { RootState } from '@/redux/store'
 import { localisation } from '@/config/localisation'
@@ -23,7 +23,9 @@ export function MoviesList({ listType, path }: IMoviesListProps) {
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const { currentPage } = useParams<{ currentPage?: string }>()
   const userID = useSelector((state: RootState) => state.user.accountDetails?.id)
-  const [sortBy, setSortBy] = useState<string>('popularity.desc')
+  const [sortBy, setSortBy] = useState<string>(() => {
+    return localStorage.getItem('moviesSortBy') || 'popularity.desc'
+  })
   const nowPlayingLimit = adjustDateByMonthsFromStart(getCurrentDate(), -1)
   const upcomingLimit = adjustDateByMonthsFromStart(getCurrentDate(), 2)
   const {
@@ -33,9 +35,23 @@ export function MoviesList({ listType, path }: IMoviesListProps) {
     totalResults,
   } = useSelector((state: RootState) => state.movies[listType])
   const page = parseInt(currentPage ?? `${stateCurrentPage}`, 10) || 1
+  const localSortBy = localisation[lang].movies.sortSelectOptions
+  const selectOptions = [
+    { value: "title.asc", label: localSortBy.titleAsc },
+    { value: "title.desc", label: localSortBy.titleDesc },
+    { value: "popularity.asc", label: localSortBy.popularAsc },
+    { value: "popularity.desc", label: localSortBy.popularDesc },
+    { value: "primary_release_date.asc", label: localSortBy.releaseDateAsc },
+    { value: "primary_release_date.desc", label: localSortBy.releaseDateDesc },
+    { value: "vote_average.asc", label: localSortBy.ratingAsc },
+    { value: "vote_average.desc", label: localSortBy.ratingDesc },
+    { value: "vote_count.asc", label: localSortBy.voteCountAsc },
+    { value: "vote_count.desc", label: localSortBy.voteCountDesc },
+  ]
 
   const handleSortChange = (value: string) => {
     setSortBy(value)
+    localStorage.setItem('moviesSortBy', value)
   }
 
   useEffect(() => {
@@ -54,6 +70,9 @@ export function MoviesList({ listType, path }: IMoviesListProps) {
       case 'now_playing':
         params['primary_release_date.gte'] = nowPlayingLimit
         params['primary_release_date.lte'] = getCurrentDate()
+        break
+      case 'popular':
+        params['popularity_threshold'] = 500
         break
       case 'top_rated':
         params['vote_average.gte'] = 8
@@ -75,6 +94,11 @@ export function MoviesList({ listType, path }: IMoviesListProps) {
     )
   }, [dispatch, lang, listType, page, sortBy])
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [page])
+
+
   const renderCard = (movie: IMovieListItem) => {
     return <Card key={movie.id} {...movie} />
   }
@@ -83,7 +107,11 @@ export function MoviesList({ listType, path }: IMoviesListProps) {
     <div className="py-5">
       <div className="pe-20 pt-3 pb-8 flex items-center justify-end gap-3">
         <p>Sort by: </p>
-        <SortBySelect onChange={handleSortChange} />
+        <SelectComponent
+          value={sortBy}
+          onChange={handleSortChange}
+          options={selectOptions}
+        />
       </div>
       <div className="flex items-center justify-center">
         <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-y-3 gap-x-3 w-10/12">
