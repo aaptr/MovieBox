@@ -16,7 +16,7 @@ export function CardMedium({ id, poster_path, title, original_title, release_dat
   const imageSrc = poster_path ? `${imagePath}/w185${poster_path}` : imagePlaceholder
 
   return (
-    <div className="w-full p-4 border border-gray-300 dark:border-gray-700 rounded-xl my-3">
+    <div className="w-full p-4 border border-gray-300 dark:border-gray-700 rounded-3xl my-3">
       <Link to={`/movie/${id}`}>
         <div className="w-full flex justify-between gap-4">
           <div className="max-w-32">

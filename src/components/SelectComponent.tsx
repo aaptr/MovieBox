@@ -19,10 +19,13 @@ export function SelectComponent({ value, options, onChange }: ISelectProps) {
 
   return (
     <Select onValueChange={handleChange} value={value}>
-      <SelectTrigger className="w-80 rounded-full bg-indigo-50 text-indigo-950">
+      <SelectTrigger
+        className="w-80 rounded-full bg-indigo-100 text-indigo-950 border-indigo-200
+        dark:bg-gray-700 dark:text-indigo-200">
         <SelectValue />
       </SelectTrigger>
-      <SelectContent className="w-80 rounded-xl bg-gray-700 text-indigo-50">
+      <SelectContent className="w-80 rounded-3xl bg-indigo-100 text-indigo-950 border-indigo-200
+        dark:bg-gray-700 dark:text-indigo-200">
         {options.map((option) => (
           <SelectItem key={option.value} value={option.value}>
             {option.label}
@@ -32,3 +35,4 @@ export function SelectComponent({ value, options, onChange }: ISelectProps) {
     </Select>
   )
 }
+7

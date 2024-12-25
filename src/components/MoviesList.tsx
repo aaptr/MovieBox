@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams, NavLink } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { ThunkDispatch } from 'redux-thunk'
 
 import { fetchMovies } from '@/redux/movies-slice'
