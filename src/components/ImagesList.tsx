@@ -38,7 +38,7 @@ export function ImagesList({ images }: ITImagesListProps) {
                   images.posters.map((image: IMovieImage) => (
                     <ImageWithPreview
                       key={image.file_path}
-                      src={`${imageURL}${image.file_path}`}
+                      src={image.file_path}
                       alt="alternative poster"
                       previewTitle={local.altPoster} />
                   ))
