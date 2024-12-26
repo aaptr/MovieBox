@@ -5,13 +5,15 @@ import {
   IMovieDetailsState,
   IMovieDetails,
   IMovieCredits,
-  IMovieVideos
+  IMovieVideos,
+  IMovieImages
 } from '@/types/MoviesTypes'
 
 const initialState: IMovieDetailsState = {
   movieDetails: null,
   movieCredits: null,
   movieVideos: null,
+  movieImages: null,
   isLoading: false,
   error: null,
 }
@@ -48,6 +50,25 @@ export const fetchMovieVideos = createAsyncThunk<
         throw new Error(data.message)
       }
       return data as IMovieVideos
+    } catch (error) {
+      return rejectWithValue(error instanceof Error ? error.message : 'Unknown error')
+    }
+  }
+)
+
+export const fetchMovieImages = createAsyncThunk<
+  IMovieImages,
+  { url: string; params?: Record<string, any> },
+  { rejectValue: string }
+>(
+  'movie/fetchMovieImages',
+  async ({ url, params = {} }, { rejectWithValue }) => {
+    try {
+      const data = await requestMovies(url, params)
+      if (data.hasError) {
+        throw new Error(data.message)
+      }
+      return data as IMovieImages
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Unknown error')
     }
@@ -91,6 +112,18 @@ const movieDetailsSlice = createSlice({
         state.error = action.payload || 'Error fetching video data'
       })
 
+      .addCase(fetchMovieImages.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(fetchMovieImages.fulfilled, (state, action: PayloadAction<IMovieImages>) => {
+        state.isLoading = false
+        state.movieImages = action.payload
+      })
+      .addCase(fetchMovieImages.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload || 'Error fetching video data'
+      })
   },
 })
 

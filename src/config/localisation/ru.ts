@@ -81,6 +81,7 @@ export const ru: LocalisationObject = {
       creativeTeamLabel: 'Создатели',
     },
     movieDetails: {
+      posterFor: 'Постер для фильма ',
       originalTitle: 'Оригинальное название: ',
       releaseDate: 'Дата выхода: ',
       genres: 'Жанры: ',
@@ -102,6 +103,14 @@ export const ru: LocalisationObject = {
       crew: 'Съёмочный состав',
     },
     trailers: 'Трейлеры',
+    images: {
+      title: 'Альтернативные изображения',
+      altPoster: 'Альтернативный постер',
+      altBackdrop: 'Альтернативный задний фон',
+      noImages: 'Изображений не найдено',
+      posters: 'Постеры',
+      backdrops: 'Задний фон',
+    }
   },
   search: {
     title: 'Результаты поиска',

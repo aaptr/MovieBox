@@ -79,6 +79,7 @@ export const en = {
       creativeTeamLabel: 'Creative Team',
     },
     movieDetails: {
+      posterFor: 'Poster for movie ',
       originalTitle: 'Original title: ',
       releaseDate: 'Release date: ',
       genres: 'Genres: ',
@@ -100,6 +101,14 @@ export const en = {
       crew: 'Movie Crew',
     },
     trailers: 'Trailers',
+    images: {
+      title: 'Alternative images',
+      altPoster: 'Alternative poster',
+      altBackdrop: 'Alternative backdrop',
+      noImages: 'No alternative images found',
+      posters: 'Posters',
+      backdrops: 'Backdrops',
+    }
   },
   search: {
     title: 'Search results',

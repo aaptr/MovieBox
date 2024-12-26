@@ -42,7 +42,7 @@ export function MovieDetails(props: IMovieDetails) {
             bg-gradient-to-r from-gray-800 via-indigo-950 via-25% to-transparent">
           <div className="basis-1/5 relative">
             <ImageWithPreview src={posterURL} alt={`poster for ${props.title}`}
-              previewTitle={`Poster for ${props.title}`} />
+              previewTitle={`${local.posterFor}${props.title}`} />
             <div className="absolute top-3 right-3">
               <RatingLabel rating={props.vote_average} />
             </div>

@@ -81,6 +81,7 @@ export const pl: LocalisationObject = {
       creativeTeamLabel: 'Zespoł twórców',
     },
     movieDetails: {
+      posterFor: 'Plakat dla filmu ',
       originalTitle: 'Tytuł oryginalny: ',
       releaseDate: 'Data premiery: ',
       genres: 'Gatunki: ',
@@ -102,6 +103,14 @@ export const pl: LocalisationObject = {
       crew: 'Ekipa filmowa',
     },
     trailers: 'Zwiastuny',
+    images: {
+      title: 'Alternatywne obrazy',
+      altPoster: 'Alternatywny plakat',
+      altBackdrop: 'Alternatywne tło',
+      noImages: 'Nie znaleziono obrazów.',
+      posters: 'Plakaty',
+      backdrops: 'Tła',
+    }
   },
   search: {
     title: 'Wyniki wyszukiwania',

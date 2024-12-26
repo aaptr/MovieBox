@@ -109,6 +109,7 @@ export interface IMovieDetailsState {
   movieDetails: IMovieDetails | null
   movieCredits: IMovieCredits | null
   movieVideos: IMovieVideos | null
+  movieImages: IMovieImages | null
   isLoading: boolean
   error: string | null
 }
@@ -180,4 +181,21 @@ export interface IMovieVideo {
 export interface IMovieVideos {
   id: number
   results: IMovieVideo[]
+}
+
+export interface IMovieImage {
+  aspect_ratio: number
+  height: number
+  iso_639_1: string
+  file_path: string
+  vote_average: number
+  vote_count: number
+  width: number
+}
+
+export interface IMovieImages {
+  id: number
+  backdrops: IMovieImage[]
+  posters: IMovieImage[]
+  logos: IMovieImage[]
 }
