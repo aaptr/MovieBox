@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, AppDispatch } from '@/redux/store'
 
+import { ImageWithPreview } from '@/components/ImageWithPreview'
 import { RatingLabel } from '@/components/RatingLabel'
 import { FavoriteButton } from '@/components/FavoriteButton'
 import { WatchlistButton } from '@/components/WatchlistButton'
@@ -40,8 +41,8 @@ export function MovieDetails(props: IMovieDetails) {
         <div className="p-5 flex flex-row gap-10
             bg-gradient-to-r from-gray-800 via-indigo-950 via-25% to-transparent">
           <div className="basis-1/5 relative">
-            <img src={posterURL} alt={`poster for ${props.title}`}
-              className="rounded-2xl" />
+            <ImageWithPreview src={posterURL} alt={`poster for ${props.title}`}
+              previewTitle={`Poster for ${props.title}`} />
             <div className="absolute top-3 right-3">
               <RatingLabel rating={props.vote_average} />
             </div>
