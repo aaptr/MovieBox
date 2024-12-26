@@ -19,13 +19,12 @@ interface IMoviesListProps {
 }
 
 export function MoviesList({ listType, path }: IMoviesListProps) {
+  const defaultSortBy = ['favorite', 'rated', 'watchlist'].includes(listType) ? 'created_at.desc' : 'popularity.desc'
   const lang = useSelector((state: RootState) => state.lang.value)
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const { currentPage } = useParams<{ currentPage?: string }>()
   const userID = useSelector((state: RootState) => state.user.accountDetails?.id)
-  const [sortBy, setSortBy] = useState<string>(() => {
-    return localStorage.getItem('moviesSortBy') || 'popularity.desc'
-  })
+  const [sortBy, setSortBy] = useState<string>(defaultSortBy)
   const nowPlayingLimit = adjustDateByMonthsFromStart(getCurrentDate(), -1)
   const upcomingLimit = adjustDateByMonthsFromStart(getCurrentDate(), 2)
   const {
@@ -36,7 +35,11 @@ export function MoviesList({ listType, path }: IMoviesListProps) {
   } = useSelector((state: RootState) => state.movies[listType])
   const page = parseInt(currentPage ?? `${stateCurrentPage}`, 10) || 1
   const localSortBy = localisation[lang].movies.sortSelectOptions
-  const selectOptions = [
+
+  const selectOptions = ['favorite', 'rated', 'watchlist'].includes(listType) ? [
+    { value: "created_at.asc", label: localSortBy.createdAsc },
+    { value: "created_at.desc", label: localSortBy.createdDesc }
+  ] : [
     { value: "title.asc", label: localSortBy.titleAsc },
     { value: "title.desc", label: localSortBy.titleDesc },
     { value: "popularity.asc", label: localSortBy.popularAsc },
@@ -46,12 +49,11 @@ export function MoviesList({ listType, path }: IMoviesListProps) {
     { value: "vote_average.asc", label: localSortBy.ratingAsc },
     { value: "vote_average.desc", label: localSortBy.ratingDesc },
     { value: "vote_count.asc", label: localSortBy.voteCountAsc },
-    { value: "vote_count.desc", label: localSortBy.voteCountDesc },
+    { value: "vote_count.desc", label: localSortBy.voteCountDesc }
   ]
 
   const handleSortChange = (value: string) => {
     setSortBy(value)
-    localStorage.setItem('moviesSortBy', value)
   }
 
   useEffect(() => {

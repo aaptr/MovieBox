@@ -63,6 +63,8 @@ export const ru: LocalisationObject = {
       ratingDesc: 'Рейтинг (по убыванию)',
       voteCountAsc: 'Количество голосов (по возрастанию)',
       voteCountDesc: 'Количество голосов (по убыванию)',
+      createdAsc: 'Добавлено (от ранних к поздним)',
+      createdDesc: 'Добавлено (от поздних к ранним)',
     }
   },
   mymovies: {

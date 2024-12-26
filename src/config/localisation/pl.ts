@@ -63,6 +63,8 @@ export const pl: LocalisationObject = {
       ratingDesc: 'Ocena (od najwyzszych)',
       voteCountAsc: 'Liczba głosów (rosnąco)',
       voteCountDesc: 'Liczba głosów (malejąco)',
+      createdAsc: 'Dodano (od najstarszych)',
+      createdDesc: 'Dodano (od najnowszych)',
     }
   },
   mymovies: {

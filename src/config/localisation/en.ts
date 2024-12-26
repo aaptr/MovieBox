@@ -61,6 +61,8 @@ export const en = {
       ratingDesc: 'Rating (high to low)',
       voteCountAsc: 'Vote count (low to high)',
       voteCountDesc: 'Vote count (high to low)',
+      createdAsc: 'Added (earliest to latest)',
+      createdDesc: 'Added (latest to earliest)',
     }
   },
   mymovies: {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, AppDispatch } from '@/redux/store'
 
@@ -6,7 +6,7 @@ import { RatingLabel } from '@/components/RatingLabel'
 import { FavoriteButton } from '@/components/FavoriteButton'
 import { WatchlistButton } from '@/components/WatchlistButton'
 import { UserRating } from '@/components/UserRating'
-import { moviesListsEndpoint, accountEndpoint, imagePath } from '@/config/api'
+import { moviesListsEndpoint, imagePath } from '@/config/api'
 import { IMovieDetails } from '@/types/MoviesTypes'
 import { fetchAccountStates } from '@/redux/user-slice'
 import { formatDate } from '@/utils/formatDate'
@@ -14,11 +14,9 @@ import { localisation } from '@/config/localisation'
 
 export function MovieDetails(props: IMovieDetails) {
   const dispatch = useDispatch<AppDispatch>()
-  const userID = useSelector((state: RootState) => state.user.accountDetails?.id)
   const lang = useSelector((state: RootState) => state.lang.value)
   const local = localisation[lang].movie.movieDetails
   const releaseDate = formatDate(props.release_date, localisation[lang].requestLang)
-  const { movieAccountState } = useSelector((state: RootState) => state.user)
   const { sessionId } = useSelector((state: RootState) => state.auth)
   const backdropURL = `${imagePath}/original${props.backdrop_path}`
   const posterURL = `${imagePath}/original${props.poster_path}`
@@ -69,7 +67,6 @@ export function MovieDetails(props: IMovieDetails) {
               <FavoriteButton movieId={props.id} />
               <WatchlistButton movieId={props.id} />
               <UserRating movieId={props.id} />
-              {/* TODO: Add trailer */}
             </div>
             <p className="pb-4">
               <span className="font-bold text-indigo-300">{local.tagline}</span>
@@ -80,22 +77,9 @@ export function MovieDetails(props: IMovieDetails) {
             </p>
             <p className="pt-2 pe-60 text-lg line-clamp-7">{props.overview}</p>
             <div>
-              {/* TODO: Crew/ obsada */}
             </div>
           </div>
         </div>
-      </div>
-
-      <div>
-        {/* TODO: cast */}
-      </div>
-
-      <div>
-        {/* TODO: media */}
-      </div>
-
-      <div>
-        {/* TODO: similar films */}
       </div>
     </div >
   )
