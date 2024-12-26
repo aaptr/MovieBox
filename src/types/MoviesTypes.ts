@@ -122,7 +122,7 @@ export interface IMovieCredits {
     name: string
     original_name: string
     popularity: number
-    profile_path: string
+    profile_path: string | null
     cast_id: number
     character: string
     credit_id: string
@@ -136,7 +136,7 @@ export interface IMovieCredits {
     name: string
     original_name: string
     popularity: number
-    profile_path: string
+    profile_path: string | null
     credit_id: string
     department: string
     job: string
@@ -146,14 +146,14 @@ export interface IMovieCredits {
 export interface ICrewMember {
   id: number
   name: string
-  profile_path: string
+  profile_path: string | null
   job: string
 }
 
 export interface ICastMember {
   id: number
   name: string
-  profile_path: string
+  profile_path: string | null
   character: string
 }
 

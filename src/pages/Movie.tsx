@@ -7,9 +7,11 @@ import { RootState } from '@/redux/store'
 import { fetchData } from '@/redux/movie-details-slice'
 import { MovieDetails } from '@/components/MovieDetails'
 import { CastList } from '@/components/CastList'
+import { CrewMembers } from '@/components/CrewMembers'
 import { localisation } from '@/config/localisation'
 import { moviesListsEndpoint } from '@/config/api'
 import { getTopCast } from '@/utils/topcast'
+import { getWriters } from '@/utils/writers'
 
 export function Movie() {
   const lang = useSelector((state: RootState) => state.lang.value)
@@ -46,7 +48,16 @@ export function Movie() {
   return (
     <div>
       {movieDetails && <MovieDetails {...movieDetails} />}
-      {movieDetails && movieCredits && <CastList persons={getTopCast(movieCredits)} />}
+      <div className="flex justify-between">
+        <div className="w-3/4">
+          <h2 className="text-3xl font-bold p-5">{local.topCastLabel}</h2>
+          {movieDetails && movieCredits && <CastList persons={getTopCast(movieCredits)} />}
+        </div>
+        <div className="w-1/4">
+          <h2 className="text-3xl font-bold p-5">{local.creativeTeamLabel}</h2>
+          {movieDetails && movieCredits && <CrewMembers persons={getWriters(movieCredits)} />}
+        </div>
+      </div>
     </div>
   )
 }

@@ -7,9 +7,8 @@ interface ICastListProps {
 
 export function CastList({ persons = [] }: ICastListProps) {
   return (
-    <div className="mt-5 mx-5">
-      <h2 className="text-3xl font-bold p-5">Top Cast</h2>
-      <div className="flex flex-row gap-4">
+    <div className="m-5">
+      <div className="flex flex-row gap-5">
         {persons.map((person) => (
           <PersonCardBig key={person.id} person={person} />
         ))}

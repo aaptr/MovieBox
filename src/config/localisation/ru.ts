@@ -75,6 +75,8 @@ export const ru: LocalisationObject = {
       noID: 'Неправильный ID фильма',
       isLoading: 'Загрузка...',
       error: 'Произошла ошибка',
+      topCastLabel: 'В главных ролях',
+      creativeTeamLabel: 'Создатели',
     },
     movieDetails: {
       originalTitle: 'Оригинальное название: ',

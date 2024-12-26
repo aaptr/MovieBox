@@ -1,5 +1,3 @@
-import { Search } from "lucide-react";
-
 export const en = {
   requestLang: 'en-US',
   header: {
@@ -75,6 +73,8 @@ export const en = {
       noID: 'Invalid movie ID',
       isLoading: 'Loading...',
       error: 'Error',
+      topCastLabel: 'Top Cast',
+      creativeTeamLabel: 'Creative Team'
     },
     movieDetails: {
       originalTitle: 'Original title: ',

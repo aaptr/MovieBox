@@ -12,7 +12,6 @@ import { fetchAccountStates } from '@/redux/user-slice'
 import { formatDate } from '@/utils/formatDate'
 import { localisation } from '@/config/localisation'
 
-
 export function MovieDetails(props: IMovieDetails) {
   const dispatch = useDispatch<AppDispatch>()
   const userID = useSelector((state: RootState) => state.user.accountDetails?.id)

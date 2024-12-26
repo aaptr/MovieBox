@@ -75,6 +75,8 @@ export const pl: LocalisationObject = {
       noID: 'Nieprawidłowy identyfikator filmu',
       isLoading: 'Ładowanie...',
       error: 'Bład pobierania danych',
+      topCastLabel: 'W rolach głównych',
+      creativeTeamLabel: 'Zespoł twórców',
     },
     movieDetails: {
       originalTitle: 'Tytuł oryginalny: ',
