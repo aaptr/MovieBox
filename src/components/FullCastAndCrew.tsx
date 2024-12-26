@@ -35,7 +35,7 @@ export function FullCastAndCrew({ credits }: FullCastAndCrewProps) {
               <div className="w-1/2 p-5 flex flex-col
                 border-r border-gray-400 dark:border-gray-700">
                 <p className="text-lg font-bold pt-1 pb-5">{local.cast}</p>
-                <div className="grid gap-x-6 gap-y-2 grid-cols-2">
+                <div className="grid gap-x-3 gap-y-2 grid-cols-4">
                   {cast.map((person: ICastMember) => (
                     <PersonCardSmall key={person.id} person={person} />
                   ))}
@@ -43,7 +43,7 @@ export function FullCastAndCrew({ credits }: FullCastAndCrewProps) {
               </div>
               <div className="w-1/2 p-5 flex flex-col">
                 <p className="text-lg font-bold pt-1 pb-5">{local.crew}</p>
-                <div className="grid gap-x-6 gap-y-2 grid-cols-2">
+                <div className="grid gap-x-3 gap-y-2 grid-cols-4">
                   {crew.map((person: ICrewMember) => (
                     <PersonCardSmall key={person.id} person={person} />
                   ))}

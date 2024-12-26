@@ -15,7 +15,7 @@ export function Layout() {
 
   useEffect(() => {
     if (requestToken) {
-      const authURL = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=http://localhost:5173/approved`
+      const authURL = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=http://localhost:5173/login-confirmation`
       window.location.href = authURL
     }
   }, [requestToken])

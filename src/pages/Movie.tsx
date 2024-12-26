@@ -37,7 +37,7 @@ export function Movie() {
       dispatch(fetchData({ url: movieURL, params }))
       dispatch(fetchData({ url: creditsURL, params }))
       dispatch(fetchMovieImages({ url: imagesURL, params }))
-      dispatch(fetchMovieVideos({ url: videosURL, params: {} }))
+      dispatch(fetchMovieVideos({ url: videosURL, params }))
     }
   }, [dispatch, lang, movieId])
 

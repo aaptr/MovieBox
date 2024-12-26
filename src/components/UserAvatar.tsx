@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { ThunkDispatch } from 'redux-thunk'
 import { RootState } from '@/redux/store'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router'
 
 import { localisation } from '@/config/localisation'
 import { fetchUserAccountDetails, clearUserDetails } from '@/redux/user-slice'
@@ -15,6 +16,7 @@ import defaultAvatar from '@/assets/default_avatar.svg'
 export function UserAvatar() {
   const lang = useSelector((state: RootState) => state.lang.value)
   const local = localisation[lang].header.useravatar
+  const navigate = useNavigate()
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const sessionId = useSelector((state: RootState) => state.auth.sessionId)
   const accountDetails = useSelector((state: RootState) => state.user.accountDetails)
@@ -30,6 +32,7 @@ export function UserAvatar() {
   const handleLogout = () => {
     dispatch(logout())
     dispatch(clearUserDetails())
+    navigate('/')
   }
 
   useEffect(() => {
@@ -58,7 +61,7 @@ export function UserAvatar() {
                   <p className="text-lg font-bold text-indigo-500">{accountDetails?.name}</p>
                 </div>
                 <div className="pt-8">
-                  <button className="w-full p-2 bg-indigo-500 rounded-xl font-bold hover:bg-indigo-600"
+                  <button className="w-full p-2 bg-indigo-500 rounded-full font-bold hover:bg-indigo-600"
                     onClick={handleLogout}>
                     {local.logout}
                   </button>
@@ -69,7 +72,7 @@ export function UserAvatar() {
         </Popover>
       ) : (
         <button
-          className="py-2 px-5 bg-indigo-500 rounded font-bold"
+          className="py-2 px-5 bg-indigo-500 rounded-full font-bold"
           onClick={handleLogin}>
           {local.login}
         </button>

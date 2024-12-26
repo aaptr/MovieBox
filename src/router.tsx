@@ -13,7 +13,7 @@ import { FavoriteMovies } from '@/pages/FavoriteMovies'
 import { RatedMovies } from '@/pages/RatedMovies'
 import { Watchlist } from '@/pages/Watchlist'
 import { SearchMovies } from '@/pages/SearchMovies'
-import { AuthApproved } from '@/pages/AuthApproved'
+import { LoginConfirmation } from '@/pages/LoginConfirmation'
 import { About } from '@/pages/About'
 
 import { Layout } from '@/components/Layout'
@@ -75,8 +75,8 @@ export const router = createBrowserRouter([
         element: <SearchMovies />,
       },
       {
-        path: '/approved',
-        element: <AuthApproved />,
+        path: '/login-confirmation',
+        element: <LoginConfirmation />,
       },
       {
         path: '/about',

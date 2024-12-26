@@ -1,8 +1,6 @@
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import { RootState } from '@/redux/store'
-import { useEffect } from 'react'
 
 import { localisation } from '@/config/localisation'
 
