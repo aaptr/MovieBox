@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-
 import {
   requestUserAccountDetails,
   setFavorites,
@@ -8,7 +7,6 @@ import {
   requestAccountStates,
   requestDeleteRating
 } from '@/services/userAccount'
-
 import {
   IUserAccountDetails,
   IUserState,
@@ -42,7 +40,7 @@ export const fetchUserAccountDetails = createAsyncThunk<
 
 export const fetchSetFavorites = createAsyncThunk<
   IRequestFavoritesResponse,
-  { url: string; body: IRequestFavoritesBody },
+  { url: string, body: IRequestFavoritesBody },
   { rejectValue: string }
 >(
   'user/fetchFavorites',
@@ -74,7 +72,7 @@ export const fetchSetWatchlist = createAsyncThunk<
 
 export const fetchAddRating = createAsyncThunk<
   IRequestRaitngResponse,
-  { url: string; body: IRequestRaitngBody },
+  { url: string, body: IRequestRaitngBody },
   { rejectValue: string }
 >(
   'user/fetchAddRating',

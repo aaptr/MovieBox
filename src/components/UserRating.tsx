@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, AppDispatch } from '@/redux/store'
 import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popover'
-
 import { fetchAddRating, fetchDeleteRating } from '@/redux/user-slice'
 import { moviesListsEndpoint } from '@/config/api'
 import { localisation } from '@/config/localisation'
@@ -15,10 +14,8 @@ export function UserRating({ movieId }: UserRatingLabelProps) {
   const lang = useSelector((state: RootState) => state.lang.value)
   const local = localisation[lang].movie.movieDetails.userRating
   const dispatch = useDispatch<AppDispatch>()
-  const userID = useSelector((state: RootState) => state.user.accountDetails?.id)
   const { sessionId } = useSelector((state: RootState) => state.auth)
   const userRating = useSelector((state: RootState) => state.user.movieAccountState?.rated?.value)
-
   const [ratingValue, setRatingValue] = useState(userRating ? userRating : 0)
   const [isOpen, setIsOpen] = useState(false)
 
@@ -77,7 +74,6 @@ export function UserRating({ movieId }: UserRatingLabelProps) {
           </div>
         </PopoverContent>
       </Popover>
-
     </div >
   )
 }

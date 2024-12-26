@@ -1,9 +1,7 @@
 import { useSelector } from 'react-redux'
-
 import { RootState } from '@/redux/store'
 import { localisation } from '@/config/localisation'
 import { ICastMember, ICrewMember } from '@/types/MoviesTypes'
-
 import { CastList } from '@/components/CastList'
 import { CrewMembers } from '@/components/CrewMembers'
 
@@ -12,7 +10,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from '@/components/ui/accordion'
 
 interface TopCastAndCreatorsProps {
   topCast: ICastMember[]
@@ -45,7 +43,6 @@ export function TopCastAndCreators({ topCast, creators }: TopCastAndCreatorsProp
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-
     </div>
   )
 }

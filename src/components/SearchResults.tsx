@@ -9,10 +9,10 @@ import { localisation } from '@/config/localisation'
 import { CardMedium } from '@/components/CardMedium'
 import { Pagination } from '@/components/Pagination'
 import { SelectComponent } from '@/components/SelectComponent'
-import { searchEndpoint, discoverEndpoint } from '@/config/api'
+import { discoverEndpoint } from '@/config/api'
 
 export function SearchResults() {
-  const { currentPage, query } = useParams<{ currentPage?: string; query?: string }>()
+  const { currentPage, query } = useParams<{ currentPage?: string, query?: string }>()
   const lang = useSelector((state: RootState) => state.lang.value)
   const local = localisation[lang].search
   const localSortBy = localisation[lang].movies.sortSelectOptions

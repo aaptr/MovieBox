@@ -1,3 +1,3 @@
-import { en } from "@/config/localisation/en"
+import { en } from '@/config/localisation/en'
 
-export type LocalisationObject = typeof en;
+export type LocalisationObject = typeof en

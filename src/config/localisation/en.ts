@@ -77,6 +77,7 @@ export const en = {
       error: 'Error',
     },
     movieDetails: {
+      noData: 'N/A',
       posterFor: 'Poster for movie ',
       originalTitle: 'Original title: ',
       releaseDate: 'Release date: ',

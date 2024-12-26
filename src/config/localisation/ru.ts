@@ -79,6 +79,7 @@ export const ru: LocalisationObject = {
       error: 'Произошла ошибка',
     },
     movieDetails: {
+      noData: 'Нет данных',
       posterFor: 'Постер для фильма ',
       originalTitle: 'Оригинальное название: ',
       releaseDate: 'Дата выхода: ',

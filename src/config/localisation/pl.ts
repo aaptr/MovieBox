@@ -79,6 +79,7 @@ export const pl: LocalisationObject = {
       error: 'Bład pobierania danych',
     },
     movieDetails: {
+      noData: 'Brak danych',
       posterFor: 'Plakat dla filmu ',
       originalTitle: 'Tytuł oryginalny: ',
       releaseDate: 'Data premiery: ',

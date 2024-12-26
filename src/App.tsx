@@ -7,8 +7,6 @@ import { router } from '@/router'
 import { store, RootState } from '@/redux/store'
 
 import './index.css'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 
 
 function App() {

@@ -5,7 +5,6 @@ import { localisation } from '@/config/localisation'
 import { IMovieImages, IMovieImage } from '@/types/MoviesTypes'
 import { imagePath } from '@/config/api'
 import { ImageWithPreview } from '@/components/ImageWithPreview'
-
 import {
   Accordion,
   AccordionContent,

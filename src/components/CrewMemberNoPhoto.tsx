@@ -1,10 +1,10 @@
 import { ICrewMember } from '@/types/MoviesTypes'
 
-interface ICrewMemberNoProtoProps {
+interface ICrewMemberNoPhotoProps {
   person: ICrewMember
 }
 
-export function CrewMemberNoProto({ person }: ICrewMemberNoProtoProps) {
+export function CrewMemberNoPhoto({ person }: ICrewMemberNoPhotoProps) {
   return (
     <div className="flex flex-col">
       <p className="font-bold text-lg">{person.name}</p>

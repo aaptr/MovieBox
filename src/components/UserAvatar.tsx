@@ -3,14 +3,11 @@ import { ThunkDispatch } from 'redux-thunk'
 import { RootState } from '@/redux/store'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
-
 import { localisation } from '@/config/localisation'
 import { fetchUserAccountDetails, clearUserDetails } from '@/redux/user-slice'
 import { fetchRequestToken, logout } from '@/redux/auth-slice'
-
 import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popover'
-
-import { accountEndpoint, imagesEndpoint } from '@/config/api'
+import { accountEndpoint, imagePath } from '@/config/api'
 import defaultAvatar from '@/assets/default_avatar.svg'
 
 export function UserAvatar() {
@@ -22,7 +19,7 @@ export function UserAvatar() {
   const accountDetails = useSelector((state: RootState) => state.user.accountDetails)
 
   const avatarPath = accountDetails?.avatar?.tmdb?.avatar_path
-    ? `${imagesEndpoint}w45${accountDetails.avatar.tmdb.avatar_path}`
+    ? `${imagePath}/w45${accountDetails.avatar.tmdb.avatar_path}`
     : defaultAvatar
 
   const handleLogin = async () => {

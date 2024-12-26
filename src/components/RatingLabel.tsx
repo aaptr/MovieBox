@@ -1,5 +1,3 @@
-
-
 export function RatingLabel({ rating }: { rating: number }) {
   const radius = 21
   const stroke = 5
@@ -8,8 +6,8 @@ export function RatingLabel({ rating }: { rating: number }) {
   const offset = circumference - (rating / 10) * circumference
 
   const getRatingColor = (rating: number): string => {
-    if (rating >= 7) return "text-green-500"
-    if (rating >= 4) return "text-yellow-500"
+    if (Math.round(rating * 10) / 10 >= 7) return "text-green-500"
+    if (Math.round(rating * 10) / 10 >= 4) return "text-yellow-500"
     return "text-red-500"
   }
 
@@ -19,9 +17,9 @@ export function RatingLabel({ rating }: { rating: number }) {
         width={radius * 2}
         height={radius * 2}
         className="relative"
-        style={{ transform: "rotate(-90deg)" }} // Поворот для начала с верхней точки
+        style={{ transform: "rotate(-90deg)" }}
       >
-        {/* Фон круга */}
+
         <circle
           cx={radius}
           cy={radius}
@@ -31,7 +29,7 @@ export function RatingLabel({ rating }: { rating: number }) {
           className="text-gray-600"
           stroke="currentColor"
         />
-        {/* Заполненная часть круга */}
+
         <circle
           cx={radius}
           cy={radius}
@@ -44,7 +42,7 @@ export function RatingLabel({ rating }: { rating: number }) {
           strokeDashoffset={offset}
         />
       </svg>
-      {/* Текстовый рейтинг */}
+
       <span className="absolute inset-0 flex items-center justify-center text-lg font-bold text-white">
         {rating.toFixed(1)}
       </span>

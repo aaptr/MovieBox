@@ -26,8 +26,8 @@ export function Pagination({ currentPage, link, totalPages, totalResults }: Pagi
           <NavLink
             to={`${link}${item}`}
             className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${item == currentPage
-              ? 'z-10 bg-gray-900 text-gray-300 dark:bg-gray-300 dark:text-gray-900 cursor-default '
-              : 'ring-1 ring-inset ring-gray-400 hover:bg-gray-400'
+              ? 'z-10 bg-indigo-500 text-gray-300 dark:bg-indigo-500 dark:text-gray-900 cursor-default '
+              : 'ring-1 ring-inset ring-gray-400 hover:bg-indigo-400 dark:hover:bg-indigo-400 dark:hover:text-gray-900'
               }`}
             aria-disabled={item === currentPage}
           >

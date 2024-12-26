@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, AppDispatch } from '@/redux/store'
 import { fetchSetWatchlist } from '@/redux/user-slice'
-
 import inListIcon from '@/assets/in-watchlist.svg'
 import notInListIcon from '@/assets/not-in-watchlist.svg'
 import { accountEndpoint } from '@/config/api'
@@ -29,7 +28,6 @@ export function WatchlistButton({ movieId }: WatchlistButtonProps) {
       media_id: movieId,
       watchlist: !inWatchlist,
     }
-
     dispatch(fetchSetWatchlist({ url, body }))
   }
 

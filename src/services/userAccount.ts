@@ -1,5 +1,3 @@
-import { accountEndpoint } from '@/config/api'
-
 import {
   IUserAccountDetails,
   IRequestFavoritesBody,

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ThunkDispatch } from 'redux-thunk'
 import { useNavigate } from 'react-router'
-
 import { RootState } from '@/redux/store'
 import { fetchSession, fetchRequestToken } from '@/redux/auth-slice'
 import { localisation } from '@/config/localisation'
@@ -44,7 +43,7 @@ export function LoginConfirmation() {
         <h1 className="text-2xl font-bold mb-5">{local.titleApproved}</h1>
         <LinkButton link="/" text={`${local.button.textHome} ${timer}${local.button.suffix}`} />
       </div>
-    );
+    )
   } else {
     return (
       <div className="p-10">
@@ -59,6 +58,6 @@ export function LoginConfirmation() {
           </button>
         </div>
       </div>
-    );
+    )
   }
 }

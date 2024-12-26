@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import {
   createGuestSession,
   createRequestToken,
@@ -20,9 +20,7 @@ export const fetchGuestSession = createAsyncThunk(
   'auth/fetchGuestSession',
   async () => {
     const data = await createGuestSession()
-
     sessions.setToLocalStorageGuestSession(data)
-
     return data
   }
 )
@@ -31,7 +29,6 @@ export const fetchRequestToken = createAsyncThunk(
   'auth/fetchRequestToken',
   async () => {
     const data = await createRequestToken()
-
     sessions.setToLocalStorageRequestToken(data)
     return data
   }
@@ -41,7 +38,6 @@ export const fetchSession = createAsyncThunk(
   'auth/fetchSession',
   async (body: ICreateSessionBody) => {
     const data = await createSession(body)
-
     sessions.setToLocalStorageSessionId(data)
     return data
   }

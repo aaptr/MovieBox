@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ThunkDispatch } from 'redux-thunk'
-import { NavLink } from 'react-router-dom'
-
 import { RootState } from '@/redux/store'
 import { fetchMovies } from '@/redux/movies-slice'
 import { MoviesListRow } from '@/components/MoviesListRow'
@@ -28,7 +26,7 @@ export function Home() {
   const upcomingLimit = adjustDateByMonthsFromStart(getCurrentDate(), 2)
 
   useEffect(() => {
-    const langParam = localisation[lang].requestLang;
+    const langParam = localisation[lang].requestLang
 
     dispatch(
       fetchMovies({

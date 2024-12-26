@@ -46,16 +46,6 @@ export interface IMoviesListProps {
   movies: IMovieListItem[]
 }
 
-export type FetchMoviesListArgs = {
-  endpoint: string
-  listType: 'popular' | 'top_rated' | 'upcoming'
-}
-
-export type FetchMoviesListResponse = {
-  listType: 'popular' | 'top_rated' | 'upcoming'
-  data: IMovieList
-}
-
 export interface IMovieDetails {
   adult: boolean
   backdrop_path: string

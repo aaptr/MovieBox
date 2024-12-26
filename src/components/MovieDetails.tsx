@@ -23,7 +23,7 @@ export function MovieDetails(props: IMovieDetails) {
   const posterURL = `${imagePath}/original${props.poster_path}`
   const releaseYear = new Date(props.release_date).getFullYear()
   const genreNames = props.genres.map((genre) => genre.name).join(', ')
-  const runtime = `${Math.floor(props.runtime / 60)}${local.hour} ${props.runtime % 60} ${local.minutes}`
+  const runtime = props.runtime === 0 ? local.noData : `${Math.floor(props.runtime / 60)}${local.hour} ${props.runtime % 60} ${local.minutes}`
   const accountStateURL = `${moviesListsEndpoint}${props.id}/account_states?session_id=${sessionId?.session_id}`
 
   useEffect(() => {
@@ -71,12 +71,12 @@ export function MovieDetails(props: IMovieDetails) {
             </div>
             <p className="pb-4">
               <span className="font-bold text-indigo-300">{local.tagline}</span>
-              <span className="italic">{props.tagline}</span>
+              <span className="italic">{props.tagline || local.noData}</span>
             </p>
             <p>
               <span className="font-bold text-indigo-300">{local.overview}</span>
             </p>
-            <p className="pt-2 pe-60 text-lg line-clamp-7">{props.overview}</p>
+            <p className="pt-2 pe-60 text-lg line-clamp-7">{props.overview || local.noData}</p>
             <div>
             </div>
           </div>

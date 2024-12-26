@@ -1,17 +1,14 @@
 import { useSelector } from 'react-redux'
-
 import { RootState } from '@/redux/store'
 import { localisation } from '@/config/localisation'
-import { IMovieVideos, IMovieVideo, ICrewMember } from '@/types/MoviesTypes'
-
+import { IMovieVideos, IMovieVideo } from '@/types/MoviesTypes'
 import { Trailer } from '@/components/Trailer'
-
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from '@/components/ui/accordion'
 
 interface ITrailersListProps {
   videos: IMovieVideos
@@ -41,7 +38,6 @@ export function TrailersList({ videos }: ITrailersListProps) {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import { ICrewMember, ICastMember } from '@/types/MoviesTypes'
-import { cardImagePathMedium } from '@/config/api'
+import { imagePath } from '@/config/api'
 import imagePlaceholder from '@/assets/image-placeholder.webp'
 
 export function PersonCardBig({ person }: { person: ICrewMember | ICastMember }) {
-  const imageSrc = person.profile_path ? `${cardImagePathMedium}${person.profile_path}` : imagePlaceholder
+  const imageSrc = person.profile_path ? `${imagePath}/w154${person.profile_path}` : imagePlaceholder
 
   return (
     <div className="flex flex-col gap-2 rounded-2xl

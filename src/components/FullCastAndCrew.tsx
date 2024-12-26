@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { localisation } from '@/config/localisation'
 import { IMovieCredits, ICastMember, ICrewMember } from '@/types/MoviesTypes'
-
 import { PersonCardSmall } from '@/components/PersonCardSmall'
-
 import {
   Accordion,
   AccordionContent,
@@ -53,7 +51,6 @@ export function FullCastAndCrew({ credits }: FullCastAndCrewProps) {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-
     </div>
   )
 }

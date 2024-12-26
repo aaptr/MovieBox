@@ -20,7 +20,7 @@ const initialState: IMovieDetailsState = {
 
 export const fetchData = createAsyncThunk<
   IMovieDetails | IMovieCredits,
-  { url: string; params?: Record<string, any> },
+  { url: string, params?: Record<string, any> },
   { rejectValue: string }
 >(
   'movie/fetchData',
@@ -39,7 +39,7 @@ export const fetchData = createAsyncThunk<
 
 export const fetchMovieVideos = createAsyncThunk<
   IMovieVideos,
-  { url: string; params?: Record<string, any> },
+  { url: string, params?: Record<string, any> },
   { rejectValue: string }
 >(
   'movie/fetchMovieVideos',
@@ -58,7 +58,7 @@ export const fetchMovieVideos = createAsyncThunk<
 
 export const fetchMovieImages = createAsyncThunk<
   IMovieImages,
-  { url: string; params?: Record<string, any> },
+  { url: string, params?: Record<string, any> },
   { rejectValue: string }
 >(
   'movie/fetchMovieImages',

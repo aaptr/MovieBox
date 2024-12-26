@@ -1,7 +1,6 @@
 import {
   createGuestSessionEndpoint,
   createRequestTokenEndpoint,
-  authUserEndpoint,
   createSessionEndpoint
 } from '@/config/api'
 

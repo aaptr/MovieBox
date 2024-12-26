@@ -4,11 +4,11 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from '@/components/ui/select'
 
 interface ISelectProps {
   value: string
-  options: { value: string; label: string }[]
+  options: { value: string, label: string }[]
   onChange: (value: string) => void
 }
 
@@ -35,4 +35,3 @@ export function SelectComponent({ value, options, onChange }: ISelectProps) {
     </Select>
   )
 }
-7

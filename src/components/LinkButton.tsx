@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom'
-
 interface IButtonProps {
   link: string,
   text: string
 }
+
 export function LinkButton({ link, text }: IButtonProps) {
   return (
     <NavLink
