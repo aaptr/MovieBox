@@ -93,18 +93,13 @@ export const en = {
       },
       tagline: 'Tagline: ',
       overview: 'Overview: ',
-      // cast: 'Cast: ',
-      // crew: 'Crew: ',
-      // budget: 'Budget: ',
-      // revenue: 'Revenue: ',
-      // keywords: 'Keywords: ',
-      // productionCompanies: 'Production companies: ',
     },
     fullCastAndCrew: {
       title: 'Full cast & crew',
       cast: 'Cast',
       crew: 'Movie Crew',
-    }
+    },
+    trailers: 'Trailers',
   },
   search: {
     title: 'Search results',

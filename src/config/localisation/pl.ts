@@ -100,7 +100,8 @@ export const pl: LocalisationObject = {
       title: 'Pełna obsada i załoga',
       cast: 'Obsada aktorska',
       crew: 'Ekipa filmowa',
-    }
+    },
+    trailers: 'Zwiastuny',
   },
   search: {
     title: 'Wyniki wyszukiwania',

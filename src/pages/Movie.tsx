@@ -4,11 +4,12 @@ import { ThunkDispatch } from 'redux-thunk'
 import { useParams } from 'react-router-dom'
 
 import { RootState } from '@/redux/store'
-import { fetchData } from '@/redux/movie-details-slice'
+import { fetchData, fetchMovieVideos } from '@/redux/movie-details-slice'
 import { MovieDetails } from '@/components/MovieDetails'
 import { CastList } from '@/components/CastList'
 import { CrewMembers } from '@/components/CrewMembers'
 import { FullCastAndCrew } from '@/components/FullCastAndCrew'
+import { TrailersList } from '@/components/TrailersList'
 import { localisation } from '@/config/localisation'
 import { moviesListsEndpoint } from '@/config/api'
 import { getTopCast } from '@/utils/topcast'
@@ -19,7 +20,7 @@ export function Movie() {
   const local = localisation[lang].movie.moviePage
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>()
   const { movieId } = useParams<{ movieId: string }>()
-  const { movieDetails, movieCredits, isLoading, error } = useSelector(
+  const { movieDetails, movieCredits, movieVideos, isLoading, error } = useSelector(
     (state: RootState) => state.movieDetails
   )
 
@@ -27,10 +28,12 @@ export function Movie() {
     if (movieId) {
       const movieURL = `${moviesListsEndpoint}${movieId}`
       const creditsURL = `${moviesListsEndpoint}${movieId}/credits`
+      const videosURL = `${moviesListsEndpoint}${movieId}/videos`
       const params = { language: lang }
 
       dispatch(fetchData({ url: movieURL, params }))
       dispatch(fetchData({ url: creditsURL, params }))
+      dispatch(fetchMovieVideos({ url: videosURL, params }))
     }
   }, [dispatch, lang, movieId])
 
@@ -64,6 +67,9 @@ export function Movie() {
       </div>
       <div>
         {movieDetails && movieCredits && <FullCastAndCrew credits={movieCredits} />}
+      </div>
+      <div>
+        {movieDetails && movieVideos && <TrailersList videos={movieVideos} />}
       </div>
     </div>
   )

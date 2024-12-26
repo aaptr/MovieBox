@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 interface Video {
-  name: string;
-  key: string;
-  site: string;
+  name: string
+  key: string
+  site: string
 }
 
 interface VideoProps {
-  videos: Video[];
+  videos: Video[]
 }
 
 const VideoList: React.FC<VideoProps> = ({ videos }) => {
@@ -28,8 +28,8 @@ const VideoList: React.FC<VideoProps> = ({ videos }) => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
 const Vid: React.FC = () => {
   const serverResponse = {

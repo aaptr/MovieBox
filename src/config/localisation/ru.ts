@@ -100,7 +100,8 @@ export const ru: LocalisationObject = {
       title: 'Полный актёрский и съёмочный состав',
       cast: 'Актёрский состав',
       crew: 'Съёмочный состав',
-    }
+    },
+    trailers: 'Трейлеры',
   },
   search: {
     title: 'Результаты поиска',
