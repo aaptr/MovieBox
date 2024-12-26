@@ -93,6 +93,11 @@ export const ru: LocalisationObject = {
       },
       tagline: 'Слоган: ',
       overview: 'Описание: ',
+    },
+    fullCastAndCrew: {
+      title: 'Полный актёрский и съёмочный состав',
+      cast: 'Актёрский состав',
+      crew: 'Съёмочный состав',
     }
   },
   search: {

@@ -93,6 +93,11 @@ export const pl: LocalisationObject = {
       },
       tagline: 'Slogan: ',
       overview: 'Opis: ',
+    },
+    fullCastAndCrew: {
+      title: 'Pełna obsada i załoga',
+      cast: 'Obsada aktorska',
+      crew: 'Ekipa filmowa',
     }
   },
   search: {

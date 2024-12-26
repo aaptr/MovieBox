@@ -74,7 +74,7 @@ export const en = {
       isLoading: 'Loading...',
       error: 'Error',
       topCastLabel: 'Top Cast',
-      creativeTeamLabel: 'Creative Team'
+      creativeTeamLabel: 'Creative Team',
     },
     movieDetails: {
       originalTitle: 'Original title: ',
@@ -97,6 +97,11 @@ export const en = {
       // revenue: 'Revenue: ',
       // keywords: 'Keywords: ',
       // productionCompanies: 'Production companies: ',
+    },
+    fullCastAndCrew: {
+      title: 'Full cast & crew',
+      cast: 'Cast',
+      crew: 'Movie Crew',
     }
   },
   search: {

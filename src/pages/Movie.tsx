@@ -8,6 +8,7 @@ import { fetchData } from '@/redux/movie-details-slice'
 import { MovieDetails } from '@/components/MovieDetails'
 import { CastList } from '@/components/CastList'
 import { CrewMembers } from '@/components/CrewMembers'
+import { FullCastAndCrew } from '@/components/FullCastAndCrew'
 import { localisation } from '@/config/localisation'
 import { moviesListsEndpoint } from '@/config/api'
 import { getTopCast } from '@/utils/topcast'
@@ -58,6 +59,7 @@ export function Movie() {
           {movieDetails && movieCredits && <CrewMembers persons={getWriters(movieCredits)} />}
         </div>
       </div>
+      {movieDetails && movieCredits && <FullCastAndCrew credits={movieCredits} />}
     </div>
   )
 }
