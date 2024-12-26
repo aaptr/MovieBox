@@ -75,8 +75,6 @@ export const en = {
       noID: 'Invalid movie ID',
       isLoading: 'Loading...',
       error: 'Error',
-      topCastLabel: 'Top Cast',
-      creativeTeamLabel: 'Creative Team',
     },
     movieDetails: {
       posterFor: 'Poster for movie ',
@@ -94,6 +92,11 @@ export const en = {
       },
       tagline: 'Tagline: ',
       overview: 'Overview: ',
+    },
+    topCastAndCreators: {
+      title: 'Top cast & movie creators',
+      topCastLabel: 'Top Cast',
+      creativeTeamLabel: 'Creative Team',
     },
     fullCastAndCrew: {
       title: 'Full cast & crew',

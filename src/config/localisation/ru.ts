@@ -77,8 +77,6 @@ export const ru: LocalisationObject = {
       noID: 'Неправильный ID фильма',
       isLoading: 'Загрузка...',
       error: 'Произошла ошибка',
-      topCastLabel: 'В главных ролях',
-      creativeTeamLabel: 'Создатели',
     },
     movieDetails: {
       posterFor: 'Постер для фильма ',
@@ -96,6 +94,11 @@ export const ru: LocalisationObject = {
       },
       tagline: 'Слоган: ',
       overview: 'Описание: ',
+    },
+    topCastAndCreators: {
+      title: 'Испольнитель главных ролей и создатели фильма',
+      topCastLabel: 'В главных ролях',
+      creativeTeamLabel: 'Создатели',
     },
     fullCastAndCrew: {
       title: 'Полный актёрский и съёмочный состав',

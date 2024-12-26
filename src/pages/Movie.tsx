@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 import { RootState } from '@/redux/store'
 import { fetchData, fetchMovieImages, fetchMovieVideos } from '@/redux/movie-details-slice'
 import { MovieDetails } from '@/components/MovieDetails'
+import { TopCastAndCreators } from '@/components/TopCastAndCreators'
 import { CastList } from '@/components/CastList'
 import { CrewMembers } from '@/components/CrewMembers'
 import { FullCastAndCrew } from '@/components/FullCastAndCrew'
@@ -55,18 +56,10 @@ export function Movie() {
   return (
     <div>
       {movieDetails && <MovieDetails {...movieDetails} />}
-      <div className="flex justify-between
-        mx-5 p-5 rounded-3xl
-        border bg-indigo-100 dark:bg-gray-900
-      border-gray-200 dark:border-gray-700">
-        <div className="w-3/4">
-          <h2 className="text-3xl font-bold p-5">{local.topCastLabel}</h2>
-          {movieDetails && movieCredits && <CastList persons={getTopCast(movieCredits)} />}
-        </div>
-        <div className="w-1/4">
-          <h2 className="text-3xl font-bold p-5">{local.creativeTeamLabel}</h2>
-          {movieDetails && movieCredits && <CrewMembers persons={getWriters(movieCredits)} />}
-        </div>
+      <div>
+        {movieDetails && movieCredits &&
+          <TopCastAndCreators topCast={getTopCast(movieCredits)}
+            creators={getWriters(movieCredits)} />}
       </div>
       <div>
         {movieDetails && movieCredits && <FullCastAndCrew credits={movieCredits} />}

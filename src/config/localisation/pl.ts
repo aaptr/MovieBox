@@ -77,8 +77,6 @@ export const pl: LocalisationObject = {
       noID: 'Nieprawidłowy identyfikator filmu',
       isLoading: 'Ładowanie...',
       error: 'Bład pobierania danych',
-      topCastLabel: 'W rolach głównych',
-      creativeTeamLabel: 'Zespoł twórców',
     },
     movieDetails: {
       posterFor: 'Plakat dla filmu ',
@@ -96,6 +94,11 @@ export const pl: LocalisationObject = {
       },
       tagline: 'Slogan: ',
       overview: 'Opis: ',
+    },
+    topCastAndCreators: {
+      title: 'Główna obsada i twórcy filmu',
+      topCastLabel: 'W rolach głównych',
+      creativeTeamLabel: 'Zespoł twórców',
     },
     fullCastAndCrew: {
       title: 'Pełna obsada i załoga',
