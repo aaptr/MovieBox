@@ -26,8 +26,8 @@ export function TopCastAndCreators({ topCast, creators }: TopCastAndCreatorsProp
 
   return (
     <div className="mx-5 my-3 px-10 rounded-3xl
-      border border-white dark:border-gray-800
-      bg-gradient-to-r from-white dark:from-gray-800 to-indigo-100 dark:to-gray-700">
+      border border-white dark:border-gray-800 dark:text-indigo-300
+      bg-gradient-to-r from-indigo-50 dark:from-gray-800 to-indigo-200 dark:to-gray-700">
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger className="text-2xl font-bold">{local.title}</AccordionTrigger>

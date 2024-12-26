@@ -14,7 +14,7 @@ export function Header() {
         <NavLink to="/">
           <div className="ps-2 flex gap-3 items-center">
             <img src={logo} alt="" className="w-12" />
-            <h1 className="text-3xl font-bold text-indigo-300">MovieBox</h1>
+            <h1 className="text-3xl font-bold text-indigo-500">MovieBox</h1>
           </div>
         </NavLink>
         <MenuBar />

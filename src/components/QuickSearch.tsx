@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useLocation } from 'react-router-dom'
 
 import { RootState } from '@/redux/store'
-
 import { localisation } from '@/config/localisation'
 
 export function QuickSearch() {
@@ -11,6 +10,7 @@ export function QuickSearch() {
   const local = localisation[lang].header.quicksearch
   const { query: queryParam } = useParams()
   const navigate = useNavigate()
+  const location = useLocation()
   const [query, setQuery] = useState<string>(queryParam || '')
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,9 +19,18 @@ export function QuickSearch() {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
-    const encodedQuery = encodeURIComponent(query)
-    navigate(`/search/${encodedQuery}/1`)
+    if (query.trim()) {
+      const encodedQuery = encodeURIComponent(query)
+      navigate(`/search/${encodedQuery}/1`)
+    }
   }
+
+  useEffect(() => {
+    const isSearchPage = location.pathname.startsWith('/search/')
+    if (!isSearchPage) {
+      setQuery('')
+    }
+  }, [location.pathname])
 
   return (
     <div className="h-full rounded-full ps-3
@@ -37,6 +46,7 @@ export function QuickSearch() {
             className="form-control h-full w-64
               rounded bg-transparent focus:outline-none"
             placeholder={local.placeholder}
+            value={query}
             onChange={handleChange}
           />
         </div>

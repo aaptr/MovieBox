@@ -13,7 +13,7 @@ export function MoviesListRow({ movies = [] }: IMoviesListProps) {
 
   return (
     <div className="my-5 px-24 rounded-3xl border border-white dark:border-gray-800
-      bg-gradient-to-r from-white dark:from-gray-800 to-indigo-100 dark:to-gray-700">
+      bg-gradient-to-r from-indigo-50 dark:from-gray-800 to-indigo-200 dark:to-gray-700">
       <Carousel opts={{ loop: true }}>
         <CarouselContent className="-ml-2 md:-ml-4">
           {movies.map((movie) => (

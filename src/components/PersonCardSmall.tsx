@@ -6,7 +6,7 @@ export function PersonCardSmall({ person }: { person: ICrewMember | ICastMember 
   const imageSrc = person.profile_path ? `${cardImagePathMedium}${person.profile_path}` : imagePlaceholder
 
   return (
-    <div className="max-w-72 flex gap-10 rounded-2xl
+    <div className="max-w-72 flex gap-10 rounded-xl
       p-2 border border-gray-200 dark:border-gray-700
       bg-indigo-50 dark:bg-gray-900">
       <div className="max-w-12">

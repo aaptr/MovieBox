@@ -51,14 +51,14 @@ export function UserAvatar() {
               <div className="w-72 p-3">
                 <div className="flex justify-start gap-5 py-2">
                   <p className="text-lg">{local.userID}</p>
-                  <p className="text-lg font-bold text-indigo-300">{accountDetails?.id}</p>
+                  <p className="text-lg font-bold text-indigo-500">{accountDetails?.id}</p>
                 </div>
                 <div className="flex justify-start gap-5 py-2">
                   <p className="text-lg">{local.name}</p>
-                  <p className="text-lg font-bold text-indigo-300">{accountDetails?.name}</p>
+                  <p className="text-lg font-bold text-indigo-500">{accountDetails?.name}</p>
                 </div>
                 <div className="pt-8">
-                  <button className="w-full p-2 bg-indigo-400 rounded-xl font-bold hover:bg-indigo-600"
+                  <button className="w-full p-2 bg-indigo-500 rounded-xl font-bold hover:bg-indigo-600"
                     onClick={handleLogout}>
                     {local.logout}
                   </button>
@@ -69,7 +69,7 @@ export function UserAvatar() {
         </Popover>
       ) : (
         <button
-          className="py-2 px-5 bg-indigo-600 rounded font-bold"
+          className="py-2 px-5 bg-indigo-500 rounded font-bold"
           onClick={handleLogin}>
           {local.login}
         </button>
