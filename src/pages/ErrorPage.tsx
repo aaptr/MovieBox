@@ -3,7 +3,6 @@ import { RootState } from '@/redux/store'
 import { localisation } from '@/config/localisation'
 import { LinkButton } from '@/components/LinkButton'
 
-
 export function ErrorPage() {
   const lang = useSelector((state: RootState) => state.lang.value)
   const local = localisation[lang].errorPage

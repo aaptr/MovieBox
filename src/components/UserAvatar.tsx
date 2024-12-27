@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { ThunkDispatch } from 'redux-thunk'
-import { RootState } from '@/redux/store'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
-import { localisation } from '@/config/localisation'
+import { RootState } from '@/redux/store'
 import { fetchUserAccountDetails, clearUserDetails } from '@/redux/user-slice'
 import { fetchRequestToken, logout } from '@/redux/auth-slice'
-import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popover'
 import { accountEndpoint, imagePath } from '@/config/api'
+import { localisation } from '@/config/localisation'
+import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popover'
 import defaultAvatar from '@/assets/default_avatar.svg'
 
 export function UserAvatar() {

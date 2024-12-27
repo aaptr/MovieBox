@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ThunkDispatch } from 'redux-thunk'
 import { RootState } from '@/redux/store'
 import { fetchMovies } from '@/redux/movies-slice'
+import { getCurrentDate, adjustDateByMonthsFromStart } from '@/utils/getDates'
+import { localisation } from '@/config/localisation'
+import { discoverEndpoint } from '@/config/api'
 import { MoviesListRow } from '@/components/MoviesListRow'
 import { LinkButton } from '@/components/LinkButton'
-import { localisation } from '@/config/localisation'
-import { getCurrentDate, adjustDateByMonthsFromStart } from '@/utils/getDates'
-import { discoverEndpoint } from '@/config/api'
 
 export function Home() {
   const lang = useSelector((state: RootState) => state.lang.value)

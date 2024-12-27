@@ -4,8 +4,8 @@ import { ThunkDispatch } from 'redux-thunk'
 import { useNavigate } from 'react-router'
 import { RootState } from '@/redux/store'
 import { fetchSession, fetchRequestToken } from '@/redux/auth-slice'
-import { localisation } from '@/config/localisation'
 import { sessions } from '@/utils/sessions'
+import { localisation } from '@/config/localisation'
 import { LinkButton } from '@/components/LinkButton'
 
 export function LoginConfirmation() {

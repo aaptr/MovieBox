@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
-import { SearchResults } from '@/components/SearchResults'
 import { localisation } from '@/config/localisation'
+import { SearchResults } from '@/components/SearchResults'
 
 export function SearchMovies() {
   const lang = useSelector((state: RootState) => state.lang.value)
