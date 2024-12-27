@@ -15,6 +15,7 @@ import { Watchlist } from '@/pages/Watchlist'
 import { SearchMovies } from '@/pages/SearchMovies'
 import { LoginConfirmation } from '@/pages/LoginConfirmation'
 import { About } from '@/pages/About'
+import { ErrorPage } from '@/pages/ErrorPage'
 
 import { Layout } from '@/components/Layout'
 
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
       {
         path: '/about',
         element: <About />,
+      },
+      {
+        path: '/error',
+        element: <ErrorPage />,
       },
     ]
   },

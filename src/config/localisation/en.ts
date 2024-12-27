@@ -44,6 +44,7 @@ export const en = {
     popular: 'Popular movies',
     top_rated: 'Top rated movies',
     upcoming: 'Upcoming movies',
+    isLoading: 'Loading...',
   },
   movies: {
     now_playingtab: 'Now playing',
@@ -132,5 +133,10 @@ export const en = {
       textLogin: 'Login',
       suffix: 's'
     }
+  },
+  errorPage: {
+    title: '404 Error - Movie not found',
+    text: `We couldn't find a movie with the specified ID. Please check the entered identifier or return to the homepage.`,
+    buttontext: 'Go to Home Page',
   }
 }

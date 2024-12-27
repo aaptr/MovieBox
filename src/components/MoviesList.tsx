@@ -78,7 +78,8 @@ export function MoviesList({ listType, path }: IMoviesListProps) {
         break
       case 'top_rated':
         params['vote_average.gte'] = 8
-        params['vote_count.gte'] = 500
+        params['vote_count.gte'] = 5000
+        setSortBy('vote_average.desc')
         break
       case 'upcoming':
         params['primary_release_date.gte'] = getCurrentDate()

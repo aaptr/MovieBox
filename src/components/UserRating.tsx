@@ -48,7 +48,7 @@ export function UserRating({ movieId }: UserRatingLabelProps) {
             {userRating ? `${local.rated}${userRating}` : `${local.unrated}`}
           </span>
         </PopoverTrigger>
-        <PopoverContent>
+        <PopoverContent className="mt-3 rounded-2xl">
           <div>
             <form className="flex flex-col gap-2 w-60 items-center"
               onSubmit={handleSubmitRating}>
@@ -61,12 +61,12 @@ export function UserRating({ movieId }: UserRatingLabelProps) {
                 max="10"
                 value={ratingValue}
                 onChange={(e) => setRatingValue(Number(e.target.value))}
-                className="w-full py-2"
+                className="w-full py-2 appearance-none bg-indigo-500 focus:outline-none h-2 rounded-full"
               />
-              <button type="submit" className="bg-indigo-400 rounded-full p-2 w-full mt-4">{local.submit}</button>
+              <button type="submit" className="bg-indigo-500 rounded-full p-2 w-full mt-4">{local.submit}</button>
             </form>
             {userRating ? (
-              <button type="button" className="bg-indigo-400 rounded-full p-2 w-full mt-4"
+              <button type="button" className="bg-indigo-500 rounded-full p-2 w-full mt-4"
                 onClick={handleDeleteRating}>
                 {local.clearRating}
               </button>

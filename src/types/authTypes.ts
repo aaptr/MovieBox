@@ -4,7 +4,7 @@ export interface ICreateRequestTokenResponse {
   request_token: string
 }
 
-export interface IRequestGusetSessionResponse {
+export interface IRequestGuestSessionResponse {
   success: boolean
   expires_at: string
   guest_session_id: string
@@ -16,7 +16,7 @@ export interface IRequestSessionResponse {
 }
 
 export interface IAuthState {
-  guestSession: IRequestGusetSessionResponse | null
+  guestSession: IRequestGuestSessionResponse | null
   requestToken: ICreateRequestTokenResponse | null
   sessionId: IRequestSessionResponse | null
   isLoading: boolean

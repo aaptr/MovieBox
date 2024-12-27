@@ -46,6 +46,7 @@ export const pl: LocalisationObject = {
     popular: 'Popularne filmy',
     top_rated: 'Najwyżej oceniane',
     upcoming: 'Nadchodzące filmy',
+    isLoading: 'Ładowanie...',
   },
   movies: {
     now_playingtab: 'W kinach',
@@ -134,5 +135,10 @@ export const pl: LocalisationObject = {
       textLogin: 'Zaloguj sie',
       suffix: 's'
     }
+  },
+  errorPage: {
+    title: '404 Błąd - Film nie znaleziony',
+    text: 'Nie udało się znaleźć filmu o podanym ID. Proszę sprawdzić wprowadzony identyfikator lub wrócić na stronę główną.',
+    buttontext: 'Na stronę główną',
   }
 }

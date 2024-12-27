@@ -46,6 +46,7 @@ export const ru: LocalisationObject = {
     popular: 'Популярные фильмы',
     top_rated: 'Лучшие фильмы',
     upcoming: 'Ожидаемые фильмы',
+    isLoading: 'Загрузка...',
   },
   movies: {
     now_playingtab: 'Сейчас в кино',
@@ -134,5 +135,10 @@ export const ru: LocalisationObject = {
       textLogin: 'Войти',
       suffix: 'с'
     }
+  },
+  errorPage: {
+    title: '404 Ошибка - Фильм не найден',
+    text: 'Пожалуйста, проверьте введённый идентификатор или вернитесь на главную страницу.',
+    buttontext: 'На главную',
   }
 }

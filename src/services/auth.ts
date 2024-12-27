@@ -6,7 +6,7 @@ import {
 
 import {
   ICreateRequestTokenResponse,
-  IRequestGusetSessionResponse,
+  IRequestGuestSessionResponse,
   IRequestSessionResponse,
   ICreateSessionBody
 } from '@/types/authTypes'
@@ -14,16 +14,31 @@ import {
 import { get, post } from '@/utils/client'
 
 export const createRequestToken = async (): Promise<ICreateRequestTokenResponse> => {
-  const response = await get(createRequestTokenEndpoint)
-  return response.data.request_token
+  try {
+    const response = await get(createRequestTokenEndpoint)
+    return response.data.request_token
+  } catch (error) {
+    console.error("Thomething went wrong. Couldn't get request token", error)
+    throw error
+  }
 }
 
-export const createGuestSession = async (): Promise<IRequestGusetSessionResponse> => {
-  const response = await get(createGuestSessionEndpoint)
-  return response.data
+export const createGuestSession = async (): Promise<IRequestGuestSessionResponse> => {
+  try {
+    const response = await get(createGuestSessionEndpoint)
+    return response.data
+  } catch (error) {
+    console.error("Thomething went wrong. Couldn't get guest session", error)
+    throw error
+  }
 }
 
 export const createSession = async (body: ICreateSessionBody): Promise<IRequestSessionResponse> => {
-  const response = await post(createSessionEndpoint, body)
-  return response.data
+  try {
+    const response = await post(createSessionEndpoint, body)
+    return response.data
+  } catch (error) {
+    console.error("Thomething went wrong. Couldn't get session ID", error)
+    throw error
+  }
 }

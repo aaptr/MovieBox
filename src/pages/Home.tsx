@@ -82,7 +82,7 @@ export function Home() {
   }, [dispatch, lang])
 
   if (isLoading) {
-    return <h1>Loading...</h1>
+    return <h1>{local.isLoading}</h1>
   }
 
   if (error) {

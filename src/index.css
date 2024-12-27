@@ -7,3 +7,24 @@
     transition: background-color 0.1s, color 0.1s;
   }
 }
+
+@layer components {
+  input[type="range"] {
+    @apply appearance-none w-full h-1 rounded-full bg-indigo-500;
+
+    &::-webkit-slider-runnable-track {
+      @apply bg-indigo-500 h-1 rounded-full;
+    }
+
+    &::-webkit-slider-thumb {
+      @apply bg-indigo-800 w-6 h-6 rounded-full cursor-pointer pb-3;
+      -webkit-appearance: none;
+      margin-top: -10px;
+    }
+
+    &::-moz-range-thumb {
+      @apply bg-indigo-800 w-6 h-6 rounded-full cursor-pointer;
+      margin-top: -10px;
+    }
+  }
+}

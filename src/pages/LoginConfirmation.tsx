@@ -39,14 +39,14 @@ export function LoginConfirmation() {
 
   if (sessionId) {
     return (
-      <div className="p-10">
-        <h1 className="text-2xl font-bold mb-5">{local.titleApproved}</h1>
+      <div className="p-10 items-center flex flex-col gap-5">
+        <h1 className="text-2xl font-bold my-5">{local.titleApproved}</h1>
         <LinkButton link="/" text={`${local.button.textHome} ${timer}${local.button.suffix}`} />
       </div>
     )
   } else {
     return (
-      <div className="p-10">
+      <div className="p-10 items-center flex flex-col gap-5">
         <h1 className="text-2xl font-bold mb-5">{local.titleDeclined}</h1>
         <div className="flex gap-5">
           <LinkButton link="/" text={`${local.button.textHome} ${timer}${local.button.suffix}`} />
