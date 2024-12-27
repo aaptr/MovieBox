@@ -4,11 +4,11 @@ interface ICrewMemberNoPhotoProps {
   person: ICrewMember
 }
 
-export function CrewMemberNoPhoto({ person }: ICrewMemberNoPhotoProps) {
+export function CrewMemberNoPhoto({ person: { name, job } }: ICrewMemberNoPhotoProps) {
   return (
-    <div className="flex flex-col">
-      <p className="font-bold text-lg">{person.name}</p>
-      <p className="text-md">{person.job}</p>
-    </div>
+    <>
+      <p className="font-bold text-lg">{name}</p>
+      <p className="text-md">{job}</p>
+    </>
   )
 }

@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
-
-import { localisation } from '@/config/localisation'
 import { toggleTheme } from '@/redux/themeSlice'
+import { localisation } from '@/config/localisation'
 import darkModeIcon from '@/assets/dark-mode.svg'
 import lightModeIcon from '@/assets/light-mode.svg'
 
@@ -16,14 +15,16 @@ export function ThemeToggler() {
     dispatch(toggleTheme())
   }
 
+  const icon = isDarkMode ? lightModeIcon : darkModeIcon
+  const title = isDarkMode ? local.tolight : local.todark
+
   return (
-    <div className="transform transition-transform duration-300 hover:scale-110">
-      <button className="p-2"
-        onClick={handleToggleTheme}>
-        {isDarkMode ?
-          <img src={lightModeIcon} alt="light mode" title={local.tolight} /> :
-          <img src={darkModeIcon} alt="dark mode" title={local.todark} />}
-      </button>
-    </div>
+    <button
+      className="p-2 transform transition-transform duration-300 hover:scale-110"
+      onClick={handleToggleTheme}
+      aria-label={title}
+      title={title}>
+      <img src={icon} alt={title} />
+    </button>
   )
 }

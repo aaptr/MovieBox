@@ -94,6 +94,8 @@ export const en = {
       },
       tagline: 'Tagline: ',
       overview: 'Overview: ',
+      budget: 'Budget: ',
+      revenue: 'Revenue: ',
     },
     topCastAndCreators: {
       title: 'Top cast & movie creators',

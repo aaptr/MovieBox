@@ -25,8 +25,7 @@ export function QuickSearch() {
   }
 
   useEffect(() => {
-    const isSearchPage = location.pathname.startsWith('/search/')
-    if (!isSearchPage) {
+    if (!location.pathname.startsWith('/search/')) {
       setQuery('')
     }
   }, [location.pathname])

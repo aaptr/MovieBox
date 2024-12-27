@@ -2,14 +2,13 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { ThunkDispatch } from 'redux-thunk'
-
-import { fetchMovies } from '@/redux/movies-slice'
 import { RootState } from '@/redux/store'
+import { fetchMovies } from '@/redux/movies-slice'
+import { discoverEndpoint } from '@/config/api'
 import { localisation } from '@/config/localisation'
 import { CardMedium } from '@/components/CardMedium'
 import { Pagination } from '@/components/Pagination'
 import { SelectComponent } from '@/components/SelectComponent'
-import { discoverEndpoint } from '@/config/api'
 
 export function SearchResults() {
   const { currentPage, query } = useParams<{ currentPage?: string, query?: string }>()

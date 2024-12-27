@@ -11,14 +11,16 @@ interface ITrailersListProps {
 export function TrailersList({ videos }: ITrailersListProps) {
   const lang = useSelector((state: RootState) => state.lang.value)
   const local = localisation[lang].movie
+  const trailers = videos.results || []
 
   return (
-    <div className="w-full p-1 grid gap-x-5 gap-y-5 grid-cols-3">
-      {videos.results && videos.results.length > 0 ? (
-        videos.results.map((videos: IMovieVideo) => (
-          <Trailer key={videos.id} video={videos} />
-        ))) : (
-        <p className="pb-5 text-lg italic text-nowrap">{local.noTrailers}</p>
+    <div className="w-full p-1 grid gap-x-5 gap-y-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+      {trailers.length > 0 ? (
+        trailers.map((video: IMovieVideo) => (
+          <Trailer key={video.id} video={video} />
+        ))
+      ) : (
+        <p className="pb-5 text-lg italic">{local.noTrailers}</p>
       )}
     </div>
   )

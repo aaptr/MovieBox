@@ -1,9 +1,8 @@
 import { useSelector } from 'react-redux'
-
 import { RootState } from '@/redux/store'
 import { localisation } from '@/config/localisation'
-import { IMovieImages, IMovieImage } from '@/types/MoviesTypes'
 import { imagePath } from '@/config/api'
+import { IMovieImages, IMovieImage } from '@/types/MoviesTypes'
 import { ImageWithPreview } from '@/components/ImageWithPreview'
 
 interface ITImagesListProps {

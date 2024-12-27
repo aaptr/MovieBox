@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, AppDispatch } from '@/redux/store'
-import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popover'
 import { fetchAddRating, fetchDeleteRating } from '@/redux/user-slice'
 import { moviesListsEndpoint } from '@/config/api'
 import { localisation } from '@/config/localisation'
+import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popover'
 
 interface UserRatingLabelProps {
   movieId: number

@@ -1,3 +1,4 @@
+import { imagePath } from '@/config/api'
 import {
   Dialog,
   DialogContent,
@@ -6,8 +7,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { imagePath } from '@/config/api'
-
 
 export function ImageWithPreview({ src, alt, previewTitle }:
   { src: string, alt: string, previewTitle: string }) {

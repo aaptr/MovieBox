@@ -96,6 +96,8 @@ export const pl: LocalisationObject = {
       },
       tagline: 'Slogan: ',
       overview: 'Opis: ',
+      budget: 'Budżet: ',
+      revenue: 'Przychody: ',
     },
     topCastAndCreators: {
       title: 'Główna obsada i twórcy filmu',

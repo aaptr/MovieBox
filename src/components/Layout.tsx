@@ -1,25 +1,20 @@
 import { useEffect, } from 'react'
 import { useSelector } from 'react-redux'
-
-import { RootState } from '@/redux/store'
-
 import { Outlet } from 'react-router-dom'
+import { RootState } from '@/redux/store'
 import { Header } from '@/components/Header'
 import { Container } from '@/components/Container'
 import { Main } from '@/components/Main'
 import { Footer } from '@/components/Footer'
-
 
 export function Layout() {
   const { requestToken } = useSelector((state: RootState) => state.auth)
 
   useEffect(() => {
     if (requestToken) {
-      const authURL = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=http://localhost:5173/login-confirmation`
-      window.location.href = authURL
+      window.location.href = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=http://localhost:5173/login-confirmation`
     }
   }, [requestToken])
-
 
   return (
     <div className="flex flex-col min-h-screen">

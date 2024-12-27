@@ -96,6 +96,8 @@ export const ru: LocalisationObject = {
       },
       tagline: 'Слоган: ',
       overview: 'Описание: ',
+      budget: 'Бюджет: ',
+      revenue: 'Сборы: ',
     },
     topCastAndCreators: {
       title: 'Испольнитель главных ролей и создатели фильма',

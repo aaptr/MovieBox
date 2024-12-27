@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
-
 import { setLang } from '@/redux/lang-slice'
 import { localisation } from '@/config/localisation'
 import USAFlag from '@/assets/flag_icons/USAFlag.svg'

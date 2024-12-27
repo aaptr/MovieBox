@@ -26,9 +26,9 @@ export function SelectComponent({ value, options, onChange }: ISelectProps) {
       </SelectTrigger>
       <SelectContent className="w-80 rounded-3xl bg-indigo-100 text-indigo-950 border-indigo-200
         dark:bg-gray-700 dark:text-indigo-200">
-        {options.map((option) => (
-          <SelectItem key={option.value} value={option.value}>
-            {option.label}
+        {options.map(({ label, value }) => (
+          <SelectItem key={value} value={value}>
+            {label}
           </SelectItem>
         ))}
       </SelectContent>
